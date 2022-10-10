@@ -36,7 +36,7 @@ function checkResourceVersion()
             print("https://github.com/Lanzaned-Enterprises/LENT-Police")
             print("-----------------------------------------------")
             print(" ")
-            checkUpdateEmbed(20480, "Police Update Checker", "Police is up to date and ready to go!\nRunning on Version: " .. version .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-Police", "Script created by: https://discord.gg/kmKcHWGqbP")
+            checkUpdateEmbed(20480, "Police Update Checker", "Police is up to date and ready to go!\nRunning on Version: " .. version .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-Police", "Script created by: https://discord.lanzaned.com")
         else
             print(" ")
             print("---------- LANZANED POLICE ENHANCED ----------")
@@ -45,7 +45,7 @@ function checkResourceVersion()
             print("https://github.com/Lanzaned-Enterprises/LENT-Police")
             print("-----------------------------------------------")
             print(" ")
-            checkUpdateEmbed(5242880, "Police Update Checker", "Police is not up to date! Please update!\nCurent Version: " .. version .. " Latest Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-Police", "Script created by: https://discord.gg/kmKcHWGqbP")
+            checkUpdateEmbed(5242880, "Police Update Checker", "Police is not up to date! Please update!\nCurent Version: " .. version .. " Latest Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-Police", "Script created by: https://discord.lanzaned.com")
         end
     end, "GET", "", {})
 end

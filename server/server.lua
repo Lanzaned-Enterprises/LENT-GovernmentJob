@@ -2,7 +2,7 @@ QBCore = exports['qb-core']:GetCoreObject()
 
 QBCore.Functions.CreateUseableItem("panicbutton" , function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
-	local job = Player.Player.PlayerData.job
+	local job = Player.PlayerData.job
     if isAllowedPanic(job.name) then
         print("Panic Button")
         TriggerClientEvent("ps-dispatch:client:officerdown", source)

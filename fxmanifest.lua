@@ -5,7 +5,7 @@ games { 'gta5' }
 -- [[ Author ]] --
 author 'Izumi S. <https://discordapp.com/users/871877975346405388>'
 description 'Lananed Development | Police'
-discord 'https://discord.gg/kmKcHWGqbP'
+discord 'https://discord.lanzaned.com'
 github 'https://github.com/Lanzaned-Enterprises/LENT-Nightclub'
 docs 'https://lanzaned-development.gitbook.io/lanzaned-development-or-documentation/'
 
