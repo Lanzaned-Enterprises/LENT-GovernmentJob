@@ -1,5 +1,8 @@
-# LENT-Police
-*Script that enhances the realism of the normal qb-policejob. This is NOT meant to be seen as a full replacement. Though that will be the aim for this resource.*
+# LENT-GovernmentJob
+*This script is meant to replace `LENT-GovernmentJob` It adds all departments such as SASP, LSPD(Default: police), BCSO, DOC & in some cases even UPD<sup>1</sup>*
+
+## Subscripts
+<sup>1</sup> - *UPD: Unified Police Deparmtent Ususally meant for players who run 1 police department or have it as a replacement for DOJ* 
 
 ## Dependencies
 - qb-core
@@ -9,81 +12,297 @@
 ## How to Install
 - Add the Panic Button & MDT Item to your `qb-core/shared/items.lua`
 ```lua
-		["mdt"] = {
-			["name"] = "mdt", 
-			["label"] = "MDT", 
-			["weight"] = 1000, 
-			["type"] = "item", 
-			["image"] = "mdt.png",
-			["unique"] = true,
-			["useable"] = true,
-			["shouldClose"] = true,
-			["combinable"] = nil,
-			["description"] = "Special Device for Police Information."
-		},
-		["panicbutton"] = {
-			["name"] = "panicbutton", 
-			["label"] = "Panic Button", 
-			["weight"] = 0, 
-			["type"] = "item", 
-			["image"] = "panic.png",
-			["unique"] = true,
-			["useable"] = true,
-			["shouldClose"] = true,
-			["combinable"] = nil,
-			["description"] = "Special button to send distress signal."
-		},
+	["mdt"] 						 = {["name"] = "mdt",							["label"] = "MDT",						["weight"] = 1000,		["type"] = "item",		["image"] = "mdt.png",					["unique"] = true,		["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,  ["description"] = "Special Device for Police Information."},
+	["panicbutton"] 				 = {["name"] = "panicbutton",					["label"] = "Panic Button"				["weight"] = 0,			["type"] = "item",		["image"] = "panic.png",				["unique"] = true,		["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,  ["description"] = "Special button to send distress signal."},
 ```
 - Add images form the `images` folder to your `inventory/html/images`
-- Add the following snippet to `LENT-PedSpawner/peds.lua`
-	- This is a ped that uses CUSTOM clothing from EUP. You will have to change the ID's or use a precreated ped such as "s_f_y_cop_01".
+- Make sure the jobs are labled as following.
+    - You are offcourse free to change the ranks
+        - You can change the job names if you know what you're doing.
 ```lua
-    ["MRPDVehicleSpawner"] = {
-        ["coords"] = vector4(458.87, -1017.18, 28.18, 90.6), -- The start Coordinatos of the first mission
-        
-        ["ped"] = "mp_f_freemode_01", -- The model of chracter that you interact with
-        ["scenario"] = "WORLD_HUMAN_CLIPBOARD", -- The animation they are playing
-        ["block_events"] = true, -- Will block the ped from moving when hit or bumped into
-        ["invincible"] = true, -- Makes the ped invincible
-        ["freeze"] = true, -- Freezes the ped in it's location
-  
-        ["weapon"] = false, -- Leave false when using Scenario
-        ["weapon_hash"] = "", -- Should be hash like "WEAPON_CARBINERIFLE"
-        ["hostile"] = false, -- Should the ped attack the player?
-
-        ["target"] = true, -- True = Allows interaction | False = Doesn't allow
-        ["type"] = "client",
-        ["event"] = "LENT:TAKE:VEHICLE", 
-        ["icon"] = "fa-solid fa-car", -- The icon that shows up
-        ["text"] = "Select Vehicle", -- The text which is cheap "locale" support
-
-        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
-        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
-        
-        ["mother"] = 45, ["father"] = 45, ["mix"] = 1.0,
-        
-        ["hair"] = 87, ["HAIR_Texture"] = 8, ["HAIR_HIGHLIGHT"] = 0,
-        ["hat"] = -1, ["hat_TEXTURE"] = 0,
-        ["mask"] = -1, ["mask_Texture"] = 0,
-        ["glasses"] = 11, ["glasses_TEXTURE"] = 0,
-        
-        ["hands"] = 19, ["HA_Texture"] = 0,
-        ["undershirts"] = 247, ["U_Texture"] = 0,
-        ["tops"] = 456, ["T_Texture"] = 1,
-        ["kevlar"] = 57, ["K_Texture"] = 0,
-        ["decal"] = 145, ["D_Texture"] = 1,
-        ["accs"] = 126, ["A_Texture"] = 0,
-        ["bags"] = 0, ["B_Texture"] = 0,
-        ["pants"] = 166, ["P_Texture"] = 1,
-        ["shoes"] = 25, ["S_Texture"] = 0,
-
-        ["eye_COLOR"] = 2,
-        ["makeup"] = -1, ["makeup_OPACITY"] = 1.0, ["makeup_COLOR"] = 1, -- leave opacity at 1.0
-        ["lipstick"] = -1, ["lipstick_OPACITY"] = 1.0, ["lipstick_COLOR"] = 21, -- leave opacity at 1.0
-        ["eyebrows"] = -1, ["eyebrows_OPACITY"] = 1.0, ["eyebrows_COLOR"] = 1, -- leave opacity at 1.0
-        ["beard"] = -1, ["beard_OPACITY"] = 1.0, ["beard_COLOR"] = 1, -- leave opacity at 1.0
+['upd'] = {
+        label = 'Unified Police Department',
+        defaultDuty = false,
+		offDutyPay = false,
+        grades = {
+            ['1'] = {
+                name = 'Assistant Commissioner',
+                payment = 0
+            },
+            ['2'] = {
+                name = 'Deputy Commissioner',
+                payment = 0
+            },
+            ['3'] = {
+                name = 'Commissioner',
+                payment = 0
+            },
+            ['4'] = {
+                name = 'Assistant Director',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['5'] = {
+                name = 'Deputy Director',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['6'] = {
+                name = 'Director',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+        },
+    },
+    ['sasp'] = {
+        label = 'San Andreas State Police',
+		defaultDuty = false,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Cadet',
+                payment = 0
+            },
+            ['1'] = {
+                name = 'Trooper',
+                payment = 0
+            },
+            ['2'] = {
+                name = 'Sergeant',
+                payment = 0
+            },
+            ['3'] = {
+                name = 'Lieutenant',
+                payment = 0
+            },
+            ['4'] = {
+                name = 'Captain',
+                payment = 0
+            },
+            ['5'] = {
+                name = 'Assistant Chief',
+                payment = 0,
+                isboss = true,
+            },
+            ['6'] = {
+                name = 'Chief',
+                payment = 0,
+                isboss = true,
+            },
+            ['7'] = {
+                name = 'Assistant Commissioner',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['8'] = {
+                name = 'Deputy Commissioner',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['9'] = {
+                name = 'Commissioner',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+        },
+    },
+	['police'] = {
+		label = 'Los Santos Police Department',
+		defaultDuty = false,
+		offDutyPay = false,
+		grades = {
+			['0'] = {
+                name = 'Officer Ⅰ',
+                payment = 0
+            },
+			['1'] = {
+                name = 'Officer Ⅱ',
+                payment = 0
+            },
+			['2'] = {
+                name = 'Corporal',
+                payment = 0
+            },
+			['3'] = {
+                name = 'Sergeant Ⅰ',
+                payment = 0
+            },
+            ['4'] = {
+                name = 'Sergeant Ⅱ',
+                payment = 0
+            },
+			['5'] = {
+                name = 'Staff Sergeant Ⅰ',
+                payment = 0
+            },
+			['6'] = {
+                name = 'Staff Sergeant Ⅱ',
+                payment = 0
+            },
+			['7'] = {
+                name = 'Lieutenant',
+                payment = 0
+            },
+            ['8'] = {
+                name = 'Captain',
+                payment = 0
+            },
+			['9'] = {
+                name = 'Commander',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+			['10'] = {
+                name = 'Deputy Chief of Police',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['11'] = {
+                name = 'Assistant Chief of Police',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+			['12'] = {
+                name = 'Chief of Police',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+        },
+	},
+	['bcso'] = {
+		label = "Blaine County Sheriff's Office",
+		defaultDuty = false,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Deputy Sheriff Trainee',
+                payment = 0
+            },
+			['1'] = {
+                name = 'Deputy Sheriff Ⅰ',
+                payment = 0
+            },
+			['2'] = {
+                name = 'Deputy Sheriff Ⅱ',
+                payment = 0
+            },
+			['3'] = {
+                name = 'Corporal',
+                payment = 0
+            },
+            ['4'] = {
+                name = 'Senior Corporal',
+                payment = 0
+            },
+			['5'] = {
+                name = 'Sergeant Ⅰ',
+                payment = 0
+            },
+            ['6'] = {
+                name = 'Sergeant Ⅱ',
+                payment = 0
+            },
+			['7'] = {
+                name = 'Lieutenant',
+                payment = 0
+            },
+            ['8'] = {
+                name = 'Captain',
+                payment = 0
+            },
+			['9'] = {
+                name = 'Commander',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+			['10'] = {
+                name = 'Assistant Sheriff',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['11'] = {
+                name = 'Undersheriff',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+			['12'] = {
+                name = 'Sheriff',
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+        },
+	},
+    ['doc'] = {
+        label = "Department of Corrections",
+        defaultDuty = false,
+        offDutyPay = false,
+        grades = {
+            ['0'] = {
+                name = "Cadet",
+                payment = 0,
+            },
+            ['1'] = {
+                name = "Officer",
+                payment = 0,
+            },
+            ['2'] = {
+                name = "Sergeant",
+                payment = 0,
+            },
+            ['3'] = {
+                name = "Lieutenant",
+                payment = 0,
+            },
+            ['4'] = {
+                name = "Captain",
+                payment = 0,
+            },
+            ['5'] = {
+                name = "Associate Warden",
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['6'] = {
+                name = "Chief Deputy Warden",
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['7'] = {
+                name = "Warden",
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['8'] = {
+                name = "Department Director",
+                payment = 0,
+                isboss = true,
+                bankAuth = true,
+            },
+        }
     },
 ```
+
+## Optional Settings / Dependencies
+- This script will work fine with renewed-phone / renewed-banking
+- This script will NOT work if you have the default `LENT-GovernmentJob`
+- Settings for zones can be found in `client/cl_zones.lua`
 
 ### Optional
 You can remove the Panic Button actions from the radial menu. Every config is different so I can't give an exact. You should go into the config and press `CONTROL+F` and search for `Button` then see what is linked in your police, ems jobs.
@@ -98,7 +317,19 @@ You can remove the Panic Button actions from the radial menu. Every config is di
 |----         |----           |----                |----                                  |
 | Director    | [Lanzaned#2512](https://discordapp.com/users/871877975346405388) | [871877975346405388](https://discordapp.com/users/871877975346405388) | Javascript, XML, HTML, CSS, lua, SQL |
 
+## Discord Profiles
+<div allign="center">
+
+<a href="https://discordapp.com/users/871877975346405388"><img width="45%" src="https://discord.c99.nl/widget/theme-3/871877975346405388.png"/></a>
+
+</div>
+
 ## Useful Links 
 Discord: https://discord.lanzaned.com<br>
 Github: https://github.lanzaned.com<br>
-Documentation: https://lanzaned-development.gitbook.io/lanzaned-development-or-documentation/
+Documentation: https://docs.lanzaned.com/
+
+## Sponsors
+San Andreas Life: https://sal.lanzaned.com/
+
+

@@ -1,11 +1,12 @@
-QBCore = exports['qb-core']:GetCoreObject()
-
 QBCore.Functions.CreateUseableItem("panicbutton" , function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
 	local job = Player.PlayerData.job
     if isAllowedPanic(job.name) then
-        print("Panic Button")
-        TriggerClientEvent("ps-dispatch:client:officerdown", source)
+        if (job.name == "sasp" or job.name == "police" or job.name == "bcso" or job.name == "doc") then
+            TriggerClientEvent("ps-dispatch:client:officerdown", source)
+        elseif (job.name == "ambulance" or job.name == "ems" or job.name == "safd") then
+            TriggerClientEvent("ps-dispatch:client:emsdown", source)
+        end
     end
 end)
 
@@ -36,4 +37,3 @@ function isAllowedMDT(job)
     end
     return false
 end
- 
