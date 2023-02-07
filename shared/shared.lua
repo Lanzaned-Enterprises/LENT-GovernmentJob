@@ -6,6 +6,10 @@ Config.ArmoryWhitelist = {}
 Config.WhitelistedVehicles = {}
 -- [[ ^^ Do not edit unless you know what you're doing ^^ ]] --
 
+-- [[ Menu Settings ]] --
+Config.MenuName = "LENT-GovernmentJob"
+Config.IconName = "fa-solid fa-car"
+
 -- [[ Objects ]] --
 Config.Objects = {
     ["cone"] = {model = `prop_roadcone02a`, freeze = false},
@@ -22,6 +26,7 @@ Config.LicenseRank = 4
 Config.Plate = "UPD " .. math.random(1111, 9999)
 
 -- [[ Job Permissions ]] --
+Config.Jobs = { "upd", "sasp", "police", "bcso", "doc", "ambulance" }
 Config.AllowedPanic = { "upd", "sasp", "police", "bcso", "doc", "ambulance" }
 Config.AllowedMDT = { "upd", "sasp", "police", "bcso", "doc", "ambulance" }
 

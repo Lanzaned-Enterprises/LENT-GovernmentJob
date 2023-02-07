@@ -10,36 +10,29 @@ createPoliceBlips = false
 OfficerRequest = false
 
 -- Functions
-local function CreateDutyBlips(playerId, playerLabel, playerJob, playerLocation)
+local function CreateDutyBlips(playerId, playerLabel, playerJob, blipNum, blipSize, blipColorNum, playerLocation)
     local ped = GetPlayerPed(playerId)
     local blip = GetBlipFromEntity(ped)
+    local pedVehicle = GetVehiclePedIsIn( ped, false);
     if not DoesBlipExist(blip) then
         if NetworkIsPlayerActive(playerId) then
             blip = AddBlipForEntity(ped)
         else
             blip = AddBlipForCoord(playerLocation.x, playerLocation.y, playerLocation.z)
         end
-        SetBlipSprite(blip, 1)
+
+        SetBlipScale(blip, blipSize)
+        SetBlipSprite(blip, blipNum)
         ShowHeadingIndicatorOnBlip(blip, true)
         SetBlipRotation(blip, math.ceil(playerLocation.w))
-        SetBlipScale(blip, 0.8)
-        if playerJob == "sasp" then
-            SetBlipColour(blip, 40)
-        elseif playerJob == "police" then
-            SetBlipColour(blip, 38)
-        elseif playerJob == "bcso" then
-            SetBlipColour(blip, 33)
-        elseif playerJob == "doc" then
-            SetBlipColour(blip, 65)
-        elseif playerJob == "ambulance" then
-            SetBlipColour(blip, 6)
-        else 
-            SetBlipColour(blip, 38)
-        end
+
+        SetBlipColour(blip, blipColorNum)
+        
         SetBlipAsShortRange(blip, true)
         BeginTextCommandSetBlipName('STRING')
         AddTextComponentString(playerLabel)
         EndTextCommandSetBlipName(blip)
+
         DutyBlips[#DutyBlips+1] = blip
     end
 

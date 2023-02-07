@@ -12,14 +12,58 @@ local updatingCops = false
 local function UpdateBlips()
     local dutyPlayers = {}
     local players = QBCore.Functions.GetQBPlayers()
-    for k, v in pairs(players) do
-        if (v.PlayerData.job.name == "upd" or v.PlayerData.job.name == "sasp" or v.PlayerData.job.name == "police" or v.PlayerData.job.name == "bcso" or v.PlayerData.job.name == "ambulance" or v.PlayerData.job.name == "doc") and v.PlayerData.job.onduty then
+
+    for _, v in pairs(players) do
+        if v and (v.PlayerData.job.name == "upd" or v.PlayerData.job.name == "sasp" or v.PlayerData.job.name == "police" or v.PlayerData.job.name == "bcso" or v.PlayerData.job.name == "doc" or v.PlayerData.job.name == "ambulance") and v.PlayerData.job.onduty then
             local coords = GetEntityCoords(GetPlayerPed(v.PlayerData.source))
             local heading = GetEntityHeading(GetPlayerPed(v.PlayerData.source))
+            local ped = GetPlayerPed(v.PlayerData.source)
+            local pedVehicle = GetVehiclePedIsIn(ped, false) 
+            local vehicleType = GetVehicleType(pedVehicle)
+
+            if pedVehicle ~= 0 and vehicleType == "automobile" then
+                blipNum = 672
+                blipSize = 1.2
+            elseif pedVehicle ~= 0 and vehicleType == "bike" then
+                blipNum = 348
+                blipSize = 1.2
+            elseif pedVehicle ~= 0 and vehicleType == "boat" then
+                blipNum = 427
+                blipSize = 1.2
+            elseif pedVehicle ~= 0 and vehicleType == "heli" then
+                blipNum = 422
+                blipSize = 1.2
+            elseif pedVehicle ~= 0 and vehicleType == "plane" then
+                blipNum = 423
+                blipSize = 1.2
+            else
+                blipNum = 1
+                blipSize = 0.8
+            end
+
+            if v.PlayerData.job.name == "upd" then
+                blipColorNum = 7
+            elseif v.PlayerData.job.name == "sasp" then
+                blipColorNum = 40
+            elseif v.PlayerData.job.name == "police" then
+                blipColorNum = 38
+            elseif v.PlayerData.job.name == "bcso" then
+                blipColorNum = 47
+            elseif v.PlayerData.job.name == "doc" then
+                blipColorNum = 52
+            elseif v.PlayerData.job.name == "ambulance" then
+                blipColorNum = 6
+            else 
+                blipColorNum = 8
+            end
+         
             dutyPlayers[#dutyPlayers+1] = {
                 source = v.PlayerData.source,
                 label = v.PlayerData.metadata["callsign"],
                 job = v.PlayerData.job.name,
+                blipNum = blipNum,
+                blipSize = blipSize,
+                blipColorNum= blipColorNum,
                 location = {
                     x = coords.x,
                     y = coords.y,
@@ -29,6 +73,7 @@ local function UpdateBlips()
             }
         end
     end
+
     TriggerClientEvent("police:client:UpdateBlips", -1, dutyPlayers)
 end
 

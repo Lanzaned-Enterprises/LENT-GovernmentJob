@@ -1,5 +1,10 @@
 CoordsList = {}
 
+-- [[ This is used for randomly generating vehicles in either of the mentioned locations ]] -- 
+--[[
+    See event; LENT-GovernmentJob:Client:SpawnEMSVehicle:Grapeseed 
+    in file; client/cl_menu.lua
+]]
 CoordsList.Coords = {
     -- ['exampleLocation'] = {
     --     vector4(0, 0, 0, 0)
