@@ -1,5 +1,5 @@
 # LENT-GovernmentJob
-*This script is meant to replace `LENT-GovernmentJob` It adds all departments such as SASP, LSPD(Default: police), BCSO, DOC & in some cases even UPD<sup>1</sup>*
+*This script is meant to replace `qb-policejob` It adds all departments such as SASP, LSPD(Default: police), BCSO, DOC & in some cases even UPD<sup>1</sup>*
 
 ## Subscripts
 <sup>1</sup> - *UPD: Unified Police Deparmtent Ususally meant for players who run 1 police department or have it as a replacement for DOJ* 
@@ -301,8 +301,9 @@
 
 ## Optional Settings / Dependencies
 - This script will work fine with renewed-phone / renewed-banking
-- This script will NOT work if you have the default `LENT-GovernmentJob`
+- This script will NOT work if you have the default `qb-policejob`
 - Settings for zones can be found in `client/cl_zones.lua`
+- Settings for peds can be found in `client/cl_peds.lua`
 
 ### Optional
 You can remove the Panic Button actions from the radial menu. Every config is different so I can't give an exact. You should go into the config and press `CONTROL+F` and search for `Button` then see what is linked in your police, ems jobs.
