@@ -144,8 +144,7 @@ RegisterNetEvent('police:client:UpdateBlips', function(players)
         if players then
             for _, data in pairs(players) do
                 local id = GetPlayerFromServerId(data.source)
-                CreateDutyBlips(id, data.label, data.job, data.location)
-
+                CreateDutyBlips(id, data.label, data.job, data.blipNum, data.blipSize, data.blipColorNum, data.location)
             end
         end
     end

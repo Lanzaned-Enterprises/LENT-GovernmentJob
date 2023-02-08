@@ -48,7 +48,7 @@ Config.Locations = {
     },
     ["evidence"] = {
         [1] = vector3(472.52, -991.22, 26.27), ---Mission Row
-        [70] = vector3(1870.05, 3700.91, 34.58), -- Sandy Shores
+        [70] = vector3(1857.18, 3690.29, 29.82), -- Sandy Shores
         [90] = vector3(1547.74, 827.49, 82.13), -- San Andreas Highway Patrol
     },
 }

@@ -1,16 +1,16 @@
 CoordsList = {}
-
--- [[ This is used for randomly generating vehicles in either of the mentioned locations ]] -- 
---[[
-    See event; LENT-GovernmentJob:Client:SpawnEMSVehicle:Grapeseed 
-    in file; client/cl_menu.lua
-]]
+ 
 CoordsList.Coords = {
-    -- ['exampleLocation'] = {
-    --     vector4(0, 0, 0, 0)
-    -- },
-    ['GrapeseedFD'] = {
-        vector4(1787.72, 4608.51, 37.72, 185.66),
-        vector4(1796.02, 4609.23, 37.72, 184.39),
+    ['bcso'] = {
+        [1] = vector3(1884.86, 3693.14, 33.54), -- Hedwig Station
+    }
+}
+
+CoordsList.RandomSpawns = {
+    [1] = {
+        vector4(1882.41, 3691.53, 33.54, 24.69),
+        vector4(1879.24, 3690.22, 33.54, 24.82),
+        vector4(1871.28, 3704.33, 33.54, 206.56),
+        vector4(1874.31, 3704.78, 33.55, 204.49),
     },
 }

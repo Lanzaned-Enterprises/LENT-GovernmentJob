@@ -44,32 +44,22 @@ local Poly = {
     },
 
     -- [[ Sandy Shores Sheriffs Office ]] --
-    ["SandyShoresArmory"] = {
-        ["name"] = "SandyShoresArmory",
-        ["coords"] = vector3(1865.15, 3692.71, 34.58),
-        ["height"] = 5.15, ["width"] = 1, ["heading"] = 30, ["debug"] = false,
-        ["minZ"] = 33.58,
-        ["maxZ"] = 36.03,
-        ["type"] = "client", ["event"] = "qb-bcso:client:openArmoury",
-        ["icon"] = "fa-solid fa-gun", ["label"] = "Open Armory",
-        ["job"] = "bcso", -- < Job required to use target
-    },
     ["SandyShoresDuty"] = {
         ["name"] = "SandyShoresDuty",
-        ["coords"] = vector3(1849.85, 3692.12, 34.58),
-        ["height"] = 1.0, ["width"] = 0.6, ["heading"] = 30, ["debug"] = false,
-        ["minZ"] = 33.58,
-        ["maxZ"] = 34.98,
+        ["coords"] = vector3(1851.01, 3686.91, 34.22),
+        ["height"] = 0.6, ["width"] = 0.6, ["heading"] = 335, ["debug"] = false,
+        ["minZ"] = 30.92,
+        ["maxZ"] = 34.72,
         ["type"] = "client", ["event"] = "LENT-GovernmentJob:ToggleDuty",
         ["icon"] = "fa-solid fa-clipboard", ["label"] = "Go On/Off Duty",
         ["job"] = "bcso", -- < Job required to use target
     },
     ["SandyShoresEvidence"] = {
         ["name"] = "SandyShoresEvidence",
-        ["coords"] = vector3(1870.63, 3701.15, 34.58),
-        ["height"] = 2.0, ["width"] = 0.6, ["heading"] = 30, ["debug"] = false,
-        ["minZ"] = 33.58,
-        ["maxZ"] = 35.78,
+        ["coords"] = vector3(1857.22, 3690.66, 29.82),
+        ["height"] = 3.4, ["width"] = 4.6, ["heading"] = 30, ["debug"] = false,
+        ["minZ"] = 27.02,
+        ["maxZ"] = 31.02,
         ["type"] = "client", ["event"] = "LENT-GovernmentJob:Client:CheckZone",
         ["icon"] = "fa-solid fa-clipboard", ["label"] = "Evidence",
         ["job"] = "bcso", -- < Job required to use target

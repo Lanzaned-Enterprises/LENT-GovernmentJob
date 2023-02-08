@@ -44,8 +44,9 @@ local peds = {
         ["beard"] = -1,         ["beard_OPACITY"] = 0.0,        ["beard_COLOR"] = -1, -- leave opacity at 1.0
     },
 
+    -- [[ Sheriffs Office ]]
     ["BCSODesk"] = {
-        ["coords"] = vector4(1851.03, 3690.59, 34.58, 207.13), -- The start Coordinatos of the first mission
+        ["coords"] = vector4(1852.08, 3688.13, 34.22, 207.68), -- The start Coordinatos of the first mission
 
         ["ped"] = "mp_m_freemode_01",
         ["scenario"] = "WORLD_HUMAN_VALET", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
@@ -81,13 +82,13 @@ local peds = {
         ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 0, -- leave opacity at 1.0
     },
     ["BCSOVehicleSpawner"] = {
-        ["coords"] = vector4(1858.12, 3684.33, 34.27, 208.04), -- The start Coordinatos of the first mission
+        ["coords"] = vector4(1886.49, 3692.63, 33.54, 85.61), -- The start Coordinatos of the first mission
         
         ["ped"] = "mp_m_freemode_01", -- The model of chracter that you interact with
         ["scenario"] = "WORLD_HUMAN_CLIPBOARD", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
 
         ["target"] = true, -- True = Allows interaction | False = Doesn't allow
-        ["type"] = "client", ["event"] = "LENT-GovernmentJob:Client:BCSO:SelectVehicle", 
+        ["type"] = "client", ["event"] = "LENT-GovernmentJob:Client:SelectVehicle", 
         ["icon"] = "fas fa-car", ["text"] = "Spawn Cruiser", 
         ["job"] = "bcso",
 
@@ -118,7 +119,7 @@ local peds = {
         ["beard"] = -1, ["beard_OPACITY"] = 1.0, ["beard_COLOR"] = 1, -- leave opacity at 1.0
     },
     ["BCSOArmory"] = {
-        ["coords"] = vector4(1867.05, 3696.05, 34.58, 37.12), -- The start Coordinatos of the first mission
+        ["coords"] = vector4(1860.73, 3690.68, 34.22, 9.82), -- The start Coordinatos of the first mission
 
         ["ped"] = "mp_m_freemode_01",
         ["scenario"] = "WORLD_HUMAN_COP_IDLES", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
@@ -347,6 +348,7 @@ CreateThread(function()
                 exports['qb-target']:AddTargetEntity(PedCreated[k], {
                     options = {
                         {
+                            num = 1,
                             type = v["type"],
                             event = v["event"],
                             icon = v["icon"],
