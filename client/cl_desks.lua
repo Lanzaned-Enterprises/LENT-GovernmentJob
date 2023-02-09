@@ -40,6 +40,27 @@ RegisterNetEvent("LENT-GovernmentJob:Client:QuestionsMenu", function()
     })
 end)
 
+RegisterNetEvent('LENT-GovernmentJob:Client:DeskHarold', function()
+    exports["LENT-Menu"]:openMenu({
+        {
+            header = 'Sergeant - Harold',
+            isMenuHeader = true,
+        },
+        {
+            header = "Spawn Cruiser",
+            params = {
+                event = "LENT-GovernmentJob:Client:SelectVehicle",
+            },
+        },
+        {
+            header = "Buy Cruiser",
+            params = {
+                event = "serrulata-policevehicleshop:client:enter",
+            },
+        },
+    })
+end)
+
 -- [[ Events ]] --
 RegisterNetEvent('LENT-GovernmentJob:Client:SupervisorRequest', function(data)
     local loc = data.location

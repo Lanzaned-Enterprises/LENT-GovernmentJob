@@ -1,11 +1,18 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 -- Commands
-QBCore.Commands.Add("spikestrip", Lang:t("commands.place_spike"), {}, false, function(source)
+QBCore.Commands.Add("spike", Lang:t("commands.place_spike"), {}, false, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player.PlayerData.job.name == "upd" or Player.PlayerData.job.name == "sasp" or Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "bcso" or Player.PlayerData.job.name == "doc" or Player.PlayerData.job.name == "military" and Player.PlayerData.job.onduty then
-        TriggerClientEvent('police:client:SpawnSpikeStrip', src)
+        local length = tonumber(args[1])
+        if length > 6 then
+            TriggerClientEvent('police:client:SpawnSpikeStrip', src, 5)
+        elseif length < 6 then
+            TriggerClientEvent('police:client:SpawnSpikeStrip', src, length)
+        else
+            TriggerClientEvent('police:client:SpawnSpikeStrip', src, 5)
+        end
     end
 end)
 
@@ -365,33 +372,4 @@ QBCore.Commands.Add("takedna", Lang:t("commands.takedna"), {{name = "id", help =
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
     end
-end)
-
--- [[ Duty Commands ]] --
-QBCore.Commands.Add('spduty', 'Sets toggle for duty on State Police', {}, false, function(source, args)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if Player.PlayerData.job.name == "sasp" then
-        TriggerClientEvent("LENT:SP:CHECK:STATUS", source)
-    end    
-end)
-
-QBCore.Commands.Add('pdduty', 'Sets toggle for duty on Metro Police', {}, false, function(source, args)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if Player.PlayerData.job.name == "police" then
-        TriggerClientEvent("LENT:SP:CHECK:STATUS", source)
-    end    
-end)
-
-QBCore.Commands.Add('soduty', 'Sets toggle for duty on Sheriffs Office', {}, false, function(source, args)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if Player.PlayerData.job.name == "bcso" then
-        TriggerClientEvent("LENT:SP:CHECK:STATUS", source)
-    end    
-end)
-
-QBCore.Commands.Add('docduty', 'Sets toggle for duty on Department of Corrections', {}, false, function(source, args)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if Player.PlayerData.job.name == "doc" then
-        TriggerClientEvent("LENT:SP:CHECK:STATUS", source)
-    end    
 end)

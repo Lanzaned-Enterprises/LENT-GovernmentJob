@@ -9,6 +9,18 @@ local ZoneCreated = {}
 
 local hasCreatedPolyZones = false
 local Poly = {
+    -- [[ Misc Zones ]] -- 
+    ["BCSOShopExist"] = {
+        ["name"] = "BCSOShopExist",
+        ["coords"] = vector3(1295.25, 217.61, -49.06),
+        ["height"] = 3.2, ["width"] = 3.4, ["heading"] = 0, ["debug"] = false,
+        ["minZ"] = -51.26,
+        ["maxZ"] = -47.26,
+        ["type"] = "client", ["event"] = "serrulata-policevehicleshop:client:leave",
+        ["icon"] = "fa-solid fa-exit", ["label"] = "Leave BCSO Shop",
+        ["job"] = "bcso", -- < Job required to use target
+    },
+
     -- [[ San Andreas Highway Patrol ]] -- 
     ["SAHPEvidence"] = {
         ["name"] = "SAHPEvidence",
@@ -93,6 +105,48 @@ local Poly = {
         ["type"] = "client", ["event"] = "qb-police:client:openTrash",
         ["icon"] = "fa-solid fa-trash", ["label"] = "Open Trash",
         ["job"] = "bcso", -- < Job required to use target
+    },
+
+    -- [[ Grapeseed Sheriff's Office ]] --
+    ["Grapeseed:Sheriff:Duty"] = {
+        ["name"] = "Grapeseed:Sheriff:Duty",
+        ["coords"] = vector3(1652.43, 4885.82, 42.16),
+        ["height"] = 0.6, ["width"] = 0.6, ["heading"] = 320, ["debug"] = false,
+        ["minZ"] = 41.96,
+        ["maxZ"] = 42.71,
+        ["type"] = "client", ["event"] = "LENT-GovernmentJob:ToggleDuty",
+        ["icon"] = "fa-solid fa-clipboard", ["label"] = "Go On/Off Duty",
+        ["job"] = { ['bcso'] = 0, ['fib'] = 0, ['upd'] = 0, } -- < Job required to use target
+    },
+    ["Grapeseed:Sheriff:Armory"] = {
+        ["name"] = "Grapeseed:Sheriff:Armory",
+        ["coords"] = vector3(1652.03, 4889.14, 42.16),
+        ["height"] = 2.0, ["width"] = 0.8, ["heading"] = 10, ["debug"] = false,
+        ["minZ"] = 40.16,
+        ["maxZ"] = 43.76,
+        ["type"] = "client", ["event"] = "qb-bcso:client:openArmoury",
+        ["icon"] = "fa-solid fa-gun", ["label"] = "Open Armory",
+        ["job"] = { ['bcso'] = 0, ['fib'] = 0, ['upd'] = 0, }, -- < Job required to use target
+    },
+    ["Grapeseed:Sheriff:Evidence"] = {
+        ["name"] = "Grapeseed:Sheriff:Evidence",
+        ["coords"] = vector3(1651.83, 4880.39, 45.52),
+        ["height"] = 3.0, ["width"] = 4.2, ["heading"] = 9, ["debug"] = false,
+        ["minZ"] = 42.92,
+        ["maxZ"] = 46.92,
+        ["type"] = "client", ["event"] = "LENT-GovernmentJob:Client:CheckZone",
+        ["icon"] = "fa-solid fa-clipboard", ["label"] = "Evidence",
+        ["job"] = { ['bcso'] = 0, ['fib'] = 0, ['upd'] = 0, }, -- < Job required to use target
+    },
+    ["Grapeseed:Sheriff:Trash"] = {
+        ["name"] = "Grapeseed:Sheriff:Trash",
+        ["coords"] = vector3(1649.6, 4887.93, 42.16),
+        ["height"] = 0.4, ["width"] = 2.2, ["heading"] = 8, ["debug"] = false,
+        ["minZ"] = 38.76,
+        ["maxZ"] = 42.76,
+        ["type"] = "client", ["event"] = "qb-police:client:openTrash",
+        ["icon"] = "fa-solid fa-trash", ["label"] = "Open Trash",
+        ["job"] = { ['bcso'] = 0, ['fib'] = 0, ['upd'] = 0, }, -- < Job required to use target
     },
 
     -- [[ San Andreas Fire Department ]] --

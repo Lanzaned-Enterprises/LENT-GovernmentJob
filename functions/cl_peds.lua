@@ -88,8 +88,14 @@ local peds = {
         ["scenario"] = "WORLD_HUMAN_CLIPBOARD", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
 
         ["target"] = true, -- True = Allows interaction | False = Doesn't allow
-        ["type"] = "client", ["event"] = "LENT-GovernmentJob:Client:SelectVehicle", 
-        ["icon"] = "fas fa-car", ["text"] = "Spawn Cruiser", 
+        -- ["type"] = "client", 
+        -- ["event"] = "LENT-GovernmentJob:Client:SelectVehicle", 
+        -- ["icon"] = "fas fa-car", ["text"] = "Spawn Cruiser", 
+        -- ["job"] = "bcso",
+
+        ["type"] = "client", 
+        ["event"] = "LENT-GovernmentJob:Client:DeskHarold", 
+        ["icon"] = "fas fa-question", ["text"] = "Ask Harold a Question", 
         ["job"] = "bcso",
 
         -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
@@ -348,7 +354,6 @@ CreateThread(function()
                 exports['qb-target']:AddTargetEntity(PedCreated[k], {
                     options = {
                         {
-                            num = 1,
                             type = v["type"],
                             event = v["event"],
                             icon = v["icon"],

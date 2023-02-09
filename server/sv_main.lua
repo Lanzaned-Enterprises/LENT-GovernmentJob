@@ -418,9 +418,6 @@ RegisterNetEvent('police:server:JailPlayer', function(playerId, time)
 
     local Player = QBCore.Functions.GetPlayer(src)
     local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
-    -- if not Player or not OtherPlayer or Player.PlayerData.job.name ~= "upd" or Player.PlayerData.job.name ~= "sasp" or Player.PlayerData.job.name ~= "police" or Player.PlayerData.job.name ~= "bcso" or Player.PlayerData.job.name ~= "doc" then 
-    --     return 
-    -- end
 
     if (Player.PlayerData.job.name == "upd" or Player.PlayerData.job.name == "sasp" or Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "bcso" or Player.PlayerData.job.name == "doc") then
         local currentDate = os.date("*t")
@@ -707,10 +704,6 @@ RegisterNetEvent('police:server:SetTracker', function(targetId)
         TriggerClientEvent('QBCore:Notify', src, Lang:t("success.put_anklet_on", {firstname = Target.PlayerData.charinfo.firstname, lastname = Target.PlayerData.charinfo.lastname}), 'success')
         TriggerClientEvent('police:client:SetTracker', targetId, true)
     end
-end)
-
-RegisterNetEvent('police:server:SyncSpikes', function(table)
-    TriggerClientEvent('police:client:SyncSpikes', -1, table)
 end)
 
 -- Threads

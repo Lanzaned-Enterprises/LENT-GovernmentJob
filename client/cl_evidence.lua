@@ -213,10 +213,11 @@ CreateThread(function()
     end
 end)
 
-CreateThread(function() -- Gunpowder Status when shooting
+CreateThread(function()
     while true do
         Wait(1)
         local ped = PlayerPedId()
+        
         if IsPedShooting(ped) then
             local weapon = GetSelectedPedWeapon(ped)
             if not WhitelistedWeapon(weapon) then
@@ -229,12 +230,7 @@ CreateThread(function() -- Gunpowder Status when shooting
                 DropBulletCasing(weapon, ped)
             end
         end
-    end
-end)
 
-CreateThread(function()
-    while true do
-        Wait(1)
         if CurrentCasing and CurrentCasing ~= 0 then
             local pos = GetEntityCoords(PlayerPedId())
             if #(pos -vector3(Casings[CurrentCasing].coords.x, Casings[CurrentCasing].coords.y, Casings[CurrentCasing].coords.z)) < 1.5 then

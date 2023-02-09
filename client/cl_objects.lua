@@ -198,30 +198,39 @@ RegisterNetEvent('police:client:spawnObject', function(objectId, type, player)
     }
 end)
 
-RegisterNetEvent('police:client:SpawnSpikeStrip', function()
+local SpawnedSpikes = {}
+RegisterNetEvent('police:client:SpawnSpikeStrip', function(length)
     if #SpawnedSpikes + 1 < Config.MaxSpikes then
         if PlayerJob.name == 'upd' or PlayerJob.name == 'sasp' or PlayerJob.name == 'police' or PlayerJob.name == 'bcso' or PlayerJob.name == 'doc' and PlayerJob.onduty then
-            local spawnCoords = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 2.0, 0.0)
-            local spike = CreateObject(spikemodel, spawnCoords.x, spawnCoords.y, spawnCoords.z, 1, 1, 1)
-            local netid = NetworkGetNetworkIdFromEntity(spike)
-            SetNetworkIdExistsOnAllMachines(netid, true)
-            SetNetworkIdCanMigrate(netid, false)
-            SetEntityHeading(spike, GetEntityHeading(PlayerPedId()))
-            PlaceObjectOnGroundProperly(spike)
-            SpawnedSpikes[#SpawnedSpikes+1] = {
-                coords = vector3(spawnCoords.x, spawnCoords.y, spawnCoords.z),
-                netid = netid,
-                object = spike,
-            }
-            TriggerServerEvent('police:server:SyncSpikes', SpawnedSpikes)
+            local SpawnCoords = GetOffsetFromEntityInWorldCoords(GetPlayerPed(PlayerId()) , 0.0, 2.0, 0.0)
+            
+            for a = 1, length do
+                local Spike = CreateObject(GetHashKey('P_ld_stinger_s'), SpawnCoords.x, SpawnCoords.y, SpawnCoords.z, 1, 1, 1)
+                local NetID = NetworkGetNetworkIdFromEntity(Spike)
+
+                SetNetworkIdExistsOnAllMachines(NetID, true)
+                SetNetworkIdCanMigrate(NetID, false)
+                SetEntityHeading(Spike, GetEntityHeading(GetPlayerPed(PlayerId()) ))
+                PlaceObjectOnGroundProperly(Spike)
+                FreezeEntityPosition(Spike, true)
+
+                SpawnCoords = GetOffsetFromEntityInWorldCoords(Spike, 0.0, 4.0, 0.0)
+
+                table.insert(SpawnedSpikes, NetID)
+            end
         end
     else
         QBCore.Functions.Notify(Lang:t("error.no_spikestripe"), 'error')
     end
 end)
 
-RegisterNetEvent('police:client:SyncSpikes', function(table)
-    SpawnedSpikes = table
+RegisterNetEvent("LENT-GovernmentJob:Client:RemoveSpikes", function()
+    for a = 1, #SpawnedSpikes do
+        local Spike = NetworkGetEntityFromNetworkId(SpawnedSpikes[a])
+        DeleteEntity(Spike)
+    end
+    QBCore.Functions.Notify('Spikes Strips Removed!', 'success')
+    SpawnedSpikes = {}
 end)
 
 -- Threads

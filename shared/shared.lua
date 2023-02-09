@@ -26,7 +26,7 @@ Config.LicenseRank = 4
 Config.Plate = "UPD " .. math.random(1111, 9999)
 
 -- [[ Job Permissions ]] --
-Config.Jobs = { "upd", "sasp", "police", "bcso", "doc", "ambulance" }
+Config.AllowedPIT = { "upd", "sasp", "police", "bcso" }
 Config.AllowedPanic = { "upd", "sasp", "police", "bcso", "doc", "ambulance" }
 Config.AllowedMDT = { "upd", "sasp", "police", "bcso", "doc", "ambulance" }
 

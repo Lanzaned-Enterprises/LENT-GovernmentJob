@@ -32,7 +32,7 @@ RegisterNetEvent('LENT-GovernmentJob:Client:SelectVehicle', function()
         if not takeLoc then return end
 
         if #(pos - takeLoc) <= 10.0 then
-            local ChooseRandomCoord = CoordsList.RandomSpawns[CurrentGarage]
+            local ChooseRandomCoord = CoordsList.RandomSpawns['bcso'][CurrentGarage]
             local RandomizedCoord = (ChooseRandomCoord[math.random(#ChooseRandomCoord)])
 
             local AuthorizedVehicles = Vehicles.AuthorizedVehiclesBCSO[QBCore.Functions.GetPlayerData().job.grade.level]
