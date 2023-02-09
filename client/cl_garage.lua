@@ -107,24 +107,15 @@ RegisterNetEvent("LENT-GovernmentJob:Client:SpawnSelectedVehicle", function(data
     SetModelAsNoLongerNeeded(vehicleCode) -- removes model from game memory as we no longer need it    
 end)
 
--- [[ Parking Thread ]] --
-CreateThread(function()
-    while true do
-        Wait(0)
-        for k, v in pairs(Config.ParkingLocations) do
-            local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
-            local vehicleClass = GetVehicleClass(vehicle)
-		    local VehicleDistance = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, v.x, v.y, v.z)
+RegisterNetEvent('LENT-GovernmentJob:Client:StoreVehicle', function()
+    local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+    local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+    local vehicleClass = GetVehicleClass(vehicle)
 
-            if VehicleDistance <= 5.0 and vehicleClass == 18 then
-                exports['qb-core']:DrawText('[E] - Park vehicle', 'right')
-                if IsControlJustReleased(0, 51) then
-                    if vehicleClass == 18 then
-                        QBCore.Functions.DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
-                        exports['qb-core']:HideText()
-                    end
-                end
+    for k, v in pairs(Config.ParkingLocations) do
+        if #(plyCoords - v["Coords"]) <= 10.0 then
+            if vehicleClass == 18 then
+                QBCore.Functions.DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
             end
         end
     end

@@ -373,3 +373,13 @@ QBCore.Commands.Add("takedna", Lang:t("commands.takedna"), {{name = "id", help =
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
     end
 end)
+
+QBCore.Commands.Add("store", "Stores your cruiser if you're near a police garage", {}, false, function(source)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.PlayerData.job.name == "upd" or Player.PlayerData.job.name == "sasp" or Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "bcso" or Player.PlayerData.job.name == "doc" or Player.PlayerData.job.name == "military" and Player.PlayerData.job.onduty then 
+        TriggerClientEvent("LENT-GovernmentJob:Client:StoreVehicle", src)
+    else
+        TriggerClientEvent('QBCore:Notify', src, "You're not near a garage or you're not a onduty police officer!", "error")
+    end
+end)
