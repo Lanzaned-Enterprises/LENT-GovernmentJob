@@ -26,6 +26,15 @@ Config.LicenseRank = 4
 Config.Plate = "UPD " .. math.random(1111, 9999)
 
 -- [[ Job Permissions ]] --
+Config.Job = {
+    ['DOJ'] = "upd"
+    ['StatePolice'] = "sasp"
+    ['Police'] = "police"
+    ['Sheriff'] = "bcso"
+    ['Corrections'] = "doc"
+    ['FireDepartment'] = "ambulance"
+    -- If you add more you need to add more to `client/cl_garage.lua`
+}
 Config.AllowedPIT = { "upd", "sasp", "police", "bcso" }
 Config.AllowedPanic = { "upd", "sasp", "police", "bcso", "doc", "ambulance" }
 Config.AllowedMDT = { "upd", "sasp", "police", "bcso", "doc", "ambulance" }
@@ -35,9 +44,11 @@ Config.PoliceHelicopter = "b412"
 
 -- [[ Parking Locations ]] --
 Config.ParkingLocations = {
-    [1] = { ["Coords"] = vector3(461.62, -1019.62, 28.09) },
-    [2] = { ["Coords"] = vector3(462.49, -1015.56, 28.07) },
-    [3] = { ["Coords"] = vector3(1548.2, 802.51, 77.01) },
+    [1] = { ["Coords"] = vector3(1879.26, 3689.9, 33.54) }, -- Sandy Shores
+    [2] = { ["Coords"] = vector3(1882.09, 3691.66, 33.54) }, -- Sandy Shores
+    [3] = { ["Coords"] = vector3(1874.55, 3705.64, 33.55) }, -- Sandy Shores
+    [4] = { ["Coords"] = vector3(1871.44, 3703.76, 33.54) }, -- Sandy Shores
+    [5] = { ["Coords"] = vector3(1877.75, 3707.19, 33.55) }, -- Sandy Shores
 }
 
 -- [[ Locations ]] --
@@ -1048,27 +1059,6 @@ Config.SecurityCameras = {
         [34] = {label = "Vangelico Jewelery CAM#4", coords = vector3(-622.57, -236.3, 40.31), r = {x = -35.0, y = 0.0, z = 5.78}, canRotate = true, isOnline = true},
     },
 }
-
--- [[ Duty Logs ]] --
-Config.SASP_WEBHOOK = "https://ptb.discord.com/api/webhooks/1032996031023042560/fHNYrlQU0j6T9QhXOHhx1UdckYGjWIqlKjNJF8x8a6dkpnJZuJe_S5VFXNQv4IPUXPhI"
-Config.SASP_USERNAME = "San Andreas State Police Serivces | Duty Notification"
-Config.SASP_TITLE = "SASP | Duty Notification"
-Config.SASP_IMAGE = "https://cdn.discordapp.com/attachments/962840666545750046/1032999579051896953/unknown.png"
-
-Config.LSPD_WEBHOOK = "https://ptb.discord.com/api/webhooks/1032996031023042560/fHNYrlQU0j6T9QhXOHhx1UdckYGjWIqlKjNJF8x8a6dkpnJZuJe_S5VFXNQv4IPUXPhI"
-Config.LSPD_USERNAME = "San Andreas State Police Serivces | Duty Notification"
-Config.LSPD_TITLE = "LSPD | Duty Notification"
-Config.LSPD_IMAGE = "https://cdn.discordapp.com/attachments/962840666545750046/1033012795744211004/unknown.png"
-
-Config.BCSO_WEBHOOK = "https://ptb.discord.com/api/webhooks/1032996031023042560/fHNYrlQU0j6T9QhXOHhx1UdckYGjWIqlKjNJF8x8a6dkpnJZuJe_S5VFXNQv4IPUXPhI"
-Config.BCSO_USERNAME = "San Andreas State Police Serivces | Duty Notification"
-Config.BCSO_TITLE = "BCSO | Duty Notification"
-Config.BCSO_IMAGE = "https://cdn.discordapp.com/attachments/962840666545750046/1033013036149116928/unknown.png"
-
-Config.DOC_WEBHOOK = "https://ptb.discord.com/api/webhooks/1032996031023042560/fHNYrlQU0j6T9QhXOHhx1UdckYGjWIqlKjNJF8x8a6dkpnJZuJe_S5VFXNQv4IPUXPhI"
-Config.DOC_USERNAME = "San Andreas State Police Serivces | Duty Notification"
-Config.DOC_TITLE = "DOC | Duty Notification"
-Config.DOC_IMAGE = "https://cdn.discordapp.com/attachments/962840666545750046/1033012796121677844/unknown.png"
 
 -- [[ Discord Configuration ]] --
 Config.DISCORD_WEBHOOK = ""

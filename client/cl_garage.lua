@@ -21,10 +21,10 @@ RegisterNetEvent('LENT-GovernmentJob:Client:SelectVehicle', function()
         end
     end 
 
-    if Job == "upd" then
-    elseif Job == "sasp" then
-    elseif Job == "police" then
-    elseif Job == "bcso" then
+    if Job == Config.Job["DOJ"] then
+    elseif Job == Config.Job["StatePolice"] then
+    elseif Job == Config.Job["Police"] then
+    elseif Job == Config.Job["Sheriff"] then
         local CurrentGarage = CurrentGarage
         local pos = GetEntityCoords(PlayerPedId())
         local takeLoc = CoordsList.Coords['bcso'][CurrentGarage]
@@ -49,8 +49,8 @@ RegisterNetEvent('LENT-GovernmentJob:Client:SelectVehicle', function()
                 }
             end
         end
-    elseif Job == "doc" then
-    elseif Job == "ambulance" then
+    elseif Job == Config.Job["Corrections"] then
+    elseif Job == Config.Job["FireDepartment"] then
     end
 
     vehicleMenu[#vehicleMenu + 1] = {

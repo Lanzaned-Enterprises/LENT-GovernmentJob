@@ -69,7 +69,6 @@ RegisterNetEvent('LENT-GovernmentJob:Client:SupervisorRequest', function(data)
     local dist = #(myPos - loc)
     if dist < 20.0 then
         TriggerServerEvent('InteractSound_SV:PlayWithinDistanceOnCoords', 10.0, "deskbell", 0.5, loc)
-        print("Debug: Player has been in range to activate sound")
     end
 end)
 

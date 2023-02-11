@@ -9,6 +9,12 @@
 - ps-dispatch
 - ps-mdt
 
+## Disclaimer
+- This script does **NOT** Come pre-configured and is not just plug and play. The members of your development team or yourself should be the ones setting up the coordinates, peds & zones! If you don't do this 90% of this rewrite will be inaccessible to you!
+- I will set this script up for you but it will require me to have access to your `shared/shared.lua` and all `functions/*.lua` files!
+    - I will need the ability to grab coordinates!
+- There is bound to be bugs, unfinished code but as far as was tested the script **SHOULD** function as the normal police job!
+
 ## How to Install
 - Add the Panic Button & MDT Item to your `qb-core/shared/items.lua`
 ```lua
@@ -307,6 +313,41 @@
 
 ### Optional
 You can remove the Panic Button actions from the radial menu. Every config is different so I can't give an exact. You should go into the config and press `CONTROL+F` and search for `Button` then see what is linked in your police, ems jobs.
+
+## Target Settings
+**When you create zones yourself these are some important events that some zones should be able to trigger upon use!**
+```
+# Duty Settings
+LENT-GovernmentJob:ToggleDuty
+
+# Evidence Lockers
+Evidence Lockers: LENT-GovernmentJob:Client:CheckZone
+
+# Armory Settings
+qb-sasp:client:openArmoury
+qb-police:client:openArmoury
+qb-bcso:client:openArmoury
+LENT-GovernmenJob:Client:EMSArmory
+
+# Fingerprint
+qb-police:client:scanFingerPrint
+
+# Stashes
+qb-police:client:openStash
+
+# Trash
+qb-police:client:openTrash
+```
+**If you're using peds that are custom placed there are additional events that you can trigger!**
+*Peds can also trigger all items above!*
+```
+# Select Vehicle
+LENT-GovernmentJob:Client:SelectVehicle
+
+# Questions Menu
+LENT-GovernmentJob:Client:QuestionsMenu
+Can be modified in "client/cl_desks.lua"
+```
 
 ## Issues
 |  Question |  Answer |
