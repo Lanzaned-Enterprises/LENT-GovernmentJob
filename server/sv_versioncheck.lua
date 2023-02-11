@@ -1,5 +1,5 @@
 --[[ Version Checker ]] --
-local version = "1.0.1"
+local version = 200
 
 AddEventHandler("onResourceStart", function(resource)
     if resource == GetCurrentResourceName() then
@@ -28,16 +28,16 @@ end
 
 function checkResourceVersion()
     PerformHttpRequest("https://raw.githubusercontent.com/Lanzaned-Enterprises/LENT-Police/main/version.txt", function(err, text, headers)
-        if string.match(text, version) then
+        if (version > text) then -- Using Dev Branch
             print(" ")
             print("---------- LANZANED POLICE ENHANCED ----------")
-            print("Police is up to date and ready to go!")
-            print("Running on Version: " .. version)
+            print("Police is using a development branch! Please update to stable ASAP!")
+            print("Your Version: " .. version .. " Current Stable Version: " .. text)
             print("https://github.com/Lanzaned-Enterprises/LENT-Police")
             print("-----------------------------------------------")
             print(" ")
-            checkUpdateEmbed(20480, "Police Update Checker", "Police is up to date and ready to go!\nRunning on Version: " .. version .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-Police", "Script created by: https://discord.lanzaned.com")
-        else
+            checkUpdateEmbed(5242880, "Police Update Checker", "Police is using a development branch! Please update to stable ASAP!\nYour Version: " .. version .. " Current Stable Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-Police", "Script created by: https://discord.lanzaned.com")
+        elseif (text > version) then -- Not updated
             print(" ")
             print("---------- LANZANED POLICE ENHANCED ----------")
             print("Police is not up to date! Please update!")
@@ -46,6 +46,15 @@ function checkResourceVersion()
             print("-----------------------------------------------")
             print(" ")
             checkUpdateEmbed(5242880, "Police Update Checker", "Police is not up to date! Please update!\nCurent Version: " .. version .. " Latest Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-Police", "Script created by: https://discord.lanzaned.com")
-        end
+        else -- resource is fine
+            print(" ")
+            print("---------- LANZANED POLICE ENHANCED ----------")
+            print("Police is up to date and ready to go!")
+            print("Running on Version: " .. version)
+            print("https://github.com/Lanzaned-Enterprises/LENT-Police")
+            print("-----------------------------------------------")
+            print(" ")
+            checkUpdateEmbed(20480, "Police Update Checker", "Police is up to date and ready to go!\nRunning on Version: " .. version .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-Police", "Script created by: https://discord.lanzaned.com")
+        end 
     end, "GET", "", {})
 end
