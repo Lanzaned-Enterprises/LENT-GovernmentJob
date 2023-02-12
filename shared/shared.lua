@@ -18,6 +18,7 @@ Config.Objects = {
     ["tent"] = {model = `prop_gazebo_03`, freeze = true},
     ["light"] = {model = `prop_worklight_03b`, freeze = true},
 }
+
 Config.MaxSpikes = 5
 
 -- [[ Standalone Settings ]] -- 
@@ -27,12 +28,12 @@ Config.Plate = "UPD " .. math.random(1111, 9999)
 
 -- [[ Job Permissions ]] --
 Config.Job = {
-    ['DOJ'] = "upd"
-    ['StatePolice'] = "sasp"
-    ['Police'] = "police"
-    ['Sheriff'] = "bcso"
-    ['Corrections'] = "doc"
-    ['FireDepartment'] = "ambulance"
+    ['DOJ'] = "upd",
+    ['StatePolice'] = "sasp",
+    ['Police'] = "police",
+    ['Sheriff'] = "bcso",
+    ['Corrections'] = "doc",
+    ['FireDepartment'] = "ambulance",
     -- If you add more you need to add more to `client/cl_garage.lua`
 }
 Config.AllowedPIT = { "upd", "sasp", "police", "bcso" }

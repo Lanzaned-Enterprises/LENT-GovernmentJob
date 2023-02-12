@@ -47,7 +47,6 @@ client_scripts {
     'functions/*.lua'
 }
 
-
 files {
 	'html/index.html',
 	'html/vue.min.js',
