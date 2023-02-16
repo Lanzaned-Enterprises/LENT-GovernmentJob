@@ -14,6 +14,7 @@
 - I will set this script up for you but it will require me to have access to your `shared/shared.lua` and all `functions/*.lua` files!
     - I will need the ability to grab coordinates!
 - There is bound to be bugs, unfinished code but as far as was tested the script **SHOULD** function as the normal police job!
+- To Edit the functions read [`functions.md`](./functions.md)
 
 ## How to Install
 <details>
