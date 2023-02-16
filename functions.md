@@ -32,6 +32,8 @@ CoordsList.RandomSpawns = {
         },
     },
 }
+```
+
 ### How does this work?
 *Let's take the BCSO group for example. In `CoordsList.Coords` is 1 entry that will define `CoordsList.RandomSpawns` You can therefor create as many instances as you want with this resource. If you have 8 BCSO instances in `CoordsList.Coords` you will have to add 8 instances to `CoordsList.RandomSpawns` aswell. The amount of vector coordinates doesn't matter!*
 
