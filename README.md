@@ -16,6 +16,9 @@
 - There is bound to be bugs, unfinished code but as far as was tested the script **SHOULD** function as the normal police job!
 
 ## How to Install
+<details>
+<summary>Toggle Me!</summary>
+
 - Add the Panic Button & MDT Item to your `qb-core/shared/items.lua`
 ```lua
 	["mdt"] 						 = {["name"] = "mdt",							["label"] = "MDT",						["weight"] = 1000,		["type"] = "item",		["image"] = "mdt.png",					["unique"] = true,		["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,  ["description"] = "Special Device for Police Information."},
@@ -304,6 +307,7 @@
         }
     },
 ```
+</details>
 
 ## Optional Settings / Dependencies
 - This script will work fine with renewed-phone / renewed-banking

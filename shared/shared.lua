@@ -50,17 +50,25 @@ Config.ParkingLocations = {
     [3] = { ["Coords"] = vector3(1874.55, 3705.64, 33.55) }, -- Sandy Shores
     [4] = { ["Coords"] = vector3(1871.44, 3703.76, 33.54) }, -- Sandy Shores
     [5] = { ["Coords"] = vector3(1877.75, 3707.19, 33.55) }, -- Sandy Shores
+    -- LSPD
+    [100] = { ["Coords"] = vector3(426.11, -976.57, 25.73) }, -- MRPD
+    [101] = { ["Coords"] = vector3(426.24, -979.28, 25.73) }, -- MRPD
+    [102] = { ["Coords"] = vector3(426.32, -982.14, 25.73) }, -- MRPD
+    [103] = { ["Coords"] = vector3(426.41, -984.99, 25.73) }, -- MRPD
+    [104] = { ["Coords"] = vector3(426.41, -987.78, 25.73) }, -- MRPD
+    [105] = { ["Coords"] = vector3(425.98, -990.73, 25.73) }, -- MRPD
 }
 
 -- [[ Locations ]] --
 Config.Locations = {
     ["impound"] = {
-        [1] = vector4(436.25, -975.88, 25.7, 89.05), ---Mission Row
-        -- [70] = vector4(1872.26, 3687.6, 33.66, 1.26), -- Sandy Shores
+        [1] = vector3(436.68, -1007.42, 27.32),
+        [2] = vector3(-436.14, 5982.63, 31.34),
     },
     ["evidence"] = {
-        [1] = vector3(472.52, -991.22, 26.27), ---Mission Row
+        [1] = vector3(473.4, -1006.11, 34.22), ---Mission Row
         [70] = vector3(1857.18, 3690.29, 29.82), -- Sandy Shores
+        [80] = vector3(1651.31, 4880.92, 45.52), -- Grapeseed
         [90] = vector3(1547.74, 827.49, 82.13), -- San Andreas Highway Patrol
     },
 }
@@ -279,6 +287,78 @@ Config.SASPArmory = {
             slot = 20,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
+        [21] = {
+            name = "nikon",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 21,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [22] = {
+            name = "gsrtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 22,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [23] = {
+            name = "dnatestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 23,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [24] = {
+            name = "drugtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 24,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [25] = {
+            name = "breathalyzer",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 25,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [26] = {
+            name = "accesstool",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 26,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [27] = {
+            name = "fingerprintreader",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 27,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [28] = {
+            name = "sdcard",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 28,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
     }
 }
 
@@ -494,6 +574,78 @@ Config.LSPDArmory = {
             type = "item",
             slot = 20,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [21] = {
+            name = "nikon",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 21,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [22] = {
+            name = "gsrtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 22,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [23] = {
+            name = "dnatestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 23,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [24] = {
+            name = "drugtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 24,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [25] = {
+            name = "breathalyzer",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 25,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [26] = {
+            name = "accesstool",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 26,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [27] = {
+            name = "fingerprintreader",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 27,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [28] = {
+            name = "sdcard",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 28,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
     }
 }
@@ -711,6 +863,78 @@ Config.BCSOArmory = {
             slot = 20,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
+        [21] = {
+            name = "nikon",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 21,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [22] = {
+            name = "gsrtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 22,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [23] = {
+            name = "dnatestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 23,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [24] = {
+            name = "drugtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 24,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [25] = {
+            name = "breathalyzer",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 25,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [26] = {
+            name = "accesstool",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 26,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [27] = {
+            name = "fingerprintreader",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 27,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [28] = {
+            name = "sdcard",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 28,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
     }
 }
 
@@ -927,6 +1151,78 @@ Config.DOCArmory = {
             slot = 20,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
+        [21] = {
+            name = "nikon",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 21,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [22] = {
+            name = "gsrtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 22,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [23] = {
+            name = "dnatestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 23,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [24] = {
+            name = "drugtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 24,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [25] = {
+            name = "breathalyzer",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 25,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [26] = {
+            name = "accesstool",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 26,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [27] = {
+            name = "fingerprintreader",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 27,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [28] = {
+            name = "sdcard",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 28,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
     }
 }
 
@@ -1005,6 +1301,69 @@ Config.SAFDArmory = {
             type = "item",
             slot = 8,
             authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+        },
+        [9] = {
+            name = "nikon",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 9,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [10] = {
+            name = "gsrtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 10,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [11] = {
+            name = "dnatestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 11,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [12] = {
+            name = "drugtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 12,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [13] = {
+            name = "breathalyzer",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 13,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [14] = {
+            name = "accesstool",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 14,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [15] = {
+            name = "sdcard",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 15,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
     }
 }

@@ -235,7 +235,7 @@ QBCore.Commands.Add("plateinfo", Lang:t("commands.plateinfo"), {{name = "plate",
     end
 end)
 
-QBCore.Commands.Add("depot", Lang:t("commands.depot"), {{name = "price", help = Lang:t('info.impound_price')}}, false, function(source, args)
+QBCore.Commands.Add("impound", Lang:t("commands.impound"), {{name = "price", help = Lang:t('info.impound_price')}}, false, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player.PlayerData.job.name == "upd" or Player.PlayerData.job.name == "sasp" or Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "bcso" or Player.PlayerData.job.name == "doc" or Player.PlayerData.job.name == "military" and Player.PlayerData.job.onduty then
@@ -244,16 +244,6 @@ QBCore.Commands.Add("depot", Lang:t("commands.depot"), {{name = "price", help = 
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
     end
 end)
-
--- QBCore.Commands.Add("impound", Lang:t("commands.impound"), {}, false, function(source)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if Player.PlayerData.job.name == "upd" or Player.PlayerData.job.name == "sasp" or Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "bcso" or Player.PlayerData.job.name == "doc" or Player.PlayerData.job.name == "military" and Player.PlayerData.job.onduty then
---         TriggerClientEvent("police:client:ImpoundVehicle", src, true)
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
---     end
--- end)
 
 QBCore.Commands.Add("paytow", Lang:t("commands.paytow"), {{name = "id", help = Lang:t('info.player_id')}}, true, function(source, args)
     local src = source

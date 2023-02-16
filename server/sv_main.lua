@@ -540,17 +540,10 @@ RegisterNetEvent('police:server:Impound', function(plate, fullImpound, price, bo
     local src = source
     price = price and price or 0
     if IsVehicleOwned(plate) then
-        if not fullImpound then
-            MySQL.query(
-                'UPDATE player_vehicles SET state = ?, depotprice = ?, body = ?, engine = ?, fuel = ? WHERE plate = ?',
-                {0, price, body, engine, fuel, plate})
-            TriggerClientEvent('QBCore:Notify', src, Lang:t("info.vehicle_taken_depot", {price = price}))
-        else
-            MySQL.query(
-                'UPDATE player_vehicles SET state = ?, body = ?, engine = ?, fuel = ? WHERE plate = ?',
-                {2, body, engine, fuel, plate})
-            TriggerClientEvent('QBCore:Notify', src, Lang:t("info.vehicle_seized"))
-        end
+        MySQL.query(
+            'UPDATE player_vehicles SET state = ?, depotprice = ?, body = ?, engine = ?, fuel = ? WHERE plate = ?',
+            {2, price, body, engine, fuel, plate})
+        TriggerClientEvent('QBCore:Notify', src, Lang:t("info.vehicle_taken_depot", {price = price}))
     end
 end)
 
