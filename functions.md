@@ -7,29 +7,47 @@
 CoordsList = {}
  
 CoordsList.Coords = {
+    ['doj'] = {
+
+    },
+    ['sasp'] = {
+
+    },
     ['police'] = {
-        [1] = vector3(437.04, -972.42, 25.79),
+
     },
     ['bcso'] = {
-        [1] = vector3(1884.86, 3693.14, 33.54), -- Hedwig Station
+        [1] = vector3(1, 1, 1), -- Hedwig Station
+    },
+    ['doc'] = {
+
+    },
+    ['safd'] = {
+
     },
 }
 
 CoordsList.RandomSpawns = {
+    ['doj'] = {
+
+    },
+    ['sasp'] = {
+
+    },
     ['police'] = {
-        [1] = { -- Should be near the coords [1] at CoordsList.Coords
-            vector4(441.51, -979.58, 25.73, 266.54),
-            vector4(440.33, -982.33, 25.73, 83.66),
-            vector4(441.07, -985.19, 25.73, 265.98),
-            vector4(441.11, -987.99, 25.73, 266.53),
-            vector4(441.2, -990.84, 25.73, 83.41),
-        },
+
     },
     ['bcso'] = {
         [1] = { -- Should be near the coords [1] at CoordsList.Coords
-            vector4(1879.78, 3703.93, 33.54, 212.91),
-            vector4(1882.8, 3698.56, 33.54, 29.39),
+            vector4(1, 1, 1, 1),
+            vector4(2, 2, 2, 2)
         },
+    },
+    ['doc'] = {
+
+    },
+    ['safd'] = {
+
     },
 }
 ```
