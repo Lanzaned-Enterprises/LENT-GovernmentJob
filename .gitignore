@@ -1,5 +1,0 @@
-
-functions/*.lua
-functions/cl_coords.lua
-functions/cl_peds.lua
-functions/cl_zones.lua
