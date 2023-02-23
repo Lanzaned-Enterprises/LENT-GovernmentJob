@@ -1,5 +1,5 @@
 --[[ Version Checker ]] --
-local version = 211
+local version = "212"
 
 AddEventHandler("onResourceStart", function(resource)
     if resource == GetCurrentResourceName() then
@@ -27,7 +27,7 @@ function checkUpdateEmbed(color, name, message, footer)
 end
 
 function checkResourceVersion()
-    PerformHttpRequest("https://github.com/Lanzaned-Enterprises/LENT-GovernmentJob/blob/main/version.txt", function(err, text, headers)
+    PerformHttpRequest("https://raw.githubusercontent.com/Lanzaned-Enterprises/LENT-GovernmentJob/main/version.txt", function(err, text, headers)
         if (version > text) then -- Using Dev Branch
             print(" ")
             print("---------- LANZANED POLICE ENHANCED ----------")
