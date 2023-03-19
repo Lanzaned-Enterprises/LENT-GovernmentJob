@@ -6,8 +6,11 @@ isEscorted = false
 PlayerJob = {}
 local DutyBlips = {}
 
-createPoliceBlips = false
-OfficerRequest = false
+AddEventHandler('onResourceStart', function(resource)
+    if resource == GetCurrentResourceName() then
+        PlayerJob = QBCore.Functions.GetPlayerData().job
+    end
+end)
 
 -- Functions
 local function CreateDutyBlips(playerId, playerLabel, playerJob, blipNum, blipSize, blipColorNum, playerLocation)
@@ -163,15 +166,6 @@ RegisterNetEvent("LENT:POLICE:MDT", function()
     TriggerServerEvent('mdt:server:openMDT')    
 end)
 
--- [[ Checking ]] --
-local CheckOnDutyState = false
-
-RegisterNetEvent("LENT:SP:CHECK:STATUS", function()
-    if CheckOnDutyState then
-        TriggerServerEvent("LENT:TIMER:SET:SASP")
-        CheckOnDutyState = false
-    elseif not CheckOnDutyState then
-        TriggerServerEvent("LENT:TIMER:SET:SASP")
-        CheckOnDutyState = true
-    end
+RegisterNetEvent('LENT-GovernmentJob:Client:Notify', function(titleText, type)
+    lib.notify({ title = titleText, type = type })
 end)

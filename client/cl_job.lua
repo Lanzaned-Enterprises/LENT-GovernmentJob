@@ -348,28 +348,28 @@ end)
 
 local function SetWeaponSeriesSASP()
     for k, _ in pairs(Config.SASPArmory.items) do
-        if k < 6 then
+        if k < 1000 then
             Config.SASPArmory.items[k].info.serie = tostring(QBCore.Shared.RandomInt(2) .. QBCore.Shared.RandomStr(3) .. QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(4))
         end
     end
 end
 local function SetWeaponSeriesLSPD()
     for k, _ in pairs(Config.LSPDArmory.items) do
-        if k < 6 then
+        if k < 1000 then
             Config.LSPDArmory.items[k].info.serie = tostring(QBCore.Shared.RandomInt(2) .. QBCore.Shared.RandomStr(3) .. QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(4))
         end
     end
 end
 local function SetWeaponSeriesBCSO()
     for k, _ in pairs(Config.BCSOArmory.items) do
-        if k < 6 then
+        if k < 1000 then
             Config.BCSOArmory.items[k].info.serie = tostring(QBCore.Shared.RandomInt(2) .. QBCore.Shared.RandomStr(3) .. QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(4))
         end
     end
 end
 local function SetWeaponSeriesDOC()
     for k, _ in pairs(Config.DOCArmory.items) do
-        if k < 6 then
+        if k < 1000 then
             Config.DOCArmory.items[k].info.serie = tostring(QBCore.Shared.RandomInt(2) .. QBCore.Shared.RandomStr(3) .. QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(4))
         end
     end

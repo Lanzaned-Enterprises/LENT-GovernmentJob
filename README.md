@@ -24,6 +24,7 @@
 ```lua
 	["mdt"] 						 = {["name"] = "mdt",							["label"] = "MDT",						["weight"] = 1000,		["type"] = "item",		["image"] = "mdt.png",					["unique"] = true,		["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,  ["description"] = "Special Device for Police Information."},
 	["panicbutton"] 				 = {["name"] = "panicbutton",					["label"] = "Panic Button"				["weight"] = 0,			["type"] = "item",		["image"] = "panic.png",				["unique"] = true,		["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,  ["description"] = "Special button to send distress signal."},
+    ["badge"] 				 		 = {["name"] = "badge", 			  		["label"] = "Badge", 			["weight"] = 1000, 		["type"] = "item", 		["image"] = "govbadge.png", 	["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Government badge"},
 ```
 - Add images form the `images` folder to your `inventory/html/images`
 - Make sure the jobs are labled as following.
@@ -377,6 +378,6 @@ Github: https://github.lanzaned.com<br>
 Documentation: https://docs.lanzaned.com/
 
 ## Sponsors
-San Andreas Life: https://sal.lanzaned.com/
+<img src="https://discordapp.com/api/guilds/973137642885644338/widget.png?style=banner2" alt="Discord Banner 2"/>
 
 

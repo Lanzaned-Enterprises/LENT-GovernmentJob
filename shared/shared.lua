@@ -151,7 +151,7 @@ Config.SASPArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [9] = {
-            name = "sasp_badge",
+            name = "badge",
             amount = 1,
             price = 0,
             info = {},
@@ -439,7 +439,7 @@ Config.LSPDArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [9] = {
-            name = "police_badge",
+            name = "badge",
             amount = 1,
             price = 0,
             info = {},
@@ -727,7 +727,7 @@ Config.BCSOArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [9] = {
-            name = "sheriff_badge",
+            name = "badge",
             amount = 1,
             price = 0,
             info = {},
@@ -1015,7 +1015,7 @@ Config.DOCArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [9] = {
-            name = "doc_badge",
+            name = "badge",
             amount = 1,
             price = 0,
             info = {},
@@ -1303,7 +1303,7 @@ Config.SAFDArmory = {
             authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
         },
         [9] = {
-            name = "nikon",
+            name = "badge",
             amount = 1,
             price = 0,
             info = {},
@@ -1312,7 +1312,7 @@ Config.SAFDArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [10] = {
-            name = "gsrtestkit",
+            name = "nikon",
             amount = 1,
             price = 0,
             info = {},
@@ -1321,7 +1321,7 @@ Config.SAFDArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [11] = {
-            name = "dnatestkit",
+            name = "gsrtestkit",
             amount = 1,
             price = 0,
             info = {},
@@ -1330,7 +1330,7 @@ Config.SAFDArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [12] = {
-            name = "drugtestkit",
+            name = "dnatestkit",
             amount = 1,
             price = 0,
             info = {},
@@ -1339,7 +1339,7 @@ Config.SAFDArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [13] = {
-            name = "breathalyzer",
+            name = "drugtestkit",
             amount = 1,
             price = 0,
             info = {},
@@ -1348,7 +1348,7 @@ Config.SAFDArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [14] = {
-            name = "accesstool",
+            name = "breathalyzer",
             amount = 1,
             price = 0,
             info = {},
@@ -1357,12 +1357,21 @@ Config.SAFDArmory = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [15] = {
-            name = "sdcard",
+            name = "accesstool",
             amount = 1,
             price = 0,
             info = {},
             type = "item",
             slot = 15,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [16] = {
+            name = "sdcard",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 16,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
     }

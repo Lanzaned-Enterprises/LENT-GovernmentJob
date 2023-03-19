@@ -225,6 +225,10 @@ RegisterNetEvent("LENT-GovernmentJob:Client:SpawnSelectedVehicle", function(data
     exports['cdn-fuel']:SetFuel(vehicle, 100.0)
 
     SetModelAsNoLongerNeeded(vehicleCode) -- removes model from game memory as we no longer need it    
+
+    Wait(500)
+
+    TriggerEvent("LENT-GovernmentJob:Client:SetPatrolPlate")
 end)
 
 RegisterNetEvent('LENT-GovernmentJob:Client:StoreVehicle', function()
@@ -238,5 +242,45 @@ RegisterNetEvent('LENT-GovernmentJob:Client:StoreVehicle', function()
                 QBCore.Functions.DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
             end
         end
+    end
+end)
+
+RegisterNetEvent('LENT-GovernmentJob:Client:SetPatrolPlate', function()
+    local nearByVehicle = lib.getNearbyVehicles(GetEntityCoords(PlayerPedId()), 0.3, true)
+    
+    if nearByVehicle[1] then 
+        local vehicle = nearByVehicle[1].vehicle
+        local oldPlate = GetVehicleNumberPlateText(vehicle):gsub('[%p%c%s]', '')
+        local plateChangerInput = lib.inputDialog("UPD Plate Changer", {
+            {
+                type = 'input', 
+                label = "Plate", 
+                description = "min 3, max 8 characters", 
+                icon = {
+                    'fa', 
+                    'clapperboard'
+                }
+            }
+        })
+        if not plateChangerInput then return end
+        
+        local newPlate = string.upper(plateChangerInput[1]:gsub('[%p%c%s]', ''))
+        
+        if #newPlate >= 3 and #newPlate <= 8 then 
+            TriggerServerEvent('LENT-GovernmentJob:Server:UpdatePlate', NetworkGetNetworkIdFromEntity(vehicle), oldPlate, newPlate)
+        else
+            lib.notify({title = "Max 8 Min 3 characters", type = 'error'})
+        end
+    else
+        lib.notify({title = "Sit in the driver\'s seat of the car", type = 'error'})
+    end
+end)
+
+RegisterNetEvent("LENT-GovernmentJob:Client:SetKeys", function()
+    local nearByVehicle = lib.getNearbyVehicles(GetEntityCoords(PlayerPedId()), 0.3, true)
+
+    if nearByVehicle[1] then
+        local vehicle = nearByVehicle[1].vehicle
+        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(vehicle))
     end
 end)

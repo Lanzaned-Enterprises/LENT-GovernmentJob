@@ -55,7 +55,46 @@ RegisterNetEvent('LENT-GovernmentJob:Client:DeskHarold', function()
         {
             header = "Buy Cruiser",
             params = {
-                event = "serrulata-policevehicleshop:client:enter",
+                event = "LENT-UPDGarage:Client:EnterGarage",
+                args = {
+                    location = "bcso",
+                },
+            },
+        },
+    })
+end)
+
+RegisterNetEvent('LENT-GovernmentJob:Client:LSPD-Menu', function()
+    exports["LENT-Menu"]:openMenu({
+        {
+            header = 'Sergeant - Harold',
+            isMenuHeader = true,
+        },
+        {
+            header = "Spawn Cruiser",
+            params = {
+                event = "LENT-GovernmentJob:Client:SelectVehicle",
+            },
+        },
+        {
+            header = "Buy Cruiser",
+            params = {
+                event = "LENT-UPDGarage:Client:EnterGarage",
+            },
+        },
+    })
+end)
+
+RegisterNetEvent('LENT-GovernmnetJob:Client:ShopOptions', function()
+    exports["LENT-Menu"]:openMenu({
+        {
+            header = 'UPD Shop Control',
+            isMenuHeader = true,
+        },
+        {
+            header = "Exit Store",
+            params = {
+                event = "LENT-UPDGarage:Client:LeaveGarage",
             },
         },
     })

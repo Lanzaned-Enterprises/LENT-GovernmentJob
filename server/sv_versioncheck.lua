@@ -37,7 +37,7 @@ function checkResourceVersion()
             print("-----------------------------------------------")
             print(" ")
             checkUpdateEmbed(5242880, "Police Update Checker", "Police is using a development branch! Please update to stable ASAP!\nYour Version: " .. version .. " Current Stable Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-GovernmentJob", "Script created by: https://discord.lanzaned.com")
-        elseif (text > version) then -- Not updated
+        elseif (text < version) then -- Not updated
             print(" ")
             print("---------- LANZANED POLICE ENHANCED ----------")
             print("Police is not up to date! Please update!")
