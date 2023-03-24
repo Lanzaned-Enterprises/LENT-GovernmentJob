@@ -4,563 +4,281 @@ Vehicles = {}
 Vehicles.AuthorizedVehiclesSASP = {
     -- Grade 0 | Cadet
     [0] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
     -- Grade 1 | Trooper
     [1] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
     -- Grade 2 | Sergeant
     [2] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
     -- Grade 3 | Lieutenant
     [3] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
     -- Grade 4 | Captain
     [4] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
     -- Grade 5 | Assistant Chief
     [5] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
     -- Grade 6 | Chief
     [6] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
     -- Grade 7 | Assistant Commissioner
     [7] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
     -- Grade 8 | Deputy Commissioner
     [8] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
     -- Grade 9 | Commissioner
     [9] = {
-
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
+        ['fastback'] = "Generic Muscle Car | Unmarked"
     },
 }
 
 Vehicles.AuthorizedVehiclesLSPD = {
-    -- Grade 0 | Trainee / Ride-along
+    -- Grade 0 | Officer Ⅰ
     [0] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 1 | Officer I
+    -- Grade 1 | Officer Ⅱ
     [1] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 2 | Officer II
+    -- Grade 2 | Corporal
     [2] = {     
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 3 | Officer III
+    -- Grade 3 | Sergeant Ⅰ
     [3] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 4 | Corporal
+    -- Grade 4 | Sergeant Ⅱ
     [4] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 5 | Sergeant I
+    -- Grade 5 | Staff Sergeant Ⅰ
     [5] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdcamaro"] = "Camaro | Pursuit",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 6 | Sergeant II
+    -- Grade 6 | Staff Sergeant Ⅱ
     [6] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdcamaro"] = "Camaro | Pursuit",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 7 | Staff Sergeant I
+    -- Grade 7 | Lieutenant
     [7] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdcamaro"] = "Camaro | Pursuit",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 8 | Staff Sergeant II
+    -- Grade 8 | Captain
     [8] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdcamaro"] = "Camaro | Pursuit",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 9 | Lieutenant I
+    -- Grade 9 | Commander
     [9] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdcamaro"] = "Camaro | Pursuit",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 10 | Lieutenant II
+    -- Grade 10 | Deputy Chief of Police
     [10] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdcamaro"] = "Camaro | Pursuit",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 11 | Captain I
+    -- Grade 11 | Assistant Chief of Police
     [11] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdram"] = "Ram | CVE",
-        ["pdcamaro"] = "Camaro | Pursuit",
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
-    -- Grade 12 | Captain II
+    -- Grade 12 | Chief of Police
     [12] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdram"] = "Ram | CVE",
-        ["pdcamaro"] = "Camaro | Pursuit",
-    },
-    -- Grade 13 | Captain III
-    [13] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdram"] = "Ram | CVE",
-        ["pdcamaro"] = "Camaro | Pursuit",
-    },
-    -- Grade 14 | Commander
-    [14] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdram"] = "Ram | CVE",
-        ["pdcamaro"] = "Camaro | Pursuit",
-    },
-    -- Grade 15 | Deputy Chief of Police
-    [15] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdram"] = "Ram | CVE",
-        ["pdcamaro"] = "Camaro | Pursuit",
-    },
-    -- Grade 16 | Assistant Chief of Police
-    [16] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdram"] = "Ram | CVE",
-        ["pdcamaro"] = "Camaro | Pursuit",
-    },
-    -- Grade 17 | Chief of Police 
-    [17] = {
-        ["pdcvpi"] = "Crown Victoria | Patrol",
-        ["pdtaurus"] = "Taurus | Patrol",
-        ["pd14charger"] = "'14 Charger | Patrol",
-        ["pd18charger"] = "'18 Charger | Pursuit",
-        ["pdtahoe"] = "'21 Tahoe | Patrol",
-        ["pdfpiu"] = "FPIU | Patrol",
-        ["pdexplorer"] = "Explorer | Patrol",
-        ["pd3expedition"] = "Expedition | Patrol",
-        ["pdram"] = "Ram | CVE",
-        ["pdcamaro"] = "Camaro | Pursuit",
-        ["hellkitty"] = "'15 Charger Hellcat | Unmarked"
+        ['police'] = "Police Car",
+        ['police2'] = "Police Car",
+        ['police3'] = "Police Car",
+        ['police4'] = "Unmarked Cruiser",
+        ['policeb'] = "Police Bike", 
     },
 }
 
 Vehicles.AuthorizedVehiclesBCSO = {
     [0] = {
-        ['so11vic'] = "2011 Crown Victoria",
-        ['so12caprice'] = "2012 Caprice",
-        ['so18taurus'] = "2018 Ford Taurus",
-        ['so14charger'] = "2014 Dodge Charger",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [1] = {
-        ['so11vic'] = "2011 Crown Victoria",
-        ['so12caprice'] = "2012 Caprice",
-        ['so18taurus'] = "2018 Ford Taurus",
-        ['so14charger'] = "2014 Dodge Charger",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [2] = {
-        ['so11vic'] = "2011 Crown Victoria",
-        ['so12caprice'] = "2012 Caprice",
-        ['so18taurus'] = "2018 Ford Taurus",
-        ['so14charger'] = "2014 Dodge Charger",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [3] = {
-        ['so11vic'] = "2011 Crown Victoria",
-        ['so12caprice'] = "2012 Caprice",
-        ['so18taurus'] = "2018 Ford Taurus",
-        ['so14charger'] = "2014 Dodge Charger",
-        ['so14tahoe'] = "2014 Tahoe",
-        ['so16explorer'] = "2016 Explorer",
-        ['so19tahoe'] = "2019 Tahoe",
-        ['so19camaro'] = "2019 Camaro",
-        ['so18charger'] = "2018 Dodge Charger",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [4] = {
-        ['so11vic'] = "2011 Crown Victoria",
-        ['so12caprice'] = "2012 Caprice",
-        ['so18taurus'] = "2018 Ford Taurus",
-        ['so14charger'] = "2014 Dodge Charger",
-        ['so14tahoe'] = "2014 Tahoe",
-        ['so16explorer'] = "2016 Explorer",
-        ['so19tahoe'] = "2019 Tahoe",
-        ['so19camaro'] = "2019 Camaro",
-        ['so18charger'] = "2018 Dodge Charger",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [5] = {
-        ['so11vic'] = "2011 Crown Victoria",
-        ['so12caprice'] = "2012 Caprice",
-        ['so18taurus'] = "2018 Ford Taurus",
-        ['so14charger'] = "2014 Dodge Charger",
-        ['so14tahoe'] = "2014 Tahoe",
-        ['so16explorer'] = "2016 Explorer",
-        ['so19tahoe'] = "2019 Tahoe",
-        ['so14ram'] = "2014 Ram",
-        ['so15f150'] = "2015 F-150",
-        ['so19silverado'] = "2019 Silverado",
-        ['so19camaro'] = "2019 Camaro",
-        ['so18charger'] = "2018 Dodge Charger",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [6] = {
-        ['so11vic'] = "2011 Crown Victoria",
-        ['so12caprice'] = "2012 Caprice",
-        ['so18taurus'] = "2018 Ford Taurus",
-        ['so14charger'] = "2014 Dodge Charger",
-        ['so14tahoe'] = "2014 Tahoe",
-        ['so16explorer'] = "2016 Explorer",
-        ['so19tahoe'] = "2019 Tahoe",
-        ['so14ram'] = "2014 Ram",
-        ['so15f150'] = "2015 F-150",
-        ['so19silverado'] = "2019 Silverado",
-        ['so19camaro'] = "2019 Camaro",
-        ['so18charger'] = "2018 Dodge Charger",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [7] = {
-        ['so11vic'] = "2011 Crown Victoria",
-        ['so12caprice'] = "2012 Caprice",
-        ['so18taurus'] = "2018 Ford Taurus",
-        ['so14charger'] = "2014 Dodge Charger",
-        ['so14tahoe'] = "2014 Tahoe",
-        ['so16explorer'] = "2016 Explorer",
-        ['so19tahoe'] = "2019 Tahoe",
-        ['so14ram'] = "2014 Ram",
-        ['so15f150'] = "2015 F-150",
-        ['so19silverado'] = "2019 Silverado",
-        ['so19camaro'] = "2019 Camaro",
-        ['so18charger'] = "2018 Dodge Charger",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [8] = {
-        ['so11vic'] = "2011 Crown Victoria",
-        ['so12caprice'] = "2012 Caprice",
-        ['so18taurus'] = "2018 Ford Taurus",
-        ['so14charger'] = "2014 Dodge Charger",
-        ['so14tahoe'] = "2014 Tahoe",
-        ['so16explorer'] = "2016 Explorer",
-        ['so19tahoe'] = "2019 Tahoe",
-        ['so14ram'] = "2014 Ram",
-        ['so15f150'] = "2015 F-150",
-        ['so19silverado'] = "2019 Silverado",
-        ['so19camaro'] = "2019 Camaro",
-        ['so18charger'] = "2018 Dodge Charger",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [9] = {
-        ['sh1'] = "2011 Crown Victoria",
-        ['sh2'] = "2013 Chevrolet Impala",
-        ['sh3'] = "2013 Ford Explorer",
-        ['sh4'] = "Gator",
-        ['sh5'] = "2018 Mustang",
-        ['sh6'] = "2010 Dodge Charger",
-        ['sh7'] = "2016 Chevrolet Camaro",
-        ['sh8'] = "2018 Dodge Demon",
-        ['sh9'] = "2018 Ford Taurus",
-        ['sh10'] = "2018 Dodge Charger",
-        ['sh12'] = "2014 Dodge Charger",
-        ['sh13'] = "2014 Chevrolet Tahoe",
-        ['sh14'] = "2015 F-150",
-        ['sh15'] = "2016 Ford Explorer",
-        ['sh16'] = "2014 Ram",
-        ['sh17'] = "2020 Chevrolet Tahoe",
-        ['sh18'] = "2018 Dodge Durango",
-        ['sh19'] = "2020 Ford Explorer",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [10] = {
-        ['sh1'] = "2011 Crown Victoria",
-        ['sh2'] = "2013 Chevrolet Impala",
-        ['sh3'] = "2013 Ford Explorer",
-        ['sh4'] = "Gator",
-        ['sh5'] = "2018 Mustang",
-        ['sh6'] = "2010 Dodge Charger",
-        ['sh7'] = "2016 Chevrolet Camaro",
-        ['sh8'] = "2018 Dodge Demon",
-        ['sh9'] = "2018 Ford Taurus",
-        ['sh10'] = "2018 Dodge Charger",
-        ['sh12'] = "2014 Dodge Charger",
-        ['sh13'] = "2014 Chevrolet Tahoe",
-        ['sh14'] = "2015 F-150",
-        ['sh15'] = "2016 Ford Explorer",
-        ['sh16'] = "2014 Ram",
-        ['sh17'] = "2020 Chevrolet Tahoe",
-        ['sh18'] = "2018 Dodge Durango",
-        ['sh19'] = "2020 Ford Explorer",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [11] = {
-        ['sh1'] = "2011 Crown Victoria",
-        ['sh2'] = "2013 Chevrolet Impala",
-        ['sh3'] = "2013 Ford Explorer",
-        ['sh4'] = "Gator",
-        ['sh5'] = "2018 Mustang",
-        ['sh6'] = "2010 Dodge Charger",
-        ['sh7'] = "2016 Chevrolet Camaro",
-        ['sh8'] = "2018 Dodge Demon",
-        ['sh9'] = "2018 Ford Taurus",
-        ['sh10'] = "2018 Dodge Charger",
-        ['sh12'] = "2014 Dodge Charger",
-        ['sh13'] = "2014 Chevrolet Tahoe",
-        ['sh14'] = "2015 F-150",
-        ['sh15'] = "2016 Ford Explorer",
-        ['sh16'] = "2014 Ram",
-        ['sh17'] = "2020 Chevrolet Tahoe",
-        ['sh18'] = "2018 Dodge Durango",
-        ['sh19'] = "2020 Ford Explorer",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
     [12] = {
-        ['sh1'] = "2011 Crown Victoria",
-        ['sh2'] = "2013 Chevrolet Impala",
-        ['sh3'] = "2013 Ford Explorer",
-        ['sh4'] = "Gator",
-        ['sh5'] = "2018 Mustang",
-        ['sh6'] = "2010 Dodge Charger",
-        ['sh7'] = "2016 Chevrolet Camaro",
-        ['sh8'] = "2018 Dodge Demon",
-        ['sh9'] = "2018 Ford Taurus",
-        ['sh10'] = "2018 Dodge Charger",
-        ['sh12'] = "2014 Dodge Charger",
-        ['sh13'] = "2014 Chevrolet Tahoe",
-        ['sh14'] = "2015 F-150",
-        ['sh15'] = "2016 Ford Explorer",
-        ['sh16'] = "2014 Ram",
-        ['sh17'] = "2020 Chevrolet Tahoe",
-        ['sh18'] = "2018 Dodge Durango",
-        ['sh19'] = "2020 Ford Explorer",
+        ['sheriff'] = "Sheriff Car",
+        ['Sheriff2'] = "Sheriff SUV",
     },
 }
 
 Vehicles.AuthorizedVehiclesSAFD = {
     [0] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 Super Duty",
-
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
+        ['ambulance'] = "Ambulance",
     },
     [1] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
-
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
+        ['ambulance'] = "Ambulance",
     },
     [2] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
-
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
+        ['ambulance'] = "Ambulance",
     },
     [3] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
-
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
-
-        ['squad2'] = "Los Santos | Squad 2 | F450 Single Cab",
-        ["squadtrailer"] = "Squad 2 Trailer",
+        ['ambulance'] = "Ambulance",
     },
     [4] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
-
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",            
-
-        ['squad2'] = "Los Santos | Squad 2 | F450 Single Cab",
-        ["squadtrailer"] = "Squad 2 Trailer",
+        ['ambulance'] = "Ambulance",
     },
     [5] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
-
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
-        
-        ['squad2'] = "Los Santos | Squad 2 | F450 Single Cab",
-        ["squadtrailer"] = "Squad 2 Trailer",
+        ['ambulance'] = "Ambulance",
     },
     [6] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
- 
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
-
-        ['squad2'] = "Los Santos | Squad 2 | F450 Single Cab",
-        ["squadtrailer"] = "Squad 2 Trailer",
+        ['ambulance'] = "Ambulance",
     },
     [7] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
- 
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
-
-        ['squad2'] = "Los Santos | Squad 2 | F450 Single Cab",
-        ["squadtrailer"] = "Squad 2 Trailer",
+        ['ambulance'] = "Ambulance",
     },
     [8] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
-        ['bat2'] = "Ford F-150",
-
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
-        
-        ['squad2'] = "Los Santos | Squad 2 | F450 Single Cab",
-        ["squadtrailer"] = "Squad 2 Trailer",
+        ['ambulance'] = "Ambulance",
     },
     [9] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
-        ['bat2'] = "Ford F-150",
- 
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
-
-        ['squad2'] = "Los Santos | Squad 2 | F450 Single Cab",
-        ["squadtrailer"] = "Squad 2 Trailer",
+        ['ambulance'] = "Ambulance",
     },
     [10] = {
-        ['fdnyambo'] = "2018 Ford XLT F350 SuperDuty",
-        ['bat2'] = "Ford F-150",
-
-        ['es4'] = "Blaine County | Emergency Squad 4 | F450 Super Duty Single Cab",
-        ['pbems'] = "Paleto Bay | Medic 56 | F450 Super Duty Single Cab",
-        ['medic10'] = "Pillbox | Medic 10 | F450 Super Duty Single Cab",
-        ['medic27'] = "Pillbox | Medic 25 | F450 Super Duty Single Cab",
-        ['medic25'] = "Rockford | Medic 25 | F450 Super Duty Single Cab",
-
-        ['brush2'] = "Blaine County | Brush 2 | F450 Heavy Duty Brush",
-
-        ['squad2'] = "Los Santos | Squad 2 | F450 Single Cab",
-        ["squadtrailer"] = "Squad 2 Trailer",
+        ['ambulance'] = "Ambulance",
     },
 }

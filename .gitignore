@@ -1,0 +1,6 @@
+
+functions/cl_coords.lua
+functions/cl_peds.lua
+functions/cl_zones.lua
+shared/cf_vehicles.lua
+shared/cf_modifications.lua
