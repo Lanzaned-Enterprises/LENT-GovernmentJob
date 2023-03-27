@@ -23,10 +23,14 @@ local vehicle_detected = nil
 local locked_on_vehicle = nil
 
 -- Functions
-local function IsPlayerInPolmav()
-	local lPed = PlayerPedId()
-	local vehicle = GetVehiclePedIsIn(lPed)
-	return IsVehicleModel(vehicle, GetHashKey(Config.PoliceHelicopter))
+local function IsPlayerInAllowedHelicopter()
+	for k, v in pairs(Config.Helicopters) do
+        if GetEntityModel(vehicle) == joaat(v) then
+            return true
+        end
+    end
+
+    return false
 end
 
 local function IsHeliHighEnough(heli)
@@ -138,8 +142,8 @@ CreateThread(function()
 	while true do
 		Wait(0)
 		if LocalPlayer.state.isLoggedIn then
-			if PlayerJob.name == 'upd' or PlayerJob.name == 'sasp' or PlayerJob.name == 'police' or PlayerJob.name == 'bcso' or PlayerJob.name == 'doc' and PlayerJob.onduty then
-				if IsPlayerInPolmav() then
+			if PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] and PlayerJob.onduty then
+				if IsPlayerInAllowedHelicopter() then
 					local lPed = PlayerPedId()
 					local heli = GetVehiclePedIsIn(lPed)
 

@@ -279,7 +279,7 @@ RegisterNetEvent('police:client:CuffPlayer', function()
     if not IsPedRagdoll(PlayerPedId()) then
         local player, distance = QBCore.Functions.GetClosestPlayer()
         if player ~= -1 and distance < 1.5 then
-            local result = QBCore.Functions.HasItem(Config.HandCuffItem)
+            local result = QBCore.Functions.HasItem(Config.GlobalSettings['HandCuffs'])
             if result then
                 local playerId = GetPlayerServerId(player)
                 if not IsPedInAnyVehicle(GetPlayerPed(player)) and not IsPedInAnyVehicle(PlayerPedId()) then

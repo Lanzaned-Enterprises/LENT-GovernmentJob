@@ -11,5 +11,5 @@ RegisterNetEvent('LENT-GovernmentJob:Server:UpdatePlate', function(netID, oldPla
     SetVehicleNumberPlateText(veh, newPlate)
     Wait(1000)
     TriggerClientEvent('LENT-GovernmentJob:Client:SetKeys', src)
-    TriggerClientEvent('LENT-GovernmentJob:Client:Notify', src , "New license plate: " ..newPlate, 'success')
+    TriggerClientEvent('QBCore:Notify', src , "New license plate: " ..newPlate, 'success')
 end)

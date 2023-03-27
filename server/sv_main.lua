@@ -14,7 +14,7 @@ local function UpdateBlips()
     local players = QBCore.Functions.GetQBPlayers()
 
     for _, v in pairs(players) do
-        if v and (v.PlayerData.job.name == "upd" or v.PlayerData.job.name == "sasp" or v.PlayerData.job.name == "police" or v.PlayerData.job.name == "bcso" or v.PlayerData.job.name == "doc" or v.PlayerData.job.name == "ambulance") and v.PlayerData.job.onduty then
+        if v and (v.PlayerData.job.name == Config.Job['DOJ'] or v.PlayerData.job.name == Config.Job['StatePolice'] or v.PlayerData.job.name == Config.Job['Police'] or v.PlayerData.job.name == Config.Job['Sheriff'] or v.PlayerData.job.name == Config.Job['Corrections'] or v.PlayerData.job.name == Config.Job['FireDepartment']) and v.PlayerData.job.onduty then
             local coords = GetEntityCoords(GetPlayerPed(v.PlayerData.source))
             local heading = GetEntityHeading(GetPlayerPed(v.PlayerData.source))
             local ped = GetPlayerPed(v.PlayerData.source)
@@ -23,38 +23,38 @@ local function UpdateBlips()
 
             if pedVehicle ~= 0 and vehicleType == "automobile" then
                 blipNum = 672
-                blipSize = 1.2
+                blipSize = Config.UnitblipSettings['VehicleBlipSize']
             elseif pedVehicle ~= 0 and vehicleType == "bike" then
                 blipNum = 348
-                blipSize = 1.2
+                blipSize = Config.UnitblipSettings['VehicleBlipSize']
             elseif pedVehicle ~= 0 and vehicleType == "boat" then
                 blipNum = 427
-                blipSize = 1.2
+                blipSize = Config.UnitblipSettings['VehicleBlipSize']
             elseif pedVehicle ~= 0 and vehicleType == "heli" then
                 blipNum = 422
-                blipSize = 1.2
+                blipSize = Config.UnitblipSettings['VehicleBlipSize']
             elseif pedVehicle ~= 0 and vehicleType == "plane" then
                 blipNum = 423
-                blipSize = 1.2
+                blipSize = Config.UnitblipSettings['VehicleBlipSize']
             else
                 blipNum = 1
                 blipSize = 0.8
             end
 
-            if v.PlayerData.job.name == "upd" then
-                blipColorNum = 7
-            elseif v.PlayerData.job.name == "sasp" then
-                blipColorNum = 40
-            elseif v.PlayerData.job.name == "police" then
-                blipColorNum = 38
-            elseif v.PlayerData.job.name == "bcso" then
-                blipColorNum = 47
-            elseif v.PlayerData.job.name == "doc" then
-                blipColorNum = 52
-            elseif v.PlayerData.job.name == "ambulance" then
-                blipColorNum = 6
+            if v.PlayerData.job.name == Config.Job['DOJ'] then
+                blipColorNum = Config.UnitblipSettings['DOJColor']
+            elseif v.PlayerData.job.name == Config.Job['StatePolice'] then
+                blipColorNum = Config.UnitblipSettings['SASPColor']
+            elseif v.PlayerData.job.name == Config.Job['Police'] then
+                blipColorNum = Config.UnitblipSettings['LSPDColor']
+            elseif v.PlayerData.job.name == Config.Job['Sheriff'] then
+                blipColorNum = Config.UnitblipSettings['BCSOColor']
+            elseif v.PlayerData.job.name == Config.Job['Corrections'] then
+                blipColorNum = Config.UnitblipSettings['DOCColor']
+            elseif v.PlayerData.job.name == Config.Job['FireDepartment'] then
+                blipColorNum = Config.UnitblipSettings['SAFDColor']
             else 
-                blipColorNum = 8
+                blipColorNum = Config.UnitblipSettings['FallBackBlip']
             end
          
             dutyPlayers[#dutyPlayers+1] = {
@@ -138,7 +138,7 @@ local function GetCurrentCops()
     local amount = 0
     local players = QBCore.Functions.GetQBPlayers()
     for _, v in pairs(players) do
-        if v and v.PlayerData.job.name == "police" and v.PlayerData.job.onduty then
+        if v and v.PlayerData.job.name == Config.Job['Police'] and v.PlayerData.job.onduty then
             amount += 1
         end
     end
@@ -179,7 +179,7 @@ end)
 QBCore.Functions.CreateUseableItem("moneybag", function(source, item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if not Player or not Player.Functions.GetItemByName("moneybag") or not item.info or item.info == "" or Player.PlayerData.job.name == 'upd' or Player.PlayerData.job.name == 'sasp' or Player.PlayerData.job.name == 'police' or Player.PlayerData.job.name == 'bcso' or Player.PlayerData.job.name == 'doc' or not Player.Functions.RemoveItem("moneybag", 1, item.slot) then return end
+    if not Player or not Player.Functions.GetItemByName("moneybag") or not item.info or item.info == "" or Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or not Player.Functions.RemoveItem("moneybag", 1, item.slot) then return end
     Player.Functions.AddMoney("cash", tonumber(item.info.cash), "used-moneybag")
 end)
 
@@ -189,18 +189,18 @@ QBCore.Functions.CreateCallback('police:server:isPlayerDead', function(_, cb, pl
     cb(Player.PlayerData.metadata["isdead"])
 end)
 
--- QBCore.Functions.CreateCallback('police:GetPlayerStatus', function(_, cb, playerId)
---     local Player = QBCore.Functions.GetPlayer(playerId)
---     local statList = {}
---     if Player then
---         if PlayerStatus[Player.PlayerData.source] and next(PlayerStatus[Player.PlayerData.source]) then
---             for k in pairs(PlayerStatus[Player.PlayerData.source]) do
---                 statList[#statList+1] = PlayerStatus[Player.PlayerData.source][k].text
---             end
---         end
---     end
---     cb(statList)
--- end)
+QBCore.Functions.CreateCallback('police:GetPlayerStatus', function(_, cb, playerId)
+    local Player = QBCore.Functions.GetPlayer(playerId)
+    local statList = {}
+    if Player then
+        if PlayerStatus[Player.PlayerData.source] and next(PlayerStatus[Player.PlayerData.source]) then
+            for k in pairs(PlayerStatus[Player.PlayerData.source]) do
+                statList[#statList+1] = PlayerStatus[Player.PlayerData.source][k].text
+            end
+        end
+    end
+    cb(statList)
+end)
 
 QBCore.Functions.CreateCallback('police:IsSilencedWeapon', function(source, cb, weapon)
     local Player = QBCore.Functions.GetPlayer(source)
@@ -225,7 +225,7 @@ QBCore.Functions.CreateCallback('police:GetDutyPlayers', function(_, cb)
     local dutyPlayers = {}
     local players = QBCore.Functions.GetQBPlayers()
     for _, v in pairs(players) do
-        if v and v.PlayerData.job.name == 'upd' or v.PlayerData.job.name == 'sasp' or v.PlayerData.job.name == 'police' or v.PlayerData.job.name == 'bcso' or v.PlayerData.job.name == 'doc' and v.PlayerData.job.onduty then
+        if v and v.PlayerData.job.name == Config.Job['DOJ'] or v.PlayerData.job.name == Config.Job['StatePolice'] or v.PlayerData.job.name == Config.Job['Police'] or v.PlayerData.job.name == Config.Job['Sheriff'] or v.PlayerData.job.name == Config.Job['Corrections'] and v.PlayerData.job.onduty then
             dutyPlayers[#dutyPlayers+1] = {
                 source = v.PlayerData.source,
                 label = v.PlayerData.metadata["callsign"],
@@ -260,7 +260,7 @@ QBCore.Functions.CreateCallback('police:GetCops', function(_, cb)
     local amount = 0
     local players = QBCore.Functions.GetQBPlayers()
     for _, v in pairs(players) do
-        if v and v.PlayerData.job.name == 'upd' or v.PlayerData.job.name == 'sasp' or v.PlayerData.job.name == 'police' or v.PlayerData.job.name == 'bcso' or v.PlayerData.job.name == 'doc' and v.PlayerData.job.onduty then
+        if v and v.PlayerData.job.name == Config.Job['DOJ'] or v.PlayerData.job.name == Config.Job['StatePolice'] or v.PlayerData.job.name == Config.Job['Police'] or v.PlayerData.job.name == Config.Job['Sheriff'] or v.PlayerData.job.name == Config.Job['Corrections'] and v.PlayerData.job.onduty then
             amount = amount + 1
         end
     end
@@ -271,7 +271,7 @@ QBCore.Functions.CreateCallback('police:server:IsPoliceForcePresent', function(_
     local retval = false
     local players = QBCore.Functions.GetQBPlayers()
     for _, v in pairs(players) do
-        if v and v.PlayerData.job.name == 'upd' or v.PlayerData.job.name == 'sasp' or v.PlayerData.job.name == 'police' or v.PlayerData.job.name == 'bcso' or v.PlayerData.job.name == 'doc' and v.PlayerData.job.grade.level >= 2 then
+        if v and v.PlayerData.job.name == Config.Job['DOJ'] or v.PlayerData.job.name == Config.Job['StatePolice'] or v.PlayerData.job.name == Config.Job['Police'] or v.PlayerData.job.name == Config.Job['Sheriff'] or v.PlayerData.job.name == Config.Job['Corrections'] and v.PlayerData.job.grade.level >= 2 then
             retval = true
             break
         end
@@ -309,9 +309,9 @@ RegisterNetEvent('police:server:CuffPlayer', function(playerId, isSoftcuff)
 
     local Player = QBCore.Functions.GetPlayer(src)
     local CuffedPlayer = QBCore.Functions.GetPlayer(playerId)
-    -- if not Player or not CuffedPlayer or (not Player.Functions.GetItemByName("handcuffs") and Player.PlayerData.job.name ~= "upd" or Player.PlayerData.job.name ~= "sasp" or Player.PlayerData.job.name ~= "police" or Player.PlayerData.job.name ~= "bcso" or Player.PlayerData.job.name ~= "doc") then return end
+    -- if not Player or not CuffedPlayer or (not Player.Functions.GetItemByName("handcuffs") and Player.PlayerData.job.name ~= Config.Job['DOJ'] or Player.PlayerData.job.name ~= Config.Job['StatePolice'] or Player.PlayerData.job.name ~= Config.Job['Police'] or Player.PlayerData.job.name ~= Config.Job['Sheriff'] or Player.PlayerData.job.name ~= Config.Job['Corrections']) then return end
 
-    if (Player.PlayerData.job.name == "upd" or Player.PlayerData.job.name == "sasp" or Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "bcso" or Player.PlayerData.job.name == "doc") then
+    if (Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections']) then
         TriggerClientEvent("police:client:GetCuffed", CuffedPlayer.PlayerData.source, Player.PlayerData.source, isSoftcuff)
     end
 end)
@@ -328,7 +328,7 @@ RegisterNetEvent('police:server:EscortPlayer', function(playerId)
     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
     if not Player or not EscortPlayer then return end
 
-    if (Player.PlayerData.job.name == "upd" or Player.PlayerData.job.name == "sasp" or Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "bcso" or Player.PlayerData.job.name == "doc" or Player.PlayerData.job.name == "ambulance") or (EscortPlayer.PlayerData.metadata["ishandcuffed"] or EscortPlayer.PlayerData.metadata["isdead"] or EscortPlayer.PlayerData.metadata["inlaststand"]) then
+    if (Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment']) or (EscortPlayer.PlayerData.metadata["ishandcuffed"] or EscortPlayer.PlayerData.metadata["isdead"] or EscortPlayer.PlayerData.metadata["inlaststand"]) then
         TriggerClientEvent("police:client:GetEscorted", EscortPlayer.PlayerData.source, Player.PlayerData.source)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.not_cuffed_dead"), 'error')
@@ -401,10 +401,10 @@ RegisterNetEvent('police:server:BillPlayer', function(playerId, price)
 
     local Player = QBCore.Functions.GetPlayer(src)
     local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
-    if not Player or not OtherPlayer or Player.PlayerData.job.name ~= "upd" or Player.PlayerData.job.name ~= "sasp" or Player.PlayerData.job.name ~= "police" or Player.PlayerData.job.name ~= "bcso" or Player.PlayerData.job.name ~= "doc" then return end
+    if not Player or not OtherPlayer or Player.PlayerData.job.name ~= Config.Job['DOJ'] or Player.PlayerData.job.name ~= Config.Job['StatePolice'] or Player.PlayerData.job.name ~= Config.Job['Police'] or Player.PlayerData.job.name ~= Config.Job['Sheriff'] or Player.PlayerData.job.name ~= Config.Job['Corrections'] then return end
 
     OtherPlayer.Functions.RemoveMoney("bank", price, "paid-bills")
-    exports['Renewed-Banking']:addAccountMoney("police", price)
+    exports['Renewed-Banking']:addAccountMoney(Config.Job['Police'], price)
     TriggerClientEvent('QBCore:Notify', OtherPlayer.PlayerData.source, Lang:t("info.fine_received", {fine = price}))
 end)
 
@@ -419,7 +419,7 @@ RegisterNetEvent('police:server:JailPlayer', function(playerId, time)
     local Player = QBCore.Functions.GetPlayer(src)
     local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
 
-    if (Player.PlayerData.job.name == "upd" or Player.PlayerData.job.name == "sasp" or Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "bcso" or Player.PlayerData.job.name == "doc") then
+    if (Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections']) then
         local currentDate = os.date("*t")
         if currentDate.day == 31 then
             currentDate.day = 30
@@ -551,81 +551,81 @@ RegisterNetEvent('police:server:Impound', function(plate, fullImpound, price, bo
     end
 end)
 
--- RegisterNetEvent('evidence:server:UpdateStatus', function(data)
---     local src = source
---     PlayerStatus[src] = data
--- end)
+RegisterNetEvent('evidence:server:UpdateStatus', function(data)
+    local src = source
+    PlayerStatus[src] = data
+end)
 
--- RegisterNetEvent('evidence:server:CreateBloodDrop', function(citizenid, bloodtype, coords)
---     local bloodId = CreateBloodId()
---     BloodDrops[bloodId] = {
---         dna = citizenid,
---         bloodtype = bloodtype
---     }
---     TriggerClientEvent("evidence:client:AddBlooddrop", -1, bloodId, citizenid, bloodtype, coords)
--- end)
+RegisterNetEvent('evidence:server:CreateBloodDrop', function(citizenid, bloodtype, coords)
+    local bloodId = CreateBloodId()
+    BloodDrops[bloodId] = {
+        dna = citizenid,
+        bloodtype = bloodtype
+    }
+    TriggerClientEvent("evidence:client:AddBlooddrop", -1, bloodId, citizenid, bloodtype, coords)
+end)
 
--- RegisterNetEvent('evidence:server:CreateFingerDrop', function(coords)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     local fingerId = CreateFingerId()
---     FingerDrops[fingerId] = Player.PlayerData.metadata["fingerprint"]
---     TriggerClientEvent("evidence:client:AddFingerPrint", -1, fingerId, Player.PlayerData.metadata["fingerprint"], coords)
--- end)
+RegisterNetEvent('evidence:server:CreateFingerDrop', function(coords)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local fingerId = CreateFingerId()
+    FingerDrops[fingerId] = Player.PlayerData.metadata["fingerprint"]
+    TriggerClientEvent("evidence:client:AddFingerPrint", -1, fingerId, Player.PlayerData.metadata["fingerprint"], coords)
+end)
 
--- RegisterNetEvent('evidence:server:ClearBlooddrops', function(blooddropList)
---     if blooddropList and next(blooddropList) then
---         for _, v in pairs(blooddropList) do
---             TriggerClientEvent("evidence:client:RemoveBlooddrop", -1, v)
---             BloodDrops[v] = nil
---         end
---     end
--- end)
+RegisterNetEvent('evidence:server:ClearBlooddrops', function(blooddropList)
+    if blooddropList and next(blooddropList) then
+        for _, v in pairs(blooddropList) do
+            TriggerClientEvent("evidence:client:RemoveBlooddrop", -1, v)
+            BloodDrops[v] = nil
+        end
+    end
+end)
 
--- RegisterNetEvent('evidence:server:AddBlooddropToInventory', function(bloodId, bloodInfo)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if Player.Functions.RemoveItem("empty_evidence_bag", 1) then
---         if Player.Functions.AddItem("filled_evidence_bag", 1, false, bloodInfo) then
---             TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["filled_evidence_bag"], "add")
---             TriggerClientEvent("evidence:client:RemoveBlooddrop", -1, bloodId)
---             BloodDrops[bloodId] = nil
---         end
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
---     end
--- end)
+RegisterNetEvent('evidence:server:AddBlooddropToInventory', function(bloodId, bloodInfo)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.Functions.RemoveItem("empty_evidence_bag", 1) then
+        if Player.Functions.AddItem("filled_evidence_bag", 1, false, bloodInfo) then
+            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["filled_evidence_bag"], "add")
+            TriggerClientEvent("evidence:client:RemoveBlooddrop", -1, bloodId)
+            BloodDrops[bloodId] = nil
+        end
+    else
+        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
+    end
+end)
 
--- RegisterNetEvent('evidence:server:AddFingerprintToInventory', function(fingerId, fingerInfo)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if Player.Functions.RemoveItem("empty_evidence_bag", 1) then
---         if Player.Functions.AddItem("filled_evidence_bag", 1, false, fingerInfo) then
---             TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["filled_evidence_bag"], "add")
---             TriggerClientEvent("evidence:client:RemoveFingerprint", -1, fingerId)
---             FingerDrops[fingerId] = nil
---         end
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
---     end
--- end)
+RegisterNetEvent('evidence:server:AddFingerprintToInventory', function(fingerId, fingerInfo)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.Functions.RemoveItem("empty_evidence_bag", 1) then
+        if Player.Functions.AddItem("filled_evidence_bag", 1, false, fingerInfo) then
+            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["filled_evidence_bag"], "add")
+            TriggerClientEvent("evidence:client:RemoveFingerprint", -1, fingerId)
+            FingerDrops[fingerId] = nil
+        end
+    else
+        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
+    end
+end)
 
--- RegisterNetEvent('evidence:server:CreateCasing', function(weapon, coords)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     local casingId = CreateCasingId()
---     local weaponInfo = QBCore.Shared.Weapons[weapon]
---     local serieNumber = nil
---     if weaponInfo then
---         local weaponItem = Player.Functions.GetItemByName(weaponInfo["name"])
---         if weaponItem then
---             if weaponItem.info and weaponItem.info ~= "" then
---                 serieNumber = weaponItem.info.serie
---             end
---         end
---     end
---     TriggerClientEvent("evidence:client:AddCasing", -1, casingId, weapon, coords, serieNumber)
--- end)
+RegisterNetEvent('evidence:server:CreateCasing', function(weapon, coords)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local casingId = CreateCasingId()
+    local weaponInfo = QBCore.Shared.Weapons[weapon]
+    local serieNumber = nil
+    if weaponInfo then
+        local weaponItem = Player.Functions.GetItemByName(weaponInfo["name"])
+        if weaponItem then
+            if weaponItem.info and weaponItem.info ~= "" then
+                serieNumber = weaponItem.info.serie
+            end
+        end
+    end
+    TriggerClientEvent("evidence:client:AddCasing", -1, casingId, weapon, coords, serieNumber)
+end)
 
 RegisterNetEvent('police:server:UpdateCurrentCops', function()
     local amount = 0
@@ -633,7 +633,7 @@ RegisterNetEvent('police:server:UpdateCurrentCops', function()
     if updatingCops then return end
     updatingCops = true
     for _, v in pairs(players) do
-        if v and v.PlayerData.job.name == "police" and v.PlayerData.job.onduty then
+        if v and v.PlayerData.job.name == Config.Job['Police'] and v.PlayerData.job.onduty then
             amount += 1
         end
     end
@@ -641,28 +641,28 @@ RegisterNetEvent('police:server:UpdateCurrentCops', function()
     updatingCops = false
 end)
 
--- RegisterNetEvent('evidence:server:ClearCasings', function(casingList)
---     if casingList and next(casingList) then
---         for _, v in pairs(casingList) do
---             TriggerClientEvent("evidence:client:RemoveCasing", -1, v)
---             Casings[v] = nil
---         end
---     end
--- end)
+RegisterNetEvent('evidence:server:ClearCasings', function(casingList)
+    if casingList and next(casingList) then
+        for _, v in pairs(casingList) do
+            TriggerClientEvent("evidence:client:RemoveCasing", -1, v)
+            Casings[v] = nil
+        end
+    end
+end)
 
--- RegisterNetEvent('evidence:server:AddCasingToInventory', function(casingId, casingInfo)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if Player.Functions.RemoveItem("empty_evidence_bag", 1) then
---         if Player.Functions.AddItem("filled_evidence_bag", 1, false, casingInfo) then
---             TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["filled_evidence_bag"], "add")
---             TriggerClientEvent("evidence:client:RemoveCasing", -1, casingId)
---             Casings[casingId] = nil
---         end
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
---     end
--- end)
+RegisterNetEvent('evidence:server:AddCasingToInventory', function(casingId, casingInfo)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.Functions.RemoveItem("empty_evidence_bag", 1) then
+        if Player.Functions.AddItem("filled_evidence_bag", 1, false, casingInfo) then
+            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["filled_evidence_bag"], "add")
+            TriggerClientEvent("evidence:client:RemoveCasing", -1, casingId)
+            Casings[casingId] = nil
+        end
+    else
+        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
+    end
+end)
 
 RegisterNetEvent('police:server:showFingerprint', function(playerId)
     local src = source

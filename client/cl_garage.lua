@@ -9,8 +9,8 @@ RegisterNetEvent('LENT-GovernmentJob:Client:SelectVehicle', function()
 
     local vehicleMenu = {
         {
-            header = Config.MenuName,
-            icon = Config.IconName,
+            header = Config.GlobalSettings['MenuName'],
+            icon = Config.GlobalSettings['MenuIcon'],
             isMenuHeader = true,
         }
     }
@@ -202,7 +202,7 @@ RegisterNetEvent("LENT-GovernmentJob:Client:SpawnSelectedVehicle", function(data
     end
 
     local MyPed = PlayerPedId()
-    local plate = Config.Plate
+    local plate = Config.GlobalSettings['DefaultPlate']
 
     local vehicle = CreateVehicle(vehicleCode, coords.x, coords.y, coords.z-1, coords.w, true, false) -- Spawns a networked vehicle on your current coords
 

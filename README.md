@@ -309,16 +309,645 @@
         }
     },
 ```
+- Add the following job settings for `qb-radialmenu/config.lua`
+```lua
+["upd"] = {
+        {
+            id = 'checkvehstatus',
+            title = 'Check Tune Status',
+            icon = 'info-circle',
+            type = 'client',
+            event = 'qb-tunerchip:client:TuneStatus',
+            shouldClose = true
+        }, {
+            id = 'takedriverlicense',
+            title = 'Revoke Drivers License',
+            icon = 'id-card',
+            type = 'client',
+            event = 'police:client:SeizeDriverLicense',
+            shouldClose = true
+        }, {
+            id = 'checkstatus',
+            title = 'Check status',
+            icon = 'question',
+            type = 'client',
+            event = 'police:client:CheckStatus',
+            shouldClose = true
+        }, {
+            id = 'escort',
+            title = 'Escort',
+            icon = 'user-friends',
+            type = 'client',
+            event = 'police:client:EscortPlayer',
+            shouldClose = true
+        }, {
+            id = 'searchplayer',
+            title = 'Search',
+            icon = 'search',
+            type = 'client',
+            event = 'police:client:SearchPlayer',
+            shouldClose = true
+        }, {
+            id = 'policeobjects',
+            title = 'Objects',
+            icon = 'road',
+            items = {
+                {
+                    id = "lentobjects",
+                    title = "Objects List",
+                    icon = 'exclamation-triangle',
+                    itmes = {
+                        {
+                            id = 'spawnpion',
+                            title = 'Cone',
+                            icon = 'exclamation-triangle',
+                            type = 'client',
+                            event = 'police:client:spawnCone',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnhek',
+                            title = 'Gate',
+                            icon = 'torii-gate',
+                            type = 'client',
+                            event = 'police:client:spawnBarrier',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnschotten',
+                            title = 'Speed Limit Sign',
+                            icon = 'sign',
+                            type = 'client',
+                            event = 'police:client:spawnRoadSign',
+                            shouldClose = true
+                        }, {
+                            id = 'spawntent',
+                            title = 'Tent',
+                            icon = 'campground',
+                            type = 'client',
+                            event = 'police:client:spawnTent',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnverlichting',
+                            title = 'Lighting',
+                            icon = 'lightbulb',
+                            type = 'client',
+                            event = 'police:client:spawnLight',
+                            shouldClose = true
+                        },
+                    },
+                }, {
+                    id = 'spawnzone',
+                    title = 'Speed Zone',
+                    icon = 'exclamation-triangle',
+                    type = 'client',
+                    event = 'LENT-GovernmentJob:Client:Radial:CreateSpeedZone',
+                    shouldClose = true
+                }, {
+                    id = 'spikestrip',
+                    title = 'Spike Actions',
+                    icon = 'caret-up',
+                    -- type = 'client',
+                    -- event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                    -- shouldClose = true,
+                    items = {
+                        {
+                            id = 'removeallstrips',
+                            title = 'Remove Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                            shouldClose = true,
+                        }, {
+                            id = 'layallstrips',
+                            title = 'Place Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:SpawnSpikeStrips',
+                            shouldClose = true,
+                        },
+                    },
+                }, {
+                    id = 'deleteobject',
+                    title = 'Remove object',
+                    icon = 'trash',
+                    type = 'client',
+                    event = 'police:client:deleteObject',
+                    shouldClose = true
+                }
+            }
+        }
+    },
+    ["sasp"] = {
+        {
+            id = 'checkvehstatus',
+            title = 'Check Tune Status',
+            icon = 'info-circle',
+            type = 'client',
+            event = 'qb-tunerchip:client:TuneStatus',
+            shouldClose = true
+        }, {
+            id = 'takedriverlicense',
+            title = 'Revoke Drivers License',
+            icon = 'id-card',
+            type = 'client',
+            event = 'police:client:SeizeDriverLicense',
+            shouldClose = true
+        }, {
+            id = 'checkstatus',
+            title = 'Check status',
+            icon = 'question',
+            type = 'client',
+            event = 'police:client:CheckStatus',
+            shouldClose = true
+        }, {
+            id = 'escort',
+            title = 'Escort',
+            icon = 'user-friends',
+            type = 'client',
+            event = 'police:client:EscortPlayer',
+            shouldClose = true
+        }, {
+            id = 'searchplayer',
+            title = 'Search',
+            icon = 'search',
+            type = 'client',
+            event = 'police:client:SearchPlayer',
+            shouldClose = true
+        }, {
+            id = 'policeobjects',
+            title = 'Objects',
+            icon = 'road',
+            items = {
+                {
+                    id = "lentobjects",
+                    title = "Objects List",
+                    icon = 'exclamation-triangle',
+                    itmes = {
+                        {
+                            id = 'spawnpion',
+                            title = 'Cone',
+                            icon = 'exclamation-triangle',
+                            type = 'client',
+                            event = 'police:client:spawnCone',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnhek',
+                            title = 'Gate',
+                            icon = 'torii-gate',
+                            type = 'client',
+                            event = 'police:client:spawnBarrier',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnschotten',
+                            title = 'Speed Limit Sign',
+                            icon = 'sign',
+                            type = 'client',
+                            event = 'police:client:spawnRoadSign',
+                            shouldClose = true
+                        }, {
+                            id = 'spawntent',
+                            title = 'Tent',
+                            icon = 'campground',
+                            type = 'client',
+                            event = 'police:client:spawnTent',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnverlichting',
+                            title = 'Lighting',
+                            icon = 'lightbulb',
+                            type = 'client',
+                            event = 'police:client:spawnLight',
+                            shouldClose = true
+                        },
+                    },
+                }, {
+                    id = 'spawnzone',
+                    title = 'Speed Zone',
+                    icon = 'exclamation-triangle',
+                    type = 'client',
+                    event = 'LENT-GovernmentJob:Client:Radial:CreateSpeedZone',
+                    shouldClose = true
+                }, {
+                    id = 'spikestrip',
+                    title = 'Spike Actions',
+                    icon = 'caret-up',
+                    -- type = 'client',
+                    -- event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                    -- shouldClose = true,
+                    items = {
+                        {
+                            id = 'removeallstrips',
+                            title = 'Remove Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                            shouldClose = true,
+                        }, {
+                            id = 'layallstrips',
+                            title = 'Place Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:SpawnSpikeStrips',
+                            shouldClose = true,
+                        },
+                    },
+                }, {
+                    id = 'deleteobject',
+                    title = 'Remove object',
+                    icon = 'trash',
+                    type = 'client',
+                    event = 'police:client:deleteObject',
+                    shouldClose = true
+                }
+            }
+        }
+    },
+    ["police"] = {
+        {
+            id = 'checkvehstatus',
+            title = 'Check Tune Status',
+            icon = 'info-circle',
+            type = 'client',
+            event = 'qb-tunerchip:client:TuneStatus',
+            shouldClose = true
+        }, {
+            id = 'takedriverlicense',
+            title = 'Revoke Drivers License',
+            icon = 'id-card',
+            type = 'client',
+            event = 'police:client:SeizeDriverLicense',
+            shouldClose = true
+        }, {
+            id = 'checkstatus',
+            title = 'Check status',
+            icon = 'question',
+            type = 'client',
+            event = 'police:client:CheckStatus',
+            shouldClose = true
+        }, {
+            id = 'escort',
+            title = 'Escort',
+            icon = 'user-friends',
+            type = 'client',
+            event = 'police:client:EscortPlayer',
+            shouldClose = true
+        }, {
+            id = 'searchplayer',
+            title = 'Search',
+            icon = 'search',
+            type = 'client',
+            event = 'police:client:SearchPlayer',
+            shouldClose = true
+        }, {
+            id = 'policeobjects',
+            title = 'Objects',
+            icon = 'road',
+            items = {
+                {
+                    id = "lentobjects",
+                    title = "Objects List",
+                    icon = 'exclamation-triangle',
+                    itmes = {
+                        {
+                            id = 'spawnpion',
+                            title = 'Cone',
+                            icon = 'exclamation-triangle',
+                            type = 'client',
+                            event = 'police:client:spawnCone',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnhek',
+                            title = 'Gate',
+                            icon = 'torii-gate',
+                            type = 'client',
+                            event = 'police:client:spawnBarrier',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnschotten',
+                            title = 'Speed Limit Sign',
+                            icon = 'sign',
+                            type = 'client',
+                            event = 'police:client:spawnRoadSign',
+                            shouldClose = true
+                        }, {
+                            id = 'spawntent',
+                            title = 'Tent',
+                            icon = 'campground',
+                            type = 'client',
+                            event = 'police:client:spawnTent',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnverlichting',
+                            title = 'Lighting',
+                            icon = 'lightbulb',
+                            type = 'client',
+                            event = 'police:client:spawnLight',
+                            shouldClose = true
+                        },
+                    },
+                }, {
+                    id = 'spawnzone',
+                    title = 'Speed Zone',
+                    icon = 'exclamation-triangle',
+                    type = 'client',
+                    event = 'LENT-GovernmentJob:Client:Radial:CreateSpeedZone',
+                    shouldClose = true
+                }, {
+                    id = 'spikestrip',
+                    title = 'Spike Actions',
+                    icon = 'caret-up',
+                    -- type = 'client',
+                    -- event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                    -- shouldClose = true,
+                    items = {
+                        {
+                            id = 'removeallstrips',
+                            title = 'Remove Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                            shouldClose = true,
+                        }, {
+                            id = 'layallstrips',
+                            title = 'Place Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:SpawnSpikeStrips',
+                            shouldClose = true,
+                        },
+                    },
+                }, {
+                    id = 'deleteobject',
+                    title = 'Remove object',
+                    icon = 'trash',
+                    type = 'client',
+                    event = 'police:client:deleteObject',
+                    shouldClose = true
+                }
+            }
+        }
+    },
+    ["bcso"] = {
+        {
+            id = 'checkvehstatus',
+            title = 'Check Tune Status',
+            icon = 'info-circle',
+            type = 'client',
+            event = 'qb-tunerchip:client:TuneStatus',
+            shouldClose = true
+        }, {
+            id = 'takedriverlicense',
+            title = 'Revoke Drivers License',
+            icon = 'id-card',
+            type = 'client',
+            event = 'police:client:SeizeDriverLicense',
+            shouldClose = true
+        }, {
+            id = 'checkstatus',
+            title = 'Check status',
+            icon = 'question',
+            type = 'client',
+            event = 'police:client:CheckStatus',
+            shouldClose = true
+        }, {
+            id = 'escort',
+            title = 'Escort',
+            icon = 'user-friends',
+            type = 'client',
+            event = 'police:client:EscortPlayer',
+            shouldClose = true
+        }, {
+            id = 'searchplayer',
+            title = 'Search',
+            icon = 'search',
+            type = 'client',
+            event = 'police:client:SearchPlayer',
+            shouldClose = true
+        }, {
+            id = 'policeobjects',
+            title = 'Objects',
+            icon = 'road',
+            items = {
+                {
+                    id = "lentobjects",
+                    title = "Objects List",
+                    icon = 'exclamation-triangle',
+                    itmes = {
+                        {
+                            id = 'spawnpion',
+                            title = 'Cone',
+                            icon = 'exclamation-triangle',
+                            type = 'client',
+                            event = 'police:client:spawnCone',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnhek',
+                            title = 'Gate',
+                            icon = 'torii-gate',
+                            type = 'client',
+                            event = 'police:client:spawnBarrier',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnschotten',
+                            title = 'Speed Limit Sign',
+                            icon = 'sign',
+                            type = 'client',
+                            event = 'police:client:spawnRoadSign',
+                            shouldClose = true
+                        }, {
+                            id = 'spawntent',
+                            title = 'Tent',
+                            icon = 'campground',
+                            type = 'client',
+                            event = 'police:client:spawnTent',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnverlichting',
+                            title = 'Lighting',
+                            icon = 'lightbulb',
+                            type = 'client',
+                            event = 'police:client:spawnLight',
+                            shouldClose = true
+                        },
+                    },
+                }, {
+                    id = 'spawnzone',
+                    title = 'Speed Zone',
+                    icon = 'exclamation-triangle',
+                    type = 'client',
+                    event = 'LENT-GovernmentJob:Client:Radial:CreateSpeedZone',
+                    shouldClose = true
+                }, {
+                    id = 'spikestrip',
+                    title = 'Spike Actions',
+                    icon = 'caret-up',
+                    -- type = 'client',
+                    -- event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                    -- shouldClose = true,
+                    items = {
+                        {
+                            id = 'removeallstrips',
+                            title = 'Remove Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                            shouldClose = true,
+                        }, {
+                            id = 'layallstrips',
+                            title = 'Place Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:SpawnSpikeStrips',
+                            shouldClose = true,
+                        },
+                    },
+                }, {
+                    id = 'deleteobject',
+                    title = 'Remove object',
+                    icon = 'trash',
+                    type = 'client',
+                    event = 'police:client:deleteObject',
+                    shouldClose = true
+                }
+            }
+        }
+    },
+    ["doc"] = {
+        {
+            id = 'checkvehstatus',
+            title = 'Check Tune Status',
+            icon = 'info-circle',
+            type = 'client',
+            event = 'qb-tunerchip:client:TuneStatus',
+            shouldClose = true
+        }, {
+            id = 'takedriverlicense',
+            title = 'Revoke Drivers License',
+            icon = 'id-card',
+            type = 'client',
+            event = 'police:client:SeizeDriverLicense',
+            shouldClose = true
+        }, {
+            id = 'checkstatus',
+            title = 'Check status',
+            icon = 'question',
+            type = 'client',
+            event = 'police:client:CheckStatus',
+            shouldClose = true
+        }, {
+            id = 'escort',
+            title = 'Escort',
+            icon = 'user-friends',
+            type = 'client',
+            event = 'police:client:EscortPlayer',
+            shouldClose = true
+        }, {
+            id = 'searchplayer',
+            title = 'Search',
+            icon = 'search',
+            type = 'client',
+            event = 'police:client:SearchPlayer',
+            shouldClose = true
+        }, {
+            id = 'policeobjects',
+            title = 'Objects',
+            icon = 'road',
+            items = {
+                {
+                    id = "lentobjects",
+                    title = "Objects List",
+                    icon = 'exclamation-triangle',
+                    itmes = {
+                        {
+                            id = 'spawnpion',
+                            title = 'Cone',
+                            icon = 'exclamation-triangle',
+                            type = 'client',
+                            event = 'police:client:spawnCone',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnhek',
+                            title = 'Gate',
+                            icon = 'torii-gate',
+                            type = 'client',
+                            event = 'police:client:spawnBarrier',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnschotten',
+                            title = 'Speed Limit Sign',
+                            icon = 'sign',
+                            type = 'client',
+                            event = 'police:client:spawnRoadSign',
+                            shouldClose = true
+                        }, {
+                            id = 'spawntent',
+                            title = 'Tent',
+                            icon = 'campground',
+                            type = 'client',
+                            event = 'police:client:spawnTent',
+                            shouldClose = true
+                        }, {
+                            id = 'spawnverlichting',
+                            title = 'Lighting',
+                            icon = 'lightbulb',
+                            type = 'client',
+                            event = 'police:client:spawnLight',
+                            shouldClose = true
+                        },
+                    },
+                }, {
+                    id = 'spawnzone',
+                    title = 'Speed Zone',
+                    icon = 'exclamation-triangle',
+                    type = 'client',
+                    event = 'LENT-GovernmentJob:Client:Radial:CreateSpeedZone',
+                    shouldClose = true
+                }, {
+                    id = 'spikestrip',
+                    title = 'Spike Actions',
+                    icon = 'caret-up',
+                    -- type = 'client',
+                    -- event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                    -- shouldClose = true,
+                    items = {
+                        {
+                            id = 'removeallstrips',
+                            title = 'Remove Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:RemoveSpikes',
+                            shouldClose = true,
+                        }, {
+                            id = 'layallstrips',
+                            title = 'Place Spikes',
+                            icon = 'caret-up',
+                            type = 'client',
+                            event = 'LENT-GovernmentJob:Client:SpawnSpikeStrips',
+                            shouldClose = true,
+                        },
+                    },
+                }, {
+                    id = 'deleteobject',
+                    title = 'Remove object',
+                    icon = 'trash',
+                    type = 'client',
+                    event = 'police:client:deleteObject',
+                    shouldClose = true
+                }
+            }
+        }
+    },
+```
+- Go into `qb-radialmenu/config.lua`
+    - Press `CONTROL+F` and serach for `Button`
+        - You can remove all items related to the panic button! It will still be available when downed if you setup the departments in `qb-radialmenu/client/main.lua`!
 </details>
 
 ## Optional Settings / Dependencies
 - This script will work fine with renewed-phone / renewed-banking
 - This script will NOT work if you have the default `qb-policejob`
-- Settings for zones can be found in `client/cl_zones.lua`
-- Settings for peds can be found in `client/cl_peds.lua`
-
-### Optional
-You can remove the Panic Button actions from the radial menu. Every config is different so I can't give an exact. You should go into the config and press `CONTROL+F` and search for `Button` then see what is linked in your police, ems jobs.
+- Settings for zones can be found in `functions/cl_zones.lua`
+- Settings for peds can be found in `functions/cl_peds.lua`
+- Settings for Spawn / Park zones are found in `functions/cl_coords.lua
 
 ## Target Settings
 **When you create zones yourself these are some important events that some zones should be able to trigger upon use!**

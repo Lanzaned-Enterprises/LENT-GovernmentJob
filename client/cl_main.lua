@@ -75,7 +75,7 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
         TriggerEvent('qb-clothing:client:loadOutfit', trackerClothingData)
     end
 
-    if PlayerJob and PlayerJob.name ~= 'upd' or PlayerJob.name ~= 'sasp' or PlayerJob.name ~= 'police' or PlayerJob.name ~= 'bcso' or PlayerJob.name ~= 'doc' then
+    if PlayerJob and PlayerJob.name ~= Config.Job['DOJ'] or PlayerJob.name ~= Config.Job['StatePolice'] or PlayerJob.name ~= Config.Job['Police'] or PlayerJob.name ~= Config.Job['Sheriff'] or PlayerJob.name ~= Config.Job['Corrections'] then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
                 RemoveBlip(v)
@@ -136,7 +136,7 @@ RegisterNetEvent('police:client:sendBillingMail', function(amount)
 end)
 
 RegisterNetEvent('police:client:UpdateBlips', function(players)
-    if PlayerJob and (PlayerJob.name == 'upd' or PlayerJob.name == 'sasp' or PlayerJob.name == 'police' or PlayerJob.name == 'bcso' or PlayerJob.name == 'doc' or PlayerJob.name == 'ambulance') and
+    if PlayerJob and (PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment']) and
         PlayerJob.onduty then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
@@ -164,8 +164,4 @@ end)
 
 RegisterNetEvent("LENT:POLICE:MDT", function()
     TriggerServerEvent('mdt:server:openMDT')    
-end)
-
-RegisterNetEvent('LENT-GovernmentJob:Client:Notify', function(titleText, type)
-    lib.notify({ title = titleText, type = type })
 end)

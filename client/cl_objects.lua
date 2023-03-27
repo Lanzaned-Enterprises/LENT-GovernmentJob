@@ -190,6 +190,7 @@ RegisterNetEvent('police:client:spawnObject', function(objectId, type, player)
     PlaceObjectOnGroundProperly(spawnedObj)
     SetEntityHeading(spawnedObj, heading)
     FreezeEntityPosition(spawnedObj, Config.Objects[type].freeze)
+    SetEntityInvincible(spawnedObj, true)
     ObjectList[objectId] = {
         id = objectId,
         object = spawnedObj,
@@ -197,29 +198,97 @@ RegisterNetEvent('police:client:spawnObject', function(objectId, type, player)
     }
 end)
 
+local hasCreatedSpeedZone = false
+RegisterNetEvent('LENT-GovernmentJob:Client:Radial:CreateSpeedZone', function()
+    if not hasCreatedSpeedZone then
+        Zone = AddSpeedZoneForCoord(GetEntityCoords(PlayerPedId()), Config.GlobalSettings['MaxZoneSize'], 0.0, false)
+        Area = AddBlipForRadius(GetEntityCoords(PlayerPedId()), Config.GlobalSettings['MaxZoneSize'])
+        SetBlipAlpha(Area, 100)
+        QBCore.Functions.Notify('You have succesfully stopped traffic!', 'success', 2500)
+        hasCreatedSpeedZone = true
+    elseif hasCreatedSpeedZone then
+        RemoveSpeedZone(Zone)
+        RemoveBlip(Area)
+        Zone = nil
+        QBCore.Functions.Notify('You have allowed traffic to flow!', 'success', 2500)
+    end
+end)
+
+RegisterNetEvent('LENT-GovernmentJob:Client:CreateSpeedZone', function(ZoneSize)
+    if not hasCreatedSpeedZone then
+        Zone = AddSpeedZoneForCoord(GetEntityCoords(PlayerPedId()), ZoneSize, 0.0, false)
+        Area = AddBlipForRadius(GetEntityCoords(PlayerPedId()), ZoneSize)
+        SetBlipAlpha(Area, 100)
+        QBCore.Functions.Notify('You have succesfully stopped traffic!', 'success', 2500)
+        hasCreatedSpeedZone = true
+    elseif hasCreatedSpeedZone then
+        RemoveSpeedZone(Zone)
+        RemoveBlip(Area)
+        Zone = nil
+        QBCore.Functions.Notify('You have allowed traffic to flow!', 'success', 2500)
+    end
+end)
+
 --Spike Strip Spawn Event
 local SpawnedSpikes = {}
-RegisterNetEvent('police:client:SpawnSpikeStrip', function(length)
-    if IsPedInAnyVehicle(PlayerPedId(), false) then
-        QBCore.Functions.Notify('Can\'t set spikes while in a vehicle!', 'error')
+local hasPlacedSpikes = false
+RegisterNetEvent('LENT-GovernmentJob:Client:SpawnSpikeStrips', function()
+    if not hasPlacedSpikes then
+        if IsPedInAnyVehicle(PlayerPedId(), false) then
+            QBCore.Functions.Notify('Can\'t set spikes while in a vehicle!', 'error')
+            return
+        end
+
+        local SpawnCoords = GetOffsetFromEntityInWorldCoords(GetPlayerPed(PlayerId()) , 0.0, 2.0, 0.0)
+
+        for a = 1, Config.GlobalSettings['MaxSpikes'] do
+            local Spike = CreateObject(GetHashKey('P_ld_stinger_s'), SpawnCoords.x, SpawnCoords.y, SpawnCoords.z, 1, 1, 1)
+            local NetID = NetworkGetNetworkIdFromEntity(Spike)
+
+            SetNetworkIdExistsOnAllMachines(NetID, true)
+            SetNetworkIdCanMigrate(NetID, false)
+            SetEntityHeading(Spike, GetEntityHeading(GetPlayerPed(PlayerId()) ))
+            PlaceObjectOnGroundProperly(Spike)
+            FreezeEntityPosition(Spike, true)
+
+            SpawnCoords = GetOffsetFromEntityInWorldCoords(Spike, 0.0, 4.0, 0.0)
+
+            table.insert(SpawnedSpikes, NetID)
+        end
+        
+        hasPlacedSpikes = true
+    else
         return
     end
+end)
 
-    local SpawnCoords = GetOffsetFromEntityInWorldCoords(GetPlayerPed(PlayerId()) , 0.0, 2.0, 0.0)
-    
-    for a = 1, length do
-        local Spike = CreateObject(GetHashKey('P_ld_stinger_s'), SpawnCoords.x, SpawnCoords.y, SpawnCoords.z, 1, 1, 1)
-        local NetID = NetworkGetNetworkIdFromEntity(Spike)
+RegisterNetEvent('police:client:SpawnSpikeStrip', function(length)
+    if not hasPlacedSpikes then
+        if IsPedInAnyVehicle(PlayerPedId(), false) then
+            QBCore.Functions.Notify('Can\'t set spikes while in a vehicle!', 'error')
+            return
+        end
+
+        local SpawnCoords = GetOffsetFromEntityInWorldCoords(GetPlayerPed(PlayerId()) , 0.0, 2.0, 0.0)
+
+        for a = 1, length do
+            local Spike = CreateObject(GetHashKey('P_ld_stinger_s'), SpawnCoords.x, SpawnCoords.y, SpawnCoords.z, 1, 1, 1)
+            local NetID = NetworkGetNetworkIdFromEntity(Spike)
+
+            SetNetworkIdExistsOnAllMachines(NetID, true)
+            SetNetworkIdCanMigrate(NetID, false)
+            SetEntityHeading(Spike, GetEntityHeading(GetPlayerPed(PlayerId()) ))
+            PlaceObjectOnGroundProperly(Spike)
+            FreezeEntityPosition(Spike, true)
+
+            SpawnCoords = GetOffsetFromEntityInWorldCoords(Spike, 0.0, 4.0, 0.0)
+
+            table.insert(SpawnedSpikes, NetID)
+        end
         
-        SetNetworkIdExistsOnAllMachines(NetID, true)
-        SetNetworkIdCanMigrate(NetID, false)
-        SetEntityHeading(Spike, GetEntityHeading(GetPlayerPed(PlayerId()) ))
-        PlaceObjectOnGroundProperly(Spike)
-        FreezeEntityPosition(Spike, true)
-        
-        SpawnCoords = GetOffsetFromEntityInWorldCoords(Spike, 0.0, 4.0, 0.0)
-        
-        table.insert(SpawnedSpikes, NetID)
+        hasPlacedSpikes = true
+    else
+        return
     end
 end)
 
@@ -231,6 +300,7 @@ RegisterNetEvent("LENT-GovernmentJob:Client:RemoveSpikes", function()
     end
     QBCore.Functions.Notify('Spikes Strips Removed!', 'success')
     SpawnedSpikes = {}
+    hasPlacedSpikes = false
 end)
 
 --Spike Strip Tire Popping

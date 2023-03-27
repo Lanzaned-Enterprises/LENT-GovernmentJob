@@ -57,10 +57,3 @@ RegisterNetEvent('police:client:TrackerMessage', function(msg, coords)
         end
     end
 end)
-
-RegisterNetEvent('LENT-GovernmentJob:Client:StartPitTimer', function()
-    local Job = QBCore.Functions.GetPlayerData().job.name
-    if Job == "upd" or Job == "sasp" or Job == "police" or Job == "bcso" or Job == "doc" then
-        
-    end
-end)
