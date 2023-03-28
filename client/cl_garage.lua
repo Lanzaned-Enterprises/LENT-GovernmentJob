@@ -246,41 +246,44 @@ RegisterNetEvent('LENT-GovernmentJob:Client:StoreVehicle', function()
 end)
 
 RegisterNetEvent('LENT-GovernmentJob:Client:SetPatrolPlate', function()
-    local nearByVehicle = lib.getNearbyVehicles(GetEntityCoords(PlayerPedId()), 0.3, true)
+    local nearByVehicle = IsPedInAnyVehicle(PlayerPedId(), false)
     
-    if nearByVehicle[1] then 
-        local vehicle = nearByVehicle[1].vehicle
+    if nearByVehicle then 
+        local vehicle = GetVehiclePedIsUsing(PlayerPedId())
         local oldPlate = GetVehicleNumberPlateText(vehicle):gsub('[%p%c%s]', '')
-        local plateChangerInput = lib.inputDialog("UPD Plate Changer", {
-            {
-                type = 'input', 
-                label = "Plate", 
-                description = "min 3, max 8 characters", 
-                icon = {
-                    'fa', 
-                    'clapperboard'
+        local plateChangerInput = exports['qb-input']:ShowInput({
+            header = Config.Job['DOJ'] .. " Plate Changer",
+            submitText = "Submit",
+            inputs = {
+                {
+                    text = "Plate",
+                    name = "platenumber",
+                    type = "text", 
+                    isRequired = true,
                 }
             }
         })
-        if not plateChangerInput then return end
+        if plateChangerInput ~= nil then
+            for k, v in pairs(plateChangerInput) do
+                local newPlate = string.upper(v:gsub('[%p%c%s]', ''))
         
-        local newPlate = string.upper(plateChangerInput[1]:gsub('[%p%c%s]', ''))
-        
-        if #newPlate >= 3 and #newPlate <= 8 then 
-            TriggerServerEvent('LENT-GovernmentJob:Server:UpdatePlate', NetworkGetNetworkIdFromEntity(vehicle), oldPlate, newPlate)
-        else
-            lib.notify({title = "Max 8 Min 3 characters", type = 'error'})
+                if #newPlate >= 3 and #newPlate <= 8 then 
+                    TriggerServerEvent('LENT-GovernmentJob:Server:UpdatePlate', NetworkGetNetworkIdFromEntity(vehicle), oldPlate, newPlate)
+                else
+                    QBCore.Functions.Notify("Max 8 Min 3 characters", 'error', 2500)
+                end
+            end
         end
     else
-        lib.notify({title = "Sit in the driver\'s seat of the car", type = 'error'})
+        QBCore.Functions.Notify("Sit in the driver\'s seat of the car", 'error', 2500)
     end
 end)
 
 RegisterNetEvent("LENT-GovernmentJob:Client:SetKeys", function()
-    local nearByVehicle = lib.getNearbyVehicles(GetEntityCoords(PlayerPedId()), 0.3, true)
+    local nearByVehicle = IsPedInAnyVehicle(PlayerPedId(), false)
 
-    if nearByVehicle[1] then
-        local vehicle = nearByVehicle[1].vehicle
+    if nearByVehicle then
+        local vehicle = GetVehiclePedIsUsing(PlayerPedId())
         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(vehicle))
     end
 end)

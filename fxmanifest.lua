@@ -15,7 +15,6 @@ version '0.0.0'
 -- [[ Dependencies ]] --
 dependencies {
     'qb-core',
-    'ox_lib',
 }
 
 -- [[ Files ]] --
@@ -25,7 +24,6 @@ shared_scripts {
     -- Dependency Files
     '@qb-core/shared/locale.lua',
     'locales/en.lua',
-    'locales/*.lua',
     '@ox_lib/init.lua',
     -- Config Files
     'shared/*.lua',
