@@ -18,6 +18,7 @@ if Config.GlobalSettings['EnableStationBlips'] then
         ['FIB'] = { ['blipName'] = "FIB Building", ['blipId'] = 210, ['blipColor'] = 63, ['coords'] = vector3(104.89, -744.65, 45.75) },
         ['IAA'] = { ['blipName'] = "IAA Building", ['blipId'] = 76, ['blipColor'] = 32, ['coords'] = vector3(103.46, -659.48, 45.09) },
 
+        ['CentralLosSantos'] = { ['blipName'] = "Hospital", ['blipId'] = 61, ['blipColor'] = 2, ['coords'] = vector3(317.92, -1376.92, 31.93)}
         ['PillboxHospital'] = { ['blipName'] = "Hospital", ['blipId'] = 61, ['blipColor'] = 2, ['coords'] = vector3(298.56, -584.59, 43.26) },
         ['MountZonah'] = { ['blipName'] = "Hospital", ['blipId'] = 61, ['blipColor'] = 2, ['coords'] = vector3(-476.0, -358.65, 34.04) },
         ['StFiarceHospital'] = { ['blipName'] = "Hospital", ['blipId'] = 61, ['blipColor'] = 2, ['coords'] = vector3(1153.14, -1526.75, 34.84) },
@@ -25,6 +26,8 @@ if Config.GlobalSettings['EnableStationBlips'] then
         ['EclipseMedicalTower'] = { ['blipName'] = "Hospital", ['blipId'] = 61, ['blipColor'] = 2, ['coords'] = vector3(-677.28, 308.08, 83.08) },
         ['SandyShoresHospital'] = { ['blipName'] = "Hospital", ['blipId'] = 61, ['blipColor'] = 2, ['coords'] = vector3(1840.34, 3670.99, 34.07) },
         ['PaletoBayHospital'] = { ['blipName'] = "Hospital", ['blipId'] = 61, ['blipColor'] = 2, ['coords'] = vector3(-245.63, 6332.59, 32.49) },
+
+        ['Morgue'] = { ['blipName'] = "Morgue", ['blipId'] = 525, ['blipColor'] = 2, ['coords'] = vector3(-245.63, 6332.59, 32.49) },
 
         ['FireStation1'] = { ['blipName'] = "Fire Headquarters", ['blipId'] = 60, ['blipColor'] = 1, ['coords'] = vector3(-635.31, -121.7, 39.02) },
         ['FireStation2'] = { ['blipName'] = "Fire Station", ['blipId'] = 60, ['blipColor'] = 1, ['coords'] = vector3(1696.13, 3583.06, 35.58) },
