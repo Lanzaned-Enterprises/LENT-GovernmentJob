@@ -27,7 +27,7 @@ if Config.GlobalSettings['EnableStationBlips'] then
         ['SandyShoresHospital'] = { ['blipName'] = "Hospital", ['blipId'] = 61, ['blipColor'] = 2, ['coords'] = vector3(1840.34, 3670.99, 34.07) },
         ['PaletoBayHospital'] = { ['blipName'] = "Hospital", ['blipId'] = 61, ['blipColor'] = 2, ['coords'] = vector3(-245.63, 6332.59, 32.49) },
 
-        ['Morgue'] = { ['blipName'] = "Morgue", ['blipId'] = 525, ['blipColor'] = 2, ['coords'] = vector3(-245.63, 6332.59, 32.49) },
+        ['Morgue'] = { ['blipName'] = "Morgue", ['blipId'] = 525, ['blipColor'] = 2, ['coords'] = vector3(233.78, -1387.67, 30.55) },
 
         ['FireStation1'] = { ['blipName'] = "Fire Headquarters", ['blipId'] = 60, ['blipColor'] = 1, ['coords'] = vector3(-635.31, -121.7, 39.02) },
         ['FireStation2'] = { ['blipName'] = "Fire Station", ['blipId'] = 60, ['blipColor'] = 1, ['coords'] = vector3(1696.13, 3583.06, 35.58) },
