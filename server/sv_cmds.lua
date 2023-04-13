@@ -126,15 +126,17 @@ QBCore.Commands.Add("callsign", Lang:t("commands.callsign"), {{name = "name", he
     Player.Functions.SetMetaData("callsign", table.concat(args, " "))
 end)
 
--- QBCore.Commands.Add("clearcasings", Lang:t("commands.clear_casign"), {}, false, function(source)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
---         TriggerClientEvent("evidence:client:ClearCasingsInArea", src)
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
---     end
--- end)
+if Config.GlobalSettings['Evidence'] == 'default' then
+    QBCore.Commands.Add("clearcasings", Lang:t("commands.clear_casign"), {}, false, function(source)
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+            TriggerClientEvent("evidence:client:ClearCasingsInArea", src)
+        else
+            TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
+        end
+    end)
+end
 
 QBCore.Commands.Add("jail", Lang:t("commands.jail_player"), {}, false, function(source)
     local src = source
@@ -157,15 +159,17 @@ QBCore.Commands.Add("unjail", Lang:t("commands.unjail_player"), {{name = "id", h
     end
 end)
 
--- QBCore.Commands.Add("clearblood", Lang:t("commands.clearblood"), {}, false, function(source)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
---         TriggerClientEvent("evidence:client:ClearBlooddropsInArea", src)
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
---     end
--- end)
+if Config.GlobalSettings['Evidence'] == 'default' then
+    QBCore.Commands.Add("clearblood", Lang:t("commands.clearblood"), {}, false, function(source)
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+            TriggerClientEvent("evidence:client:ClearBlooddropsInArea", src)
+        else
+            TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
+        end
+    end)
+end
 
 QBCore.Commands.Add("seizecash", Lang:t("commands.seizecash"), {}, false, function(source)
     local src = source
@@ -364,23 +368,25 @@ QBCore.Commands.Add("takedrivinglicense", Lang:t("commands.drivinglicense"), {},
     end
 end)
 
--- QBCore.Commands.Add("takedna", Lang:t("commands.takedna"), {{name = "id", help = Lang:t('info.player_id')}}, true, function(source, args)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     local OtherPlayer = QBCore.Functions.GetPlayer(tonumber(args[1]))
---     if not OtherPlayer or Player.PlayerData.job.name ~= Config.Job['Police'] or not Player.PlayerData.job.onduty then return end
---     if Player.Functions.RemoveItem("empty_evidence_bag", 1) then
---         local info = {
---             label = Lang:t('info.dna_sample'),
---             type = "dna",
---             dnalabel = DnaHash(OtherPlayer.PlayerData.citizenid)
---         }
---         if not Player.Functions.AddItem("filled_evidence_bag", 1, false, info) then return end
---         TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["filled_evidence_bag"], "add")
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
---     end
--- end)
+if Config.GlobalSettings['Evidence'] == 'default' then
+    QBCore.Commands.Add("takedna", Lang:t("commands.takedna"), {{name = "id", help = Lang:t('info.player_id')}}, true, function(source, args)
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        local OtherPlayer = QBCore.Functions.GetPlayer(tonumber(args[1]))
+        if not OtherPlayer or Player.PlayerData.job.name ~= Config.Job['Police'] or not Player.PlayerData.job.onduty then return end
+        if Player.Functions.RemoveItem("empty_evidence_bag", 1) then
+            local info = {
+                label = Lang:t('info.dna_sample'),
+                type = "dna",
+                dnalabel = DnaHash(OtherPlayer.PlayerData.citizenid)
+            }
+            if not Player.Functions.AddItem("filled_evidence_bag", 1, false, info) then return end
+            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["filled_evidence_bag"], "add")
+        else
+            TriggerClientEvent('QBCore:Notify', src, Lang:t("error.have_evidence_bag"), "error")
+        end
+    end)
+end
 
 QBCore.Commands.Add("store", "Stores your cruiser if you're near a police garage", {}, false, function(source)
     local src = source

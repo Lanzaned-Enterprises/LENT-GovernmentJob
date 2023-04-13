@@ -19,6 +19,11 @@ Config.GlobalSettings = {
     ['LicenseRank'] = 4,
     ['DefaultPlate'] = "UPD " .. math.random(1111, 9999),
     ['MaxZoneSize'] = 30.0,
+    ['Phone'] = 'qb', -- WIP
+    ['Library'] = "lent", -- WIP
+    ['Evidence'] = 'r14' -- default, r14
+    ['UsePlateSet'] = true, -- Allow Plate Customs
+    ['MenuExport'] = 'qb-menu', -- qb
 }
 
 Config.UnitblipSettings = {
@@ -56,6 +61,7 @@ Config.Job = {
 Config.Helicopters = {
     `b412`,
     `as365`,
+    `as350`,
     `polmav`,
 }
 
@@ -83,7 +89,12 @@ Config.Locations = {
     },
     ["evidence"] = {
         [600] = vector3(473.4, -1006.11, 34.22), ---Mission Row
-        [700] = vector3(1857.18, 3690.29, 29.82), -- Sandy Shores
+        
+        [700] = vector3(1828.35, 3659.84, 30.31), -- Sandy Shores
+        [701] = vector3(1857.18, 3690.29, 29.82), -- Sandy Shores
+        [702] = vector3(1824.21, 3659.03, 30.31), -- Sandy Shores
+        [703] = vector3(1823.17, 3663.37, 30.31), -- Sandy Shores
+
         [800] = vector3(1651.31, 4880.92, 45.52), -- Grapeseed
         [900] = vector3(1547.74, 827.49, 82.13), -- San Andreas Highway Patrol
     },

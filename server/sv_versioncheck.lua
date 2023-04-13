@@ -1,5 +1,5 @@
 --[[ Version Checker ]] --
-local version = "220"
+local version = "300"
 
 local DISCORD_WEBHOOK = ""
 local DISCORD_NAME = "LENT - GovernmentJobs"

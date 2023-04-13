@@ -107,7 +107,7 @@ RegisterNetEvent("QBCore:Client:SetDuty", function(newDuty)
 end)
 
 RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
-    if JobInfo.name ~= "upd" or JobInfo.name ~= "sasp" or JobInfo.name ~= "police" or JobInfo.name ~= "bcso" or JobInfo.name ~= "doc" then
+    if JobInfo.name ~= config.job['doj'] or JobInfo.name ~= config.job['statepolice'] or JobInfo.name ~= config.job['police'] or JobInfo.name ~= config.job['sheriff'] or JobInfo.name ~= config.job['corrections'] then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
                 RemoveBlip(v)

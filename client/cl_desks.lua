@@ -1,5 +1,5 @@
 RegisterNetEvent("LENT-GovernmentJob:Client:QuestionsMenu:SandyShores", function()
-    exports["LENT-Menu"]:openMenu({
+    exports[Config.GlobalSettings['MenuExport']]:openMenu({
         {
             header = 'Sergeant - H. Jquafis',
             isMenuHeader = true,
@@ -17,7 +17,7 @@ RegisterNetEvent("LENT-GovernmentJob:Client:QuestionsMenu:SandyShores", function
 end)
 
 RegisterNetEvent("LENT-GovernmentJob:Client:QuestionsMenu", function()
-    exports["LENT-Menu"]:openMenu({
+    exports[Config.GlobalSettings['MenuExport']]:openMenu({
         {
             header = 'Sergeant - T. Klein',
             isMenuHeader = true,
@@ -41,7 +41,7 @@ RegisterNetEvent("LENT-GovernmentJob:Client:QuestionsMenu", function()
 end)
 
 RegisterNetEvent('LENT-GovernmentJob:Client:DeskHarold', function()
-    exports["LENT-Menu"]:openMenu({
+    exports[Config.GlobalSettings['MenuExport']]:openMenu({
         {
             header = 'Sergeant - Harold',
             isMenuHeader = true,
@@ -50,6 +50,12 @@ RegisterNetEvent('LENT-GovernmentJob:Client:DeskHarold', function()
             header = "Spawn Cruiser",
             params = {
                 event = "LENT-GovernmentJob:Client:SelectVehicle",
+            },
+        },
+        {
+            header = "Spawn Helicopter",
+            params = {
+                event = "LENT-GovernmentJob:Client:SelectChopper",
             },
         },
         {
@@ -65,7 +71,7 @@ RegisterNetEvent('LENT-GovernmentJob:Client:DeskHarold', function()
 end)
 
 RegisterNetEvent('LENT-GovernmentJob:Client:LSPD-Menu', function()
-    exports["LENT-Menu"]:openMenu({
+    exports[Config.GlobalSettings['MenuExport']]:openMenu({
         {
             header = 'Sergeant - Harold',
             isMenuHeader = true,
@@ -86,7 +92,7 @@ RegisterNetEvent('LENT-GovernmentJob:Client:LSPD-Menu', function()
 end)
 
 RegisterNetEvent('LENT-GovernmnetJob:Client:ShopOptions', function()
-    exports["LENT-Menu"]:openMenu({
+    exports[Config.GlobalSettings['MenuExport']]:openMenu({
         {
             header = 'UPD Shop Control',
             isMenuHeader = true,
