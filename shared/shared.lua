@@ -21,7 +21,7 @@ Config.GlobalSettings = {
     ['MaxZoneSize'] = 30.0,
     ['Phone'] = 'qb', -- WIP
     ['Library'] = "lent", -- WIP
-    ['Evidence'] = 'r14' -- default, r14
+    ['Evidence'] = 'r14', -- default, r14
     ['UsePlateSet'] = true, -- Allow Plate Customs
     ['MenuExport'] = 'qb-menu', -- qb
 }
