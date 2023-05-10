@@ -75,7 +75,9 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
         TriggerEvent('qb-clothing:client:loadOutfit', trackerClothingData)
     end
 
-    if PlayerJob and PlayerJob.name ~= Config.Job['DOJ'] or PlayerJob.name ~= Config.Job['StatePolice'] or PlayerJob.name ~= Config.Job['Police'] or PlayerJob.name ~= Config.Job['Sheriff'] or PlayerJob.name ~= Config.Job['Corrections'] then
+    -- if PlayerJob and PlayerJob.name ~= Config.Job['DOJ'] or PlayerJob.name ~= Config.Job['StatePolice'] or PlayerJob.name ~= Config.Job['Police'] or PlayerJob.name ~= Config.Job['Sheriff'] or PlayerJob.name ~= Config.Job['Corrections'] then
+        
+    if PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment'] or PlayerJob.name == Config.Job['FederalBureau'] or PlayerJob.name == Config.Job['AffairsAgency'] or PlayerJob.name == Config.Job['Military'] then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
                 RemoveBlip(v)
@@ -107,7 +109,7 @@ RegisterNetEvent("QBCore:Client:SetDuty", function(newDuty)
 end)
 
 RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
-    if JobInfo.name ~= config.job['doj'] or JobInfo.name ~= config.job['statepolice'] or JobInfo.name ~= config.job['police'] or JobInfo.name ~= config.job['sheriff'] or JobInfo.name ~= config.job['corrections'] then
+    if (JobInfo.name == Config.Job['DOJ'] or JobInfo.name == Config.Job['StatePolice'] or JobInfo.name == Config.Job['Police'] or JobInfo.name == Config.Job['Sheriff'] or JobInfo.name == Config.Job['Corrections'] or JobInfo.name == Config.Job['FireDepartment'] or JobInfo.name == Config.Job['FederalBureau'] or JobInfo.name == Config.Job['AffairsAgency'] or JobInfo.name == Config.Job['Military']) then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
                 RemoveBlip(v)
@@ -136,7 +138,7 @@ RegisterNetEvent('police:client:sendBillingMail', function(amount)
 end)
 
 RegisterNetEvent('police:client:UpdateBlips', function(players)
-    if PlayerJob and (PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment']) and
+    if PlayerJob and (PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment'] or PlayerJob.name == Config.Job['FederalBureau'] or PlayerJob.name == Config.Job['AffairsAgency'] or PlayerJob.name == Config.Job['Military']) and
         PlayerJob.onduty then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
@@ -162,6 +164,28 @@ RegisterNetEvent('police:client:SendToJail', function(time)
     TriggerEvent("prison:client:Enter", time)
 end)
 
-RegisterNetEvent("LENT:POLICE:MDT", function()
-    TriggerServerEvent('mdt:server:openMDT')    
+RegisterNetEvent("LENT-GovernmentJob:Client:MDT", function()
+    local plyPed = PlayerPedId()
+    PlayerData = QBCore.Functions.GetPlayerData()
+    if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
+        if PlayerJob and (PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment'] or PlayerJob.name == Config.Job['FederalBureau'] or PlayerJob.name == Config.Job['AffairsAgency'] or PlayerJob.name == Config.Job['Military']) then
+            TriggerServerEvent('mdt:server:openMDT')
+            TriggerServerEvent('mdt:requestOfficerData')
+        end
+    else
+        QBCore.Functions.Notify("Can't do that!", "error")
+    end
+end)
+
+RegisterNetEvent('ps-radialmenu:client:openmdt', function()
+    local plyPed = PlayerPedId()
+    PlayerData = QBCore.Functions.GetPlayerData()
+    if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
+        if PlayerJob and (PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment'] or PlayerJob.name == Config.Job['FederalBureau'] or PlayerJob.name == Config.Job['AffairsAgency'] or PlayerJob.name == Config.Job['Military']) then
+            TriggerServerEvent('mdt:server:openMDT')
+            TriggerServerEvent('mdt:requestOfficerData')
+        end
+    else
+        QBCore.Functions.Notify("Can't do that!", "error")
+    end
 end)

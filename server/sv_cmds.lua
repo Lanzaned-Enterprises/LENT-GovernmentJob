@@ -4,7 +4,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 QBCore.Commands.Add("spike", Lang:t("commands.place_spike"), {}, false, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         local length = tonumber(args[1])
         
         if length > Config.GlobalSettings['MaxSpikes'] then
@@ -20,7 +20,7 @@ end)
 QBCore.Commands.Add("szone", 'Place Speed Zone with Radius', {}, false, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         local ZoneSize = tonumber(args[1])
 
         if ZoneSize > Config.GlobalSettings['MaxZoneSize'] then
@@ -37,7 +37,7 @@ end)
 QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.grade.level >= Config.GlobalSettings['LicenseRank'] then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.grade.level >= Config.GlobalSettings['LicenseRank'] then
         if args[2] == "driver" or args[2] == "weapon" then
             local SearchedPlayer = QBCore.Functions.GetPlayer(tonumber(args[1]))
             if not SearchedPlayer then return end
@@ -61,7 +61,7 @@ end)
 QBCore.Commands.Add("revokelicense", Lang:t("commands.license_revoke"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.grade.level >= Config.GlobalSettings['LicenseRank'] then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.grade.level >= Config.GlobalSettings['LicenseRank'] then
         if args[2] == "driver" or args[2] == "weapon" then
             local SearchedPlayer = QBCore.Functions.GetPlayer(tonumber(args[1]))
             if not SearchedPlayer then return end
@@ -86,7 +86,7 @@ QBCore.Commands.Add("pobject", Lang:t("commands.place_object"), {{name = "type",
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local type = args[1]:lower()
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         if type == "cone" then
             TriggerClientEvent("police:client:spawnCone", src)
         elseif type == "barrier" then
@@ -108,7 +108,7 @@ end)
 QBCore.Commands.Add("cuff", Lang:t("commands.cuff_player"), {}, false, function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         TriggerClientEvent("police:client:CuffPlayer", src)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -130,7 +130,7 @@ if Config.GlobalSettings['Evidence'] == 'default' then
     QBCore.Commands.Add("clearcasings", Lang:t("commands.clear_casign"), {}, false, function(source)
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
-        if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+        if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
             TriggerClientEvent("evidence:client:ClearCasingsInArea", src)
         else
             TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -141,7 +141,7 @@ end
 QBCore.Commands.Add("jail", Lang:t("commands.jail_player"), {}, false, function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         TriggerClientEvent("police:client:JailPlayer", src)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -151,7 +151,7 @@ end)
 QBCore.Commands.Add("unjail", Lang:t("commands.unjail_player"), {{name = "id", help = Lang:t('info.player_id')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         local playerId = tonumber(args[1])
         TriggerClientEvent("prison:client:UnjailPerson", playerId)
     else
@@ -163,7 +163,7 @@ if Config.GlobalSettings['Evidence'] == 'default' then
     QBCore.Commands.Add("clearblood", Lang:t("commands.clearblood"), {}, false, function(source)
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
-        if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+        if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
             TriggerClientEvent("evidence:client:ClearBlooddropsInArea", src)
         else
             TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -174,7 +174,7 @@ end
 QBCore.Commands.Add("seizecash", Lang:t("commands.seizecash"), {}, false, function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         TriggerClientEvent("police:client:SeizeCash", src)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -184,7 +184,7 @@ end)
 QBCore.Commands.Add("sc", Lang:t("commands.softcuff"), {}, false, function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         TriggerClientEvent("police:client:CuffPlayerSoft", src)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -194,7 +194,7 @@ end)
 QBCore.Commands.Add("cam", Lang:t("commands.camera"), {{name = "camid", help = Lang:t('info.camera_id')}}, false, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         TriggerClientEvent("police:client:ActiveCamera", src, tonumber(args[1]))
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -204,7 +204,7 @@ end)
 QBCore.Commands.Add("flagplate", Lang:t("commands.flagplate"), {{name = "plate", help = Lang:t('info.plate_number')}, {name = "reason", help = Lang:t('info.flag_reason')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         local reason = {}
         for i = 2, #args, 1 do
             reason[#reason+1] = args[i]
@@ -222,7 +222,7 @@ end)
 QBCore.Commands.Add("unflagplate", Lang:t("commands.unflagplate"), {{name = "plate", help = Lang:t('info.plate_number')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         if Plates and Plates[args[1]:upper()] then
             if Plates[args[1]:upper()].isflagged then
                 Plates[args[1]:upper()].isflagged = false
@@ -241,7 +241,7 @@ end)
 QBCore.Commands.Add("plateinfo", Lang:t("commands.plateinfo"), {{name = "plate", help = Lang:t('info.plate_number')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         if Plates and Plates[args[1]:upper()] then
             if Plates[args[1]:upper()].isflagged then
                 TriggerClientEvent('QBCore:Notify', src, Lang:t('success.vehicle_flagged', {plate = args[1]:upper(), reason = Plates[args[1]:upper()].reason}), 'success')
@@ -259,7 +259,7 @@ end)
 QBCore.Commands.Add("impound", Lang:t("commands.impound"), {{name = "price", help = Lang:t('info.impound_price')}}, false, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         TriggerClientEvent("police:client:ImpoundVehicle", src, false, tonumber(args[1]))
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -269,7 +269,7 @@ end)
 QBCore.Commands.Add("paytow", Lang:t("commands.paytow"), {{name = "id", help = Lang:t('info.player_id')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         local playerId = tonumber(args[1])
         local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
         if OtherPlayer then
@@ -289,7 +289,7 @@ end)
 QBCore.Commands.Add("paylawyer", Lang:t("commands.paylawyer"), {{name = "id",help = Lang:t('info.player_id')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == "judge" then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] or Player.PlayerData.job.name == "judge" then
         local playerId = tonumber(args[1])
         local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
         if not OtherPlayer then return end
@@ -334,7 +334,7 @@ end)
 QBCore.Commands.Add("anklet", Lang:t("commands.anklet"), {}, false, function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         TriggerClientEvent("police:client:CheckDistance", src)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -344,7 +344,7 @@ end)
 QBCore.Commands.Add("ankletlocation", Lang:t("commands.ankletlocation"), {{name = "cid", help = Lang:t('info.citizen_id')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         local citizenid = args[1]
         local Target = QBCore.Functions.GetPlayerByCitizenId(citizenid)
         if not Target then return end
@@ -361,7 +361,7 @@ end)
 QBCore.Commands.Add("takedrivinglicense", Lang:t("commands.drivinglicense"), {}, false, function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then
         TriggerClientEvent("police:client:SeizeDriverLicense", source)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
@@ -391,7 +391,7 @@ end
 QBCore.Commands.Add("store", "Stores your cruiser if you're near a police garage", {}, false, function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] and Player.PlayerData.job.onduty then 
+    if Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] and Player.PlayerData.job.onduty then 
         TriggerClientEvent("LENT-GovernmentJob:Client:StoreVehicle", src)
     else
         TriggerClientEvent('QBCore:Notify', src, "You're not near a garage or you're not a onduty police officer!", "error")

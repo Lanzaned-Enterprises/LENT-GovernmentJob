@@ -1,6 +1,15 @@
 CoordsList = {}
  
 CoordsList.Coords = {
+    ['fib'] = {
+        -- [0] = vector3(0, 0, 0) -- Example
+    },
+    ['iaa'] = {
+        -- [0] = vector3(0, 0, 0) -- Example
+    },
+    ['military'] = {
+        -- [0] = vector3(0, 0, 0) -- Example
+    },
     ['doj'] = {
         -- [0] = vector3(0, 0, 0) -- Example
     },
@@ -8,7 +17,7 @@ CoordsList.Coords = {
         -- [0] = vector3(0, 0, 0) -- Example
     },
     ['police'] = {
-        [0] = vector3(437.93, -972.57, 25.79)
+        -- [0] = vector3(0, 0, 0) -- Example
     },
     ['bcso'] = {
         -- [0] = vector3(0, 0, 0) -- Example
@@ -19,9 +28,23 @@ CoordsList.Coords = {
     ['safd'] = {
         -- [0] = vector3(0, 0, 0) -- Example
     },
+    ['ambulance'] = {
+        -- [0] = vector3(0, 0, 0) -- Example
+    },
 }
 
 CoordsList.RandomSpawns = {
+    ['fib'] = {
+        -- [0] = {
+        --     vector4(0, 0, 0, 0)
+        -- },
+    },
+    ['iaa'] = {
+        -- [0] = vector3(0, 0, 0) -- Example
+    },
+    ['military'] = {
+        -- [0] = vector3(0, 0, 0) -- Example
+    },
     ['doj'] = {
         -- [0] = { 
         --     vector4(0, 0, 0, 0) 
@@ -33,13 +56,9 @@ CoordsList.RandomSpawns = {
         -- },
     },
     ['police'] = {
-        [0] = {
-            vector4(441.63, -979.32, 25.73, 270.64),
-            vector4(441.83, -982.19, 25.73, 84.27),
-            vector4(441.58, -985.07, 25.73, 268.16),
-            vector4(441.97, -987.97, 25.73, 264.83),
-            vector4(441.62, -990.59, 25.73, 91.17)
-        },
+        -- [0] = {
+        --     vector4(0, 0, 0, 0)
+        -- },
     },
     ['bcso'] = {
         -- [0] = {
@@ -55,5 +74,43 @@ CoordsList.RandomSpawns = {
         -- [0] = {
         --     vector4(0, 0, 0, 0)
         -- },
+    },
+    ['ambulance'] = {
+        -- [0] = {
+        --     vector4(0, 0, 0, 0)
+        -- },
+    },
+}
+
+CoordsList.Helicopter = {
+    ['fib'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
+    },
+    ['iaa'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
+    },
+    ['military'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
+    },
+    ['doj'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
+    },
+    ['sasp'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
+    },
+    ['police'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
+    },
+    ['bcso'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
+    },
+    ['doc'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
+    },
+    ['safd'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
+    },
+    ['ambulance'] = {
+        -- ['Coords'] = vector4(0, 0, 0, 0),
     },
 }

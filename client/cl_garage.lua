@@ -15,13 +15,88 @@ RegisterNetEvent('LENT-GovernmentJob:Client:SelectChopper', function()
         }
     }
 
-    for k, v in pairs(CoordsList.Coords[QBCore.Functions.GetPlayerData().job.name]) do
+    for k, v in pairs(CoordsList.Coords[Job]) do
         if #(pos - v) < 5 then
             CurrentGarage = k
         end
     end 
 
-    if Job == Config.Job["DOJ"] then
+    if Job == Config.Job["FederalBureau"] then
+        local CurrentGarage = CurrentGarage
+        local pos = GetEntityCoords(PlayerPedId())
+        local takeLoc = CoordsList.Coords['fib'][CurrentGarage]
+
+        if not takeLoc then return end
+
+        if #(pos - takeLoc) <= 10.0 then
+            local SpawnCoord = CoordsList.RandomSpawns['fib'][CurrentGarage]['Helicopter']
+
+            local AuthorizedVehicles = Helicopters.AuthorizedVehiclesFBI[QBCore.Functions.GetPlayerData().job.grade.level]
+            for veh, label in pairs(AuthorizedVehicles) do
+                vehicleMenu[#vehicleMenu + 1] = {
+                    header = label,
+                    params = {
+                        event = "LENT-GovernmentJob:Client:SpawnSelectedVehicle",
+                        args = {
+                            vehicle = veh,
+                            coords = SpawnCoord,
+                            helicopter = true,
+                        }
+                    }
+                }
+            end
+        end
+    elseif Job == Config.Job["AffairsAgency"] then
+        local CurrentGarage = CurrentGarage
+        local pos = GetEntityCoords(PlayerPedId())
+        local takeLoc = CoordsList.Coords['iaa'][CurrentGarage]
+
+        if not takeLoc then return end
+
+        if #(pos - takeLoc) <= 10.0 then
+            local SpawnCoord = CoordsList.RandomSpawns['iaa'][CurrentGarage]['Helicopter']
+
+            local AuthorizedVehicles = Helicopters.AuthorizedVehiclesCIA[QBCore.Functions.GetPlayerData().job.grade.level]
+            for veh, label in pairs(AuthorizedVehicles) do
+                vehicleMenu[#vehicleMenu + 1] = {
+                    header = label,
+                    params = {
+                        event = "LENT-GovernmentJob:Client:SpawnSelectedVehicle",
+                        args = {
+                            vehicle = veh,
+                            coords = SpawnCoord,
+                            helicopter = true,
+                        }
+                    }
+                }
+            end
+        end
+    elseif Job == Config.Job["Military"] then
+        local CurrentGarage = CurrentGarage
+        local pos = GetEntityCoords(PlayerPedId())
+        local takeLoc = CoordsList.Coords['military'][CurrentGarage]
+
+        if not takeLoc then return end
+
+        if #(pos - takeLoc) <= 10.0 then
+            local SpawnCoord = CoordsList.RandomSpawns['military'][CurrentGarage]['Helicopter']
+
+            local AuthorizedVehicles = Helicopters.AuthorizedVehiclesMilitary[QBCore.Functions.GetPlayerData().job.grade.level]
+            for veh, label in pairs(AuthorizedVehicles) do
+                vehicleMenu[#vehicleMenu + 1] = {
+                    header = label,
+                    params = {
+                        event = "LENT-GovernmentJob:Client:SpawnSelectedVehicle",
+                        args = {
+                            vehicle = veh,
+                            coords = SpawnCoord,
+                            helicopter = true,
+                        }
+                    }
+                }
+            end
+        end
+    elseif Job == Config.Job["DOJ"] then
         local CurrentGarage = CurrentGarage
         local pos = GetEntityCoords(PlayerPedId())
         local takeLoc = CoordsList.Coords['doj'][CurrentGarage]
@@ -184,6 +259,63 @@ RegisterNetEvent('LENT-GovernmentJob:Client:SelectChopper', function()
     exports['LENT-Menu']:openMenu(vehicleMenu)
 end)
 
+RegisterNetEvent('LENT-GovernmentJob:Client:SelectAmbulance', function()
+    local Job = QBCore.Functions.GetPlayerData().job.name
+    local CurrentGarage = 0
+    local pos = GetEntityCoords(PlayerPedId())
+
+    local vehicleMenu = {
+        {
+            header = Config.GlobalSettings['MenuName'],
+            icon = Config.GlobalSettings['MenuIcon'],
+            isMenuHeader = true,
+        }
+    }
+
+    for k, v in pairs(CoordsList.Coords['ambulance']) do
+        if #(pos - v) < 5 then
+            CurrentGarage = k
+        end
+    end 
+
+    if Job == Config.Job["FireDepartment"] then
+        local CurrentGarage = CurrentGarage
+        local pos = GetEntityCoords(PlayerPedId())
+        local takeLoc = CoordsList.Coords['ambulance'][CurrentGarage]
+
+        if not takeLoc then return end
+
+        if #(pos - takeLoc) <= 10.0 then
+            local ChooseRandomCoord = CoordsList.RandomSpawns['ambulance'][CurrentGarage]
+            local RandomizedCoord = (ChooseRandomCoord[math.random(#ChooseRandomCoord)])
+
+            local AuthorizedVehicles = Vehicles.AuthorizedAmulance[QBCore.Functions.GetPlayerData().job.grade.level]
+            for veh, label in pairs(AuthorizedVehicles) do
+                vehicleMenu[#vehicleMenu + 1] = {
+                    header = label,
+                    params = {
+                        event = "LENT-GovernmentJob:Client:SpawnSelectedVehicle",
+                        args = {
+                            vehicle = veh,
+                            coords = RandomizedCoord
+                        }
+                    }
+                }
+            end
+        end
+    end
+
+    vehicleMenu[#vehicleMenu + 1] = {
+        header = "Close Menu",
+        params = {
+            event = "qb-menu:client:closeMenu"
+        }
+
+    }
+
+    exports['LENT-Menu']:openMenu(vehicleMenu)
+end)
+
 RegisterNetEvent('LENT-GovernmentJob:Client:SelectVehicle', function()
     local Job = QBCore.Functions.GetPlayerData().job.name
     local CurrentGarage = 0
@@ -197,13 +329,88 @@ RegisterNetEvent('LENT-GovernmentJob:Client:SelectVehicle', function()
         }
     }
 
-    for k, v in pairs(CoordsList.Coords[QBCore.Functions.GetPlayerData().job.name]) do
+    for k, v in pairs(CoordsList.Coords[Job]) do
         if #(pos - v) < 5 then
             CurrentGarage = k
         end
     end 
 
-    if Job == Config.Job["DOJ"] then
+    if Job == Config.Job["FederalBureau"] then
+        local CurrentGarage = CurrentGarage
+        local pos = GetEntityCoords(PlayerPedId())
+        local takeLoc = CoordsList.Coords['fib'][CurrentGarage]
+
+        if not takeLoc then return end
+
+        if #(pos - takeLoc) <= 10.0 then
+            local ChooseRandomCoord = CoordsList.RandomSpawns['fib'][CurrentGarage]
+            local RandomizedCoord = (ChooseRandomCoord[math.random(#ChooseRandomCoord)])
+
+            local AuthorizedVehicles = Vehicles.AuthorizedVehiclesFBI[QBCore.Functions.GetPlayerData().job.grade.level]
+            for veh, label in pairs(AuthorizedVehicles) do
+                vehicleMenu[#vehicleMenu + 1] = {
+                    header = label,
+                    params = {
+                        event = "LENT-GovernmentJob:Client:SpawnSelectedVehicle",
+                        args = {
+                            vehicle = veh,
+                            coords = RandomizedCoord
+                        }
+                    }
+                }
+            end
+        end
+    elseif Job == Config.Job["AffairsAgency"] then
+        local CurrentGarage = CurrentGarage
+        local pos = GetEntityCoords(PlayerPedId())
+        local takeLoc = CoordsList.Coords['iaa'][CurrentGarage]
+
+        if not takeLoc then return end
+
+        if #(pos - takeLoc) <= 10.0 then
+            local ChooseRandomCoord = CoordsList.RandomSpawns['iaa'][CurrentGarage]
+            local RandomizedCoord = (ChooseRandomCoord[math.random(#ChooseRandomCoord)])
+
+            local AuthorizedVehicles = Vehicles.AuthorizedVehiclesCIA[QBCore.Functions.GetPlayerData().job.grade.level]
+            for veh, label in pairs(AuthorizedVehicles) do
+                vehicleMenu[#vehicleMenu + 1] = {
+                    header = label,
+                    params = {
+                        event = "LENT-GovernmentJob:Client:SpawnSelectedVehicle",
+                        args = {
+                            vehicle = veh,
+                            coords = RandomizedCoord
+                        }
+                    }
+                }
+            end
+        end
+    elseif Job == Config.Job["Military"] then
+        local CurrentGarage = CurrentGarage
+        local pos = GetEntityCoords(PlayerPedId())
+        local takeLoc = CoordsList.Coords['military'][CurrentGarage]
+
+        if not takeLoc then return end
+
+        if #(pos - takeLoc) <= 10.0 then
+            local ChooseRandomCoord = CoordsList.RandomSpawns['military'][CurrentGarage]
+            local RandomizedCoord = (ChooseRandomCoord[math.random(#ChooseRandomCoord)])
+
+            local AuthorizedVehicles = Vehicles.AuthorizedVehiclesMilitary[QBCore.Functions.GetPlayerData().job.grade.level]
+            for veh, label in pairs(AuthorizedVehicles) do
+                vehicleMenu[#vehicleMenu + 1] = {
+                    header = label,
+                    params = {
+                        event = "LENT-GovernmentJob:Client:SpawnSelectedVehicle",
+                        args = {
+                            vehicle = veh,
+                            coords = RandomizedCoord
+                        }
+                    }
+                }
+            end
+        end
+    elseif Job == Config.Job["DOJ"] then
         local CurrentGarage = CurrentGarage
         local pos = GetEntityCoords(PlayerPedId())
         local takeLoc = CoordsList.Coords['doj'][CurrentGarage]
@@ -474,6 +681,5 @@ RegisterNetEvent("LENT-GovernmentJob:Client:SetKeys", function()
     if nearByVehicle then
         local vehicle = GetVehiclePedIsUsing(PlayerPedId())
         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(vehicle))
-        TriggerEvent('jim-mechanic:client:Police:Menu')
     end
 end)

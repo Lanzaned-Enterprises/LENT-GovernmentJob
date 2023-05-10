@@ -14,7 +14,7 @@ local function UpdateBlips()
     local players = QBCore.Functions.GetQBPlayers()
 
     for _, v in pairs(players) do
-        if v and (v.PlayerData.job.name == Config.Job['DOJ'] or v.PlayerData.job.name == Config.Job['StatePolice'] or v.PlayerData.job.name == Config.Job['Police'] or v.PlayerData.job.name == Config.Job['Sheriff'] or v.PlayerData.job.name == Config.Job['Corrections'] or v.PlayerData.job.name == Config.Job['FireDepartment']) and v.PlayerData.job.onduty then
+        if v and (v.PlayerData.job.name == Config.Job['DOJ'] or v.PlayerData.job.name == Config.Job['StatePolice'] or v.PlayerData.job.name == Config.Job['Police'] or v.PlayerData.job.name == Config.Job['Sheriff'] or v.PlayerData.job.name == Config.Job['Corrections'] or v.PlayerData.job.name == Config.Job['FireDepartment'] or v.PlayerData.job.name == Config.Job['FederalBureau'] or v.PlayerData.job.name == Config.Job['AffairsAgency'] or v.PlayerData.job.name == Config.Job['Military']) and v.PlayerData.job.onduty then
             local coords = GetEntityCoords(GetPlayerPed(v.PlayerData.source))
             local heading = GetEntityHeading(GetPlayerPed(v.PlayerData.source))
             local ped = GetPlayerPed(v.PlayerData.source)
@@ -53,6 +53,12 @@ local function UpdateBlips()
                 blipColorNum = Config.UnitblipSettings['DOCColor']
             elseif v.PlayerData.job.name == Config.Job['FireDepartment'] then
                 blipColorNum = Config.UnitblipSettings['SAFDColor']
+            elseif v.PlayerData.job.name == Config.Job['FederalBureau'] then
+                blipColorNum = Config.UnitblipSettings['FIBColor']
+            elseif v.PlayerData.job.name == Config.Job['AffairsAgency'] then
+                blipColorNum = Config.UnitblipSettings['IAAColor']
+            elseif v.PlayerData.job.name == Config.Job['Military'] then
+                blipColorNum = Config.UnitblipSettings['MilitaryColor']
             else 
                 blipColorNum = Config.UnitblipSettings['FallBackBlip']
             end
@@ -179,7 +185,7 @@ end)
 QBCore.Functions.CreateUseableItem("moneybag", function(source, item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if not Player or not Player.Functions.GetItemByName("moneybag") or not item.info or item.info == "" or Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or not Player.Functions.RemoveItem("moneybag", 1, item.slot) then return end
+    if not Player or not Player.Functions.GetItemByName("moneybag") or not item.info or item.info == "" or Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] or not Player.Functions.RemoveItem("moneybag", 1, item.slot) then return end
     Player.Functions.AddMoney("cash", tonumber(item.info.cash), "used-moneybag")
 end)
 
@@ -313,7 +319,7 @@ RegisterNetEvent('police:server:CuffPlayer', function(playerId, isSoftcuff)
     local CuffedPlayer = QBCore.Functions.GetPlayer(playerId)
     -- if not Player or not CuffedPlayer or (not Player.Functions.GetItemByName("handcuffs") and Player.PlayerData.job.name ~= Config.Job['DOJ'] or Player.PlayerData.job.name ~= Config.Job['StatePolice'] or Player.PlayerData.job.name ~= Config.Job['Police'] or Player.PlayerData.job.name ~= Config.Job['Sheriff'] or Player.PlayerData.job.name ~= Config.Job['Corrections']) then return end
 
-    if (Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment']) then
+    if (Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military']) then
         TriggerClientEvent("police:client:GetCuffed", CuffedPlayer.PlayerData.source, Player.PlayerData.source, isSoftcuff)
     end
 end)
@@ -330,7 +336,7 @@ RegisterNetEvent('police:server:EscortPlayer', function(playerId)
     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
     if not Player or not EscortPlayer then return end
 
-    if (Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment']) or (EscortPlayer.PlayerData.metadata["ishandcuffed"] or EscortPlayer.PlayerData.metadata["isdead"] or EscortPlayer.PlayerData.metadata["inlaststand"]) then
+    if (Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military']) or (EscortPlayer.PlayerData.metadata["ishandcuffed"] or EscortPlayer.PlayerData.metadata["isdead"] or EscortPlayer.PlayerData.metadata["inlaststand"]) then
         TriggerClientEvent("police:client:GetEscorted", EscortPlayer.PlayerData.source, Player.PlayerData.source)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.not_cuffed_dead"), 'error')
@@ -421,7 +427,7 @@ RegisterNetEvent('police:server:JailPlayer', function(playerId, time)
     local Player = QBCore.Functions.GetPlayer(src)
     local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
 
-    if (Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections']) then
+    if (Player.PlayerData.job.name == Config.Job['DOJ'] or Player.PlayerData.job.name == Config.Job['StatePolice'] or Player.PlayerData.job.name == Config.Job['Police'] or Player.PlayerData.job.name == Config.Job['Sheriff'] or Player.PlayerData.job.name == Config.Job['Corrections'] or Player.PlayerData.job.name == Config.Job['FireDepartment'] or Player.PlayerData.job.name == Config.Job['FederalBureau'] or Player.PlayerData.job.name == Config.Job['AffairsAgency'] or Player.PlayerData.job.name == Config.Job['Military']) then
         local currentDate = os.date("*t")
         if currentDate.day == 31 then
             currentDate.day = 30

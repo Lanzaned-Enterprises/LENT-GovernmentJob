@@ -20,7 +20,6 @@ Config.GlobalSettings = {
     ['DefaultPlate'] = "UPD " .. math.random(1111, 9999),
     ['MaxZoneSize'] = 30.0,
     ['Phone'] = 'qb', -- WIP
-    ['Library'] = "lent", -- WIP
     ['Evidence'] = 'r14', -- default, r14
     ['UsePlateSet'] = true, -- Allow Plate Customs
     ['MenuExport'] = 'qb-menu', -- qb
@@ -34,6 +33,11 @@ Config.UnitblipSettings = {
     ["BCSOColor"] = 47,
     ["DOCColor"] = 52,
     ["SAFDColor"] = 6,
+    
+    ["FIBColor"] = 67,
+    ["IAAColor"] = 67,
+    ["MilitaryColor"] = 81,
+
     ["FallBackBlip"] = 8,
 }
 
@@ -54,6 +58,10 @@ Config.Job = {
     ['Sheriff'] = "bcso",
     ['Corrections'] = "doc",
     ['FireDepartment'] = "ambulance",
+    
+    ['FederalBureau'] = "fib",
+    ['AffairsAgency'] = "iaa",
+    ['Military'] = "military",
     -- If you add more you need to add more to `client/cl_garage.lua`
 }
 
@@ -79,24 +87,36 @@ Config.ParkingLocations = {
     [603] = { ["Coords"] = vector3(426.41, -984.99, 25.73) }, -- MRPD
     [604] = { ["Coords"] = vector3(426.41, -987.78, 25.73) }, -- MRPD
     [605] = { ["Coords"] = vector3(425.98, -990.73, 25.73) }, -- MRPD
+    -- Davis
+    [603] = { ["Coords"] = vector3(356.17, -1584.98, 29.29) }, -- Davis Sheriff
+    [604] = { ["Coords"] = vector3(357.83, -1582.9, 29.29) }, -- Davis Sheriff
+    [605] = { ["Coords"] = vector3(359.97, -1580.72, 29.29) }, -- Davis Sheriff
 }
 
 -- [[ Locations ]] --
 Config.Locations = {
     ["impound"] = {
-        [1] = vector3(436.68, -1007.42, 27.32),
-        [2] = vector3(-436.14, 5982.63, 31.34),
+        [1] = vector3(455.96, -1017.17, 28.4), -- Sandy Shores
+        [2] = vector3(-436.14, 5982.63, 31.34), -- Davis
     },
     ["evidence"] = {
         [600] = vector3(473.4, -1006.11, 34.22), ---Mission Row
-        
+        [601] = vector3(-1628.3, -1026.84, 13.16), -- Dell Perro
+
         [700] = vector3(1828.35, 3659.84, 30.31), -- Sandy Shores
         [701] = vector3(1857.18, 3690.29, 29.82), -- Sandy Shores
         [702] = vector3(1824.21, 3659.03, 30.31), -- Sandy Shores
         [703] = vector3(1823.17, 3663.37, 30.31), -- Sandy Shores
+        [704] = vector3(379.21, -1597.37, 25.36), -- Davis Sheriff
+        [705] = vector3(375.38, -1594.19, 25.36), -- Davis Sheriff
+        [706] = vector3(373.74, -1597.06, 25.36), -- Davis Sheriff
+        [707] = vector3(376.58, -1598.19, 25.36), -- Davis Sheriff
 
         [800] = vector3(1651.31, 4880.92, 45.52), -- Grapeseed
+
         [900] = vector3(1547.74, 827.49, 82.13), -- San Andreas Highway Patrol
+
+        [1000] = vector3(-3172.26, 1116.31, 21.07), -- FIB Sub Station
     },
 }
 
@@ -168,13 +188,22 @@ Config.SASPArmory = {
             slot = 7,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
+        [29] = {
+            name = "ifaks",
+            amount = 10,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 8,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
         [8] = {
             name = "heavyarmor",
             amount = 10,
             price = 0,
             info = {},
             type = "item",
-            slot = 8,
+            slot = 9,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [9] = {
@@ -183,7 +212,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 9,
+            slot = 10,
             authorizedJobGrades = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [10] = {
@@ -194,7 +223,7 @@ Config.SASPArmory = {
                 serie = "",
             },
             type = "weapon",
-            slot = 10,
+            slot = 11,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [11] = {
@@ -208,7 +237,7 @@ Config.SASPArmory = {
                 }
             },
             type = "weapon",
-            slot = 11,
+            slot = 12,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [12] = {
@@ -222,21 +251,22 @@ Config.SASPArmory = {
                 }
             },
             type = "weapon",
-            slot = 12,
+            slot = 13,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [13] = {
-            name = "weapon_ar15",
+            name = "weapon_scar17fm",
             amount = 1,
             price = 0,
             info = {
                 serie = "",
                 attachments = {
-                    {component = "COMPONENT_AT_AR_FLSH", label = "Flashlight"},
+                    { component = "COMPONENT_SCAR_BODY_02", label = "Black Frame" },
+                    { component = "COMPONENT_SCAR_CLIP_03", label = "Black Clip" },
                 }
             },
             type = "weapon",
-            slot = 13,
+            slot = 14,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [14] = {
@@ -250,7 +280,7 @@ Config.SASPArmory = {
                 }
             },
             type = "weapon",
-            slot = 14,
+            slot = 15,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [15] = {
@@ -266,7 +296,7 @@ Config.SASPArmory = {
                 }
             },
             type = "weapon",
-            slot = 15,
+            slot = 16,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [16] = {
@@ -275,7 +305,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 16,
+            slot = 17,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [17] = {
@@ -284,7 +314,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 17,
+            slot = 18,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [18] = {
@@ -293,7 +323,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 18,
+            slot = 19,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [19] = {
@@ -302,7 +332,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 19,
+            slot = 20,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [20] = {
@@ -311,7 +341,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 20,
+            slot = 21,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [21] = {
@@ -320,7 +350,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 21,
+            slot = 22,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [22] = {
@@ -329,7 +359,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 22,
+            slot = 23,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [23] = {
@@ -338,7 +368,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 23,
+            slot = 24,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [24] = {
@@ -347,7 +377,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 24,
+            slot = 25,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [25] = {
@@ -356,7 +386,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 25,
+            slot = 26,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [26] = {
@@ -365,7 +395,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 26,
+            slot = 27,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [27] = {
@@ -374,7 +404,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 27,
+            slot = 28,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [28] = {
@@ -383,7 +413,7 @@ Config.SASPArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 28,
+            slot = 29,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
     }
@@ -455,6 +485,14 @@ Config.LSPDArmory = {
             type = "item",
             slot = 7,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },        [29] = {
+            name = "ifaks",
+            amount = 10,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 8,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [8] = {
             name = "heavyarmor",
@@ -462,7 +500,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 8,
+            slot = 9,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [9] = {
@@ -471,7 +509,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 9,
+            slot = 10,
             authorizedJobGrades = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [10] = {
@@ -482,7 +520,7 @@ Config.LSPDArmory = {
                 serie = "",
             },
             type = "weapon",
-            slot = 10,
+            slot = 11,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [11] = {
@@ -496,7 +534,7 @@ Config.LSPDArmory = {
                 }
             },
             type = "weapon",
-            slot = 11,
+            slot = 12,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [12] = {
@@ -510,7 +548,7 @@ Config.LSPDArmory = {
                 }
             },
             type = "weapon",
-            slot = 12,
+            slot = 13,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [13] = {
@@ -524,7 +562,7 @@ Config.LSPDArmory = {
                 }
             },
             type = "weapon",
-            slot = 13,
+            slot = 14,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [14] = {
@@ -538,7 +576,7 @@ Config.LSPDArmory = {
                 }
             },
             type = "weapon",
-            slot = 14,
+            slot = 15,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [15] = {
@@ -554,7 +592,7 @@ Config.LSPDArmory = {
                 }
             },
             type = "weapon",
-            slot = 15,
+            slot = 16,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [16] = {
@@ -563,7 +601,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 16,
+            slot = 17,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [17] = {
@@ -572,7 +610,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 17,
+            slot = 18,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [18] = {
@@ -581,7 +619,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 18,
+            slot = 19,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [19] = {
@@ -590,7 +628,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 19,
+            slot = 20,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [20] = {
@@ -599,7 +637,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 20,
+            slot = 21,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [21] = {
@@ -608,7 +646,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 21,
+            slot = 22,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [22] = {
@@ -617,7 +655,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 22,
+            slot = 23,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [23] = {
@@ -626,7 +664,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 23,
+            slot = 24,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [24] = {
@@ -635,7 +673,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 24,
+            slot = 25,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [25] = {
@@ -644,7 +682,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 25,
+            slot = 26,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [26] = {
@@ -653,7 +691,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 26,
+            slot = 27,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [27] = {
@@ -662,7 +700,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 27,
+            slot = 28,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [28] = {
@@ -671,7 +709,7 @@ Config.LSPDArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 28,
+            slot = 29,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
     }
@@ -744,13 +782,22 @@ Config.BCSOArmory = {
             slot = 7,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
+        [29] = {
+            name = "ifaks",
+            amount = 10,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 8,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
         [8] = {
             name = "heavyarmor",
             amount = 10,
             price = 0,
             info = {},
             type = "item",
-            slot = 8,
+            slot = 9,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [9] = {
@@ -759,7 +806,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 9,
+            slot = 10,
             authorizedJobGrades = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [10] = {
@@ -770,7 +817,7 @@ Config.BCSOArmory = {
                 serie = "",
             },
             type = "weapon",
-            slot = 10,
+            slot = 11,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [11] = {
@@ -784,7 +831,7 @@ Config.BCSOArmory = {
                 }
             },
             type = "weapon",
-            slot = 11,
+            slot = 12,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [12] = {
@@ -798,7 +845,7 @@ Config.BCSOArmory = {
                 }
             },
             type = "weapon",
-            slot = 12,
+            slot = 13,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [13] = {
@@ -812,7 +859,7 @@ Config.BCSOArmory = {
                 }
             },
             type = "weapon",
-            slot = 13,
+            slot = 14,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [14] = {
@@ -826,7 +873,7 @@ Config.BCSOArmory = {
                 }
             },
             type = "weapon",
-            slot = 14,
+            slot = 15,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [15] = {
@@ -842,7 +889,7 @@ Config.BCSOArmory = {
                 }
             },
             type = "weapon",
-            slot = 15,
+            slot = 16,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [16] = {
@@ -851,7 +898,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 16,
+            slot = 17,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [17] = {
@@ -860,7 +907,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 17,
+            slot = 18,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [18] = {
@@ -869,7 +916,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 18,
+            slot = 19,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [19] = {
@@ -878,7 +925,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 19,
+            slot = 20,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [20] = {
@@ -887,7 +934,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 20,
+            slot = 21,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [21] = {
@@ -896,7 +943,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 21,
+            slot = 22,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [22] = {
@@ -905,7 +952,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 22,
+            slot = 23,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [23] = {
@@ -914,7 +961,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 23,
+            slot = 24,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [24] = {
@@ -923,7 +970,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 24,
+            slot = 25,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [25] = {
@@ -932,7 +979,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 25,
+            slot = 26,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [26] = {
@@ -941,7 +988,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 26,
+            slot = 27,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [27] = {
@@ -950,7 +997,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 27,
+            slot = 28,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [28] = {
@@ -959,7 +1006,7 @@ Config.BCSOArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 28,
+            slot = 29,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
     }
@@ -1032,13 +1079,22 @@ Config.DOCArmory = {
             slot = 7,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
+        [29] = {
+            name = "ifaks",
+            amount = 10,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 8,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
         [8] = {
             name = "heavyarmor",
             amount = 10,
             price = 0,
             info = {},
             type = "item",
-            slot = 8,
+            slot = 9,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [9] = {
@@ -1047,7 +1103,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 9,
+            slot = 10,
             authorizedJobGrades = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [10] = {
@@ -1058,7 +1114,7 @@ Config.DOCArmory = {
                 serie = "",
             },
             type = "weapon",
-            slot = 10,
+            slot = 11,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [11] = {
@@ -1072,7 +1128,7 @@ Config.DOCArmory = {
                 }
             },
             type = "weapon",
-            slot = 11,
+            slot = 12,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [12] = {
@@ -1086,7 +1142,7 @@ Config.DOCArmory = {
                 }
             },
             type = "weapon",
-            slot = 12,
+            slot = 13,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [13] = {
@@ -1100,7 +1156,7 @@ Config.DOCArmory = {
                 }
             },
             type = "weapon",
-            slot = 13,
+            slot = 14,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [14] = {
@@ -1114,7 +1170,7 @@ Config.DOCArmory = {
                 }
             },
             type = "weapon",
-            slot = 14,
+            slot = 15,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [15] = {
@@ -1130,7 +1186,7 @@ Config.DOCArmory = {
                 }
             },
             type = "weapon",
-            slot = 15,
+            slot = 16,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [16] = {
@@ -1139,7 +1195,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 16,
+            slot = 17,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [17] = {
@@ -1148,7 +1204,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 17,
+            slot = 18,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [18] = {
@@ -1157,7 +1213,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 18,
+            slot = 19,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [19] = {
@@ -1166,7 +1222,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 19,
+            slot = 20,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [20] = {
@@ -1175,7 +1231,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 20,
+            slot = 21,
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [21] = {
@@ -1184,7 +1240,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 21,
+            slot = 22,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [22] = {
@@ -1193,7 +1249,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 22,
+            slot = 23,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [23] = {
@@ -1202,7 +1258,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 23,
+            slot = 24,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [24] = {
@@ -1211,7 +1267,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 24,
+            slot = 25,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [25] = {
@@ -1220,7 +1276,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 25,
+            slot = 26,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [26] = {
@@ -1229,7 +1285,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 26,
+            slot = 27,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [27] = {
@@ -1238,7 +1294,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 27,
+            slot = 28,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
         [28] = {
@@ -1247,7 +1303,7 @@ Config.DOCArmory = {
             price = 0,
             info = {},
             type = "item",
-            slot = 28,
+            slot = 29,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
     }
@@ -1399,6 +1455,246 @@ Config.SAFDArmory = {
             info = {},
             type = "item",
             slot = 16,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+    }
+}
+
+Config.FIBArmory = {
+    label = "Federal Armory",
+    slots = 30,
+    items = {
+        [1] = {
+            name = "weapon_nightstick",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "weapon",
+            slot = 1,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [2] = {
+            name = "weapon_flashlight",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "weapon",
+            slot = 2,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [3] = {
+            name = "handcuffs",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 3,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [4] = {
+            name = "empty_evidence_bag",
+            amount = 150,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 4,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [5] = {
+            name = "radio",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 5,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [6] = {
+            name = "mdt",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 6,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [7] = {
+            name = "panicbutton",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 7,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [8] = {
+            name = "ifaks",
+            amount = 200,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 8,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [9] = {
+            name = "heavyarmor",
+            amount = 10,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 9,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [10] = {
+            name = "badge",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 10,
+            authorizedJobGrades = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [11] = {
+            name = "weapon_stungun",
+            amount = 1,
+            price = 0,
+            info = {
+                serie = "",
+            },
+            type = "weapon",
+            slot = 11,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [12] = {
+            name = "weapon_glock19gen4",
+            amount = 1,
+            price = 0,
+            info = {
+                serie = "",
+                attachments = {
+                    { component = "COMPONENT_GLOCK19GEN4_CLIP_02", label = "Extended Magazine" },
+                    { component = "COMPONENT_GLOCK19GEN4_FLSH_01", label = "Flashlight" },
+                }
+            },
+            type = "weapon",
+            slot = 12,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [13] = {
+            name = "WEAPON_M6IC",
+            amount = 1,
+            price = 0,
+            info = {
+                serie = "",
+                attachments = {
+                    { component = "COMPONENT_M6IC_FRAME_02", label = "Tan Frame" },
+                    { component = "COMPONENT_M6IC_CLIP_02", label = "Tan Clip" },
+                    { component = "COMPONENT_M6IC_FLSH_02", label = "Tan Flashlight" },
+                    { component = "COMPONENT_M6IC_SUPP_02", label = "Tan Supressor" },
+                    { component = "COMPONENT_M6IC_STOCK_02", label = "Tan Stock" },
+                },
+            },
+            type = "weapon",
+            slot = 13,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [14] = {
+            name = "taserammo",
+            amount = 50,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 14,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [15] = {
+            name = "9mm_ammo",
+            amount = 50,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 15,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [16] = {
+            name = "556_ammo",
+            amount = 50,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 16,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [17] = {
+            name = "nikon",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 17,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [18] = {
+            name = "gsrtestkit",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 18,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [19] = {
+            name = "dnatestkit",
+            amount = 5,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 19,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [20] = {
+            name = "drugtestkit",
+            amount = 5,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 20,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [21] = {
+            name = "breathalyzer",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 21,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [22] = {
+            name = "accesstool",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 22,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [23] = {
+            name = "fingerprintreader",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 23,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+        },
+        [24] = {
+            name = "sdcard",
+            amount = 1,
+            price = 0,
+            info = {},
+            type = "item",
+            slot = 24,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
         },
     }

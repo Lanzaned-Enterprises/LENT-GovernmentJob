@@ -8,6 +8,7 @@ local inAmoury = false
 local inHelicopter = false
 local inImpound = false
 local inGarage = false
+local nightvision = false
 
 local function loadAnimDict(dict) -- interactions, job,
     while (not HasAnimDictLoaded(dict)) do
@@ -113,7 +114,7 @@ end
 local function IsArmoryWhitelist() -- being removed
     local retval = false
 
-    if QBCore.Functions.GetPlayerData().job.name == config.job['doj'] or QBCore.Functions.GetPlayerData().job.name == config.job['statepolice'] or QBCore.Functions.GetPlayerData().job.name == config.job['police'] or QBCore.Functions.GetPlayerData().job.name == config.job['sheriff'] or QBCore.Functions.GetPlayerData().job.name == config.job['corrections'] then
+    if QBCore.Functions.GetPlayerData().job.name == Config.job['doj'] or QBCore.Functions.GetPlayerData().job.name == Config.job['statepolice'] or QBCore.Functions.GetPlayerData().job.name == Config.job['police'] or QBCore.Functions.GetPlayerData().job.name == Config.job['sheriff'] or QBCore.Functions.GetPlayerData().job.name == Config.job['corrections'] then
         retval = true
     end
 
@@ -247,7 +248,7 @@ end)
 if Config.GlobalSettings['Evidence'] == 'default' then
     RegisterNetEvent('police:client:CheckStatus', function()
         QBCore.Functions.GetPlayerData(function(PlayerData)
-            if PlayerData.job.name == config.job['doj'] or PlayerData.job.name == config.job['statepolice'] or PlayerData.job.name == config.job['police'] or PlayerData.job.name == config.job['sheriff'] or PlayerData.job.name == config.job['corrections'] then
+            if PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment'] or PlayerJob.name == Config.Job['FederalBureau'] or PlayerJob.name == Config.Job['AffairsAgency'] or PlayerJob.name == Config.Job['Military'] or PlayerJob.name == Config.Job['FireDepartment'] or PlayerJob.name == Config.Job['FederalBureau'] or PlayerJob.name == Config.Job['AffairsAgency'] or PlayerJob.name == Config.Job['Military'] then
                 local player, distance = GetClosestPlayer()
                 if player ~= -1 and distance < 5.0 then
                     local playerId = GetPlayerServerId(player)
@@ -279,18 +280,20 @@ RegisterNetEvent('police:client:TakeOutImpound', function(data)
 end)
 
 RegisterNetEvent('LENT-GovernmentJob:Client:CheckZone', function()
-    if PlayerJob.name == config.job['doj'] or PlayerJob.name == config.job['statepolice'] or PlayerJob.name == config.job['police'] or PlayerJob.name == config.job['sheriff'] or PlayerJob.name == config.job['corrections'] and PlayerJob.onduty then
-        local currentEvidence = 0
-        local pos = GetEntityCoords(PlayerPedId())
+    QBCore.Functions.GetPlayerData(function(PlayerData)
+        if PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment'] or PlayerJob.name == Config.Job['FederalBureau'] or PlayerJob.name == Config.Job['AffairsAgency'] or PlayerJob.name == Config.Job['Military'] and PlayerJob.onduty then
+            local currentEvidence = 0
+            local pos = GetEntityCoords(PlayerPedId())
 
-        for k, v in pairs(Config.Locations["evidence"]) do
-            if #(pos - v) < 2 then
-                currentEvidence = k
-            end
-        end 
+            for k, v in pairs(Config.Locations["evidence"]) do
+                if #(pos - v) < 2 then
+                    currentEvidence = k
+                end
+            end 
 
-        TriggerEvent('police:client:EvidenceStashDrawer', currentEvidence)
-    end
+            TriggerEvent('police:client:EvidenceStashDrawer', currentEvidence)
+        end
+    end)
 end)
 
 RegisterNetEvent('police:client:EvidenceStashDrawer', function(currentEvidence)
@@ -347,7 +350,13 @@ RegisterNetEvent('qb-police:client:scanFingerPrint', function()
     end
 end)
 
-
+local function SetWeaponSeriesFIB()
+    for k, _ in pairs(Config.FIBArmory.items) do
+        if k < 1000 then
+            Config.FIBArmory.items[k].info.serie = tostring(QBCore.Shared.RandomInt(2) .. QBCore.Shared.RandomStr(3) .. QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(4))
+        end
+    end
+end
 local function SetWeaponSeriesSASP()
     for k, _ in pairs(Config.SASPArmory.items) do
         if k < 1000 then
@@ -377,6 +386,28 @@ local function SetWeaponSeriesDOC()
     end
 end
 
+RegisterNetEvent('qb-fib:client:openArmoury', function()
+    local authorizedItems = {
+        label = Lang:t('menu.pol_armory'),
+        slots = 30,
+        items = {}
+    }
+    local index = 1
+
+    for _, armoryItem in pairs(Config.FIBArmory.items) do 
+        for i=1, #armoryItem.authorizedJobGrades do
+            if armoryItem.authorizedJobGrades[i] == PlayerJob.grade.level then
+                authorizedItems.items[index] = armoryItem
+                authorizedItems.items[index].slot = index
+                index = index + 1
+            end
+        end
+    end
+
+    SetWeaponSeriesFIB()
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", Config.Job['FederalBureau'], authorizedItems)
+end)
+
 RegisterNetEvent('qb-sasp:client:openArmoury', function()
     local authorizedItems = {
         label = Lang:t('menu.pol_armory'),
@@ -396,7 +427,7 @@ RegisterNetEvent('qb-sasp:client:openArmoury', function()
     end
 
     SetWeaponSeriesSASP()
-    TriggerServerEvent("inventory:server:OpenInventory", "shop", config.job['police'], authorizedItems)
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", Config.Job['StatePolice'], authorizedItems)
 end)
 
 RegisterNetEvent('qb-police:client:openArmoury', function()
@@ -418,7 +449,7 @@ RegisterNetEvent('qb-police:client:openArmoury', function()
     end
 
     SetWeaponSeriesLSPD()
-    TriggerServerEvent("inventory:server:OpenInventory", "shop", config.job['police'], authorizedItems)
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", Config.Job['Police'], authorizedItems)
 end)
 
 RegisterNetEvent('qb-bcso:client:openArmoury', function()
@@ -440,7 +471,7 @@ RegisterNetEvent('qb-bcso:client:openArmoury', function()
     end
 
     SetWeaponSeriesBCSO()
-    TriggerServerEvent("inventory:server:OpenInventory", "shop", config.job['police'], authorizedItems)
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", Config.Job['Sheriff'], authorizedItems)
 end)
 
 RegisterNetEvent('qb-doc:client:openArmoury', function()
@@ -462,7 +493,7 @@ RegisterNetEvent('qb-doc:client:openArmoury', function()
     end
 
     SetWeaponSeriesDOC()
-    TriggerServerEvent("inventory:server:OpenInventory", "shop", config.job['police'], authorizedItems)
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", Config.Job['Corrections'], authorizedItems)
 end)
 
 RegisterNetEvent('LENT-GovernmenJob:Client:EMSArmory', function()
@@ -482,7 +513,7 @@ RegisterNetEvent('LENT-GovernmenJob:Client:EMSArmory', function()
             end
         end
     end
-    TriggerServerEvent("inventory:server:OpenInventory", "shop", "hospital", authorizedItems)
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", Config.Job['FireDepartment'], authorizedItems)
 end)
 
 RegisterNetEvent("qb-police:client:openStash", function()
@@ -503,7 +534,7 @@ local function impound()
     CreateThread(function()
         while true do
             Wait(0)
-            if inImpound and PlayerJob.name == config.job['doj'] or PlayerJob.name == config.job['statepolice'] or PlayerJob.name == config.job['police'] or PlayerJob.name == config.job['sheriff'] or PlayerJob.name == config.job['corrections'] then
+            if inImpound and PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment'] or PlayerJob.name == Config.Job['FederalBureau'] or PlayerJob.name == Config.Job['AffairsAgency'] or PlayerJob.name == Config.Job['Military'] then
                 if PlayerJob.onduty then sleep = 5 end
                 if IsPedInAnyVehicle(PlayerPedId(), false) then
                     if IsControlJustReleased(0, 38) then
@@ -536,7 +567,7 @@ CreateThread(function()
     impoundCombo:onPlayerInOut(function(isPointInside, point)
         if isPointInside then
             inImpound = true
-            if PlayerJob.name == config.job['doj'] or PlayerJob.name == config.job['statepolice'] or PlayerJob.name == config.job['police'] or PlayerJob.name == config.job['sheriff'] or PlayerJob.name == config.job['corrections'] and PlayerJob.onduty then
+            if PlayerJob.name == Config.Job['DOJ'] or PlayerJob.name == Config.Job['StatePolice'] or PlayerJob.name == Config.Job['Police'] or PlayerJob.name == Config.Job['Sheriff'] or PlayerJob.name == Config.Job['Corrections'] or PlayerJob.name == Config.Job['FireDepartment'] or PlayerJob.name == Config.Job['FederalBureau'] or PlayerJob.name == Config.Job['AffairsAgency'] or PlayerJob.name == Config.Job['Military'] and PlayerJob.onduty then
                 if IsPedInAnyVehicle(PlayerPedId(), false) then
                     exports['qb-core']:DrawText(Lang:t('info.impound_veh'), 'left')
                     impound()
