@@ -993,6 +993,7 @@ Can be modified in "client/cl_desks.lua"
 |  Rank       |  Member       | ID                 | Qualifications                       |
 |----         |----           |----                |----                                  |
 | Director    | [Lanzaned#2512](https://discordapp.com/users/871877975346405388) | [871877975346405388](https://discordapp.com/users/871877975346405388) | Javascript, XML, HTML, CSS, lua, SQL |
+| Contributor    | [Chumbis20#1870](https://discordapp.com/users/237074466440478730) | [237074466440478730](https://discordapp.com/users/237074466440478730) | N/A |
 
 ## Discord Profiles
 <div allign="center">
