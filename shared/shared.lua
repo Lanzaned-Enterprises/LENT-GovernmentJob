@@ -119,7 +119,7 @@ Config.Locations = {
 
 -- [[ Armory ]] --
 Config.Armory = {
-    [Config.Job['Military']] = {
+    ['military'] = {
         label = "Military Armory",
         slots = 30,
         items = {
@@ -324,7 +324,7 @@ Config.Armory = {
             },
         }
     },
-    [Config.Job['FederalBureau']] = {
+    ['fib'] = {
         label = "Federal Armory",
         slots = 30,
         items = {
@@ -567,7 +567,7 @@ Config.Armory = {
             },
         }
     },
-    [Config.Job['AffairsAgency']] = {
+    ['iaa'] = {
         label = "Affairs Armory",
         slots = 30,
         items = {
@@ -810,7 +810,7 @@ Config.Armory = {
             },
         }
     },
-    [Config.Job['DOJ']] = {
+    ['upd'] = {
         label = "San Andreas Unified Law Enforcement Agency",
         slots = 100,
         items = {
@@ -1092,7 +1092,7 @@ Config.Armory = {
             },
         },
     },
-    [Config.Job['StatePolice']] = {
+    ['sasp'] = {
         label = "State Armory",
         slots = 30,
         items = {
@@ -1375,7 +1375,7 @@ Config.Armory = {
             },
         }
     },
-    [Config.Job['Police']] = {
+    ['police'] = {
         label = "Police Armory",
         slots = 30,
         items = {
@@ -1657,7 +1657,7 @@ Config.Armory = {
             },
         }
     },
-    [Config.Job['Sheriff']] = {
+    ['bcso'] = {
         label = "Sheriff's Armory",
         slots = 30,
         items = {
@@ -1939,7 +1939,7 @@ Config.Armory = {
             },
         }
     },
-    [Config.Job['Corrections']] = {
+    ['doc'] = {
         label = "Corrections Armory",
         slots = 30,
         items = {
@@ -2221,7 +2221,7 @@ Config.Armory = {
             },
         }
     },
-    [Config.Job['FireDepartment']] = {
+    ['ambulance'] = {
         label = "Fire Department Lockers",
         slots = 30,
         items = {

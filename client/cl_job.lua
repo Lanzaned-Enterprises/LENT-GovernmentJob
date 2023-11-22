@@ -342,7 +342,7 @@ local function SetWeaponSeries(PlayerCurrentJob)
 end
 
 RegisterNetEvent('LENT-GovernmenJob:Client:OpenArmory', function()
-    local PlayerCurrentJob = PlayerJob.name
+    local PlayerCurrentJob = QBCore.Functions.GetPlayerData().job.name
 
     local authorizedItems = {
         label = Lang:t('menu.pol_armory'),
@@ -351,7 +351,7 @@ RegisterNetEvent('LENT-GovernmenJob:Client:OpenArmory', function()
     }
     local index = 1
 
-    for _, armoryItem in pairs(Config.Armory[PlayerCurrentJob].items) do 
+    for _, armoryItem in pairs(Config.Armory[PlayerCurrentJob].items) do
         for i=1, #armoryItem.authorizedJobGrades do
             if armoryItem.authorizedJobGrades[i] == PlayerJob.grade.level then
                 authorizedItems.items[index] = armoryItem
@@ -362,20 +362,20 @@ RegisterNetEvent('LENT-GovernmenJob:Client:OpenArmory', function()
     end
 
     SetWeaponSeries(PlayerCurrentJob)
-    TriggerServerEvent("inventory:server:OpenInventory", "shop", Config.Job[PlayerCurrentJob], authorizedItems)
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", PlayerCurrentJob, authorizedItems)
 end)
 
 RegisterNetEvent("qb-police:client:openStash", function()
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "policestash_"..QBCore.Functions.GetPlayerData().citizenid)
-    TriggerEvent("inventory:client:SetCurrentStash", "policestash_"..QBCore.Functions.GetPlayerData().citizenid)
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "personalstash_"..QBCore.Functions.GetPlayerData().citizenid)
+    TriggerEvent("inventory:client:SetCurrentStash", "personalstash_"..QBCore.Functions.GetPlayerData().citizenid)
 end)
 
 RegisterNetEvent('qb-police:client:openTrash', function()
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "policetrash", {
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "trash", {
         maxweight = 4000000,
         slots = 300,
     })
-    TriggerEvent("inventory:client:SetCurrentStash", "policetrash")
+    TriggerEvent("inventory:client:SetCurrentStash", "trash")
 end)
 
 -- [[ Threads ]] --

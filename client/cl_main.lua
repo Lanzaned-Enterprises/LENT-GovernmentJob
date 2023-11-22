@@ -138,7 +138,7 @@ RegisterNetEvent('police:client:sendBillingMail', function(amount)
 end)
 
 RegisterNetEvent('police:client:UpdateBlips', function(players)
-    if IsAllowedPoliceJob(PlayerData.job.name) and
+    if IsAllowedPoliceJob(QBCore.Functions.GetPlayerData().job.name) and
         PlayerJob.onduty then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
