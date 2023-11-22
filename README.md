@@ -959,10 +959,7 @@ LENT-GovernmentJob:ToggleDuty
 Evidence Lockers: LENT-GovernmentJob:Client:CheckZone
 
 # Armory Settings
-qb-sasp:client:openArmoury
-qb-police:client:openArmoury
-qb-bcso:client:openArmoury
-LENT-GovernmenJob:Client:EMSArmory
+LENT-GovernmenJob:Client:OpenArmory
 
 # Fingerprint
 qb-police:client:scanFingerPrint
@@ -976,9 +973,6 @@ qb-police:client:openTrash
 **If you're using peds that are custom placed there are additional events that you can trigger!**
 *Peds can also trigger all items above!*
 ```
-# Select Vehicle
-LENT-GovernmentJob:Client:SelectVehicle
-
 # Questions Menu
 LENT-GovernmentJob:Client:QuestionsMenu
 Can be modified in "client/cl_desks.lua"
@@ -1008,6 +1002,6 @@ Github: https://github.lanzaned.com<br>
 Documentation: https://docs.lanzaned.com/
 
 ## Sponsors
-<img src="https://discordapp.com/api/guilds/973137642885644338/widget.png?style=banner2" alt="Discord Banner 2"/>
+<img src="https://discordapp.com/api/guilds/1167542003966418944/widget.png?style=banner2" alt="Discord Banner 2"/>
 
 

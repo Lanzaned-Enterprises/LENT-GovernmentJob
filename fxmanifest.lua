@@ -12,11 +12,6 @@ docs 'https://docs.lanzaned.com/'
 -- [[ Version ]] --
 version '0.0.0'
 
--- [[ Dependencies ]] --
-dependencies {
-    'qb-core',
-}
-
 -- [[ Files ]] --
 ui_page 'html/index.html'
 
@@ -24,7 +19,6 @@ shared_scripts {
     -- Dependency Files
     '@qb-core/shared/locale.lua',
     'locales/en.lua',
-    '@ox_lib/init.lua',
     -- Config Files
     'shared/*.lua',
 }

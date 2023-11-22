@@ -1,3 +1,12 @@
+-- [[ Remove Peds ]] --
+local areaRadius = 500.0
+
+AddEventHandler('populationPedCreating', function(x, y, z, model, setters)
+    if #(vector3(1819.2, 3673.54, 34.71) - vector3(x, y, z)) < areaRadius then
+        CancelEvent()
+    end
+end)
+
 AddEventHandler('onResourceStop', function(resource)
     if resource == GetCurrentResourceName() then
         DeletePeds()
@@ -8,40 +17,445 @@ local pedSpawned = false
 local PedCreated = {}
 
 local peds = {
-    ["ExamplePed-VehicleSpawner"] = {
-        ["coords"] = vector4(0, 0, 0, 0), -- The start Coordinatos of the first mission
-        
+    ["UPDArmory"] = {
+        ["coords"] = vector4(821.19, -1295.11, 19.85, 267.56), -- The start Coordinatos of the first mission
+
         ["ped"] = "mp_m_freemode_01",
         ["scenario"] = "WORLD_HUMAN_COP_IDLES", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
 
         ["target"] = true,
-        ["type"] = "client", ["event"] = "LENT-GovernmentJob:Client:SelectVehicle", 
-        ["icon"] = "fa-solid fa-car", ["text"] = "Select Vehicle", ["job"] = { ['sasp'] = 0, ['police'] = 0, ['bcso'] = 0, },
+        ["type"] = "client", ["event"] = "LENT-GovernmenJob:Client:OpenArmory", 
+        ["icon"] = "fa-solid fa-gun", ["text"] = "Armory", ["job"] = { ['military'] = 0, ['fib'] = 0, ['iaa'] = 0, ['upd'] = 0, ['sasp'] = 0, ['police'] = 0, ['bcso'] = 0, ['doc'] = 0, },
 
         -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
         ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
-        
-        ["mother"] = -1,        ["father"] = -1,                ["mix"] = 1.0,
-        
-        ["hair"] = -1,           ["HAIR_Texture"] = 0,           ["HAIR_HIGHLIGHT"] = 0,
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 4,           ["HAIR_Texture"] = 1,           ["HAIR_HIGHLIGHT"] = 0,
         ["hat"] = -1,           ["hat_TEXTURE"] = 0,
-        ["mask"] = -1,           ["mask_Texture"] = 0,
+        ["mask"] = -1,           ["mask_Texture"] = 5,
         ["glasses"] = -1,       ["glasses_TEXTURE"] = 0,
-        ["hands"] = -1,          ["HA_Texture"] = 0,
-        ["undershirts"] = -1,    ["U_Texture"] = 0,
-        ["tops"] = -1,           ["T_Texture"] = 0,
-        ["kevlar"] = -1,         ["K_Texture"] = 0,
-        ["decal"] = -1,          ["D_Texture"] = 0,
-        ["accs"] = -1,           ["A_Texture"] = 0,
-        ["bags"] = -1,           ["B_Texture"] = 0,
-        ["pants"] = -1,          ["P_Texture"] = 0,
-        ["shoes"] = -1,          ["S_Texture"] = 0,
+        
+        ["hands"] = 20,            ["HA_Texture"] = 0,
+        ["undershirts"] = 161,     ["U_Texture"] = 0,
+        ["tops"] = 102,            ["T_Texture"] = 2,
+        ["kevlar"] = -1,           ["K_Texture"] = 0,
+        ["decal"] = -1,           ["D_Texture"] = 0,
+        ["accs"] = -1,            ["A_Texture"] = 0,
+        ["bags"] = -1,              ["B_Texture"] = 0,
+        ["pants"] = 10,           ["P_Texture"] = 0,
+        ["shoes"] = 10,            ["S_Texture"] = 0,
 
-        ["eye_COLOR"] = -1,
+        ["eye_COLOR"] = 1,
         ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
         ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
         ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
-        ["beard"] = -1,         ["beard_OPACITY"] = 0.0,        ["beard_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 0, -- leave opacity at 1.0
+    }, 
+    -- [[ Los Santos Police ]] --
+    ["LSPDArmory"] = {
+        ["coords"] = vector4(484.62, -1003.71, 25.73, 7.76), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_COP_IDLES", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = true,
+        ["type"] = "client", ["event"] = "LENT-GovernmenJob:Client:OpenArmory", 
+        ["icon"] = "fa-solid fa-gun", ["text"] = "Armory", ["job"] = { ['military'] = 0, ['fib'] = 0, ['iaa'] = 0, ['upd'] = 0, ['sasp'] = 0, ['police'] = 0, ['bcso'] = 0, ['doc'] = 0, },
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 4,           ["HAIR_Texture"] = 1,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 228,           ["mask_Texture"] = 5,
+        ["glasses"] = -1,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 172,            ["HA_Texture"] = 0,
+        ["undershirts"] = 220,     ["U_Texture"] = 0,
+        ["tops"] = 550,            ["T_Texture"] = 4,
+        ["kevlar"] = -1,           ["K_Texture"] = 0,
+        ["decal"] = -1,           ["D_Texture"] = 0,
+        ["accs"] = 178,            ["A_Texture"] = 0,
+        ["bags"] = 117,              ["B_Texture"] = 1,
+        ["pants"] = 179,           ["P_Texture"] = 1,
+        ["shoes"] = 10,            ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 0, -- leave opacity at 1.0
+    }, 
+    ["LSPDVespucciDesk"] = {
+        ["coords"] = vector4(-1633.45, -1026.1, 13.16, 45.5), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_COP_IDLES", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = false,
+        ["type"] = "client", ["event"] = "", 
+        ["icon"] = "fa-solid fa-questionmark", ["text"] = "Ask Question",
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 4,           ["HAIR_Texture"] = 1,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 228,           ["mask_Texture"] = 5,
+        ["glasses"] = -1,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 172,            ["HA_Texture"] = 0,
+        ["undershirts"] = 220,     ["U_Texture"] = 0,
+        ["tops"] = 550,            ["T_Texture"] = 4,
+        ["kevlar"] = -1,           ["K_Texture"] = 0,
+        ["decal"] = -1,           ["D_Texture"] = 0,
+        ["accs"] = 178,            ["A_Texture"] = 0,
+        ["bags"] = 117,              ["B_Texture"] = 1,
+        ["pants"] = 179,           ["P_Texture"] = 1,
+        ["shoes"] = 10,            ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 0, -- leave opacity at 1.0
+    },
+
+    -- [[ Sheriffs Office ]]
+    ["BCSODesk"] = {
+        ["coords"] = vector4(1818.43, 3672.73, 34.71, 109.75), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_VALET", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = true,
+        ["type"] = "client", ["event"] = "LENT-GovernmentJob:Client:QuestionsMenu:SandyShores", 
+        ["icon"] = "fa-solid fa-clipboard", ["text"] = "Ask Question",
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 4,           ["HAIR_Texture"] = 1,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 227,           ["mask_Texture"] = 11,
+        ["glasses"] = 5,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 77,          ["HA_Texture"] = 0,
+        ["undershirts"] = 220,    ["U_Texture"] = 0,
+        ["tops"] = 554,           ["T_Texture"] = 20,
+        ["kevlar"] = -1,         ["K_Texture"] = 0,
+        ["decal"] = 0,          ["D_Texture"] = 0,
+        ["accs"] = 180,           ["A_Texture"] = 0,
+        ["bags"] = 119,           ["B_Texture"] = 1,
+        ["pants"] = 194,          ["P_Texture"] = 0,
+        ["shoes"] = 10,          ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 0, -- leave opacity at 1.0
+    },
+    ["BCSOArmory"] = {
+        ["coords"] = vector4(1835.01, 3694.68, 34.71, 210.61), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_COP_IDLES", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = true,
+        ["type"] = "client", ["event"] = "LENT-GovernmenJob:Client:OpenArmory", 
+        ["icon"] = "fa-solid fa-gun", ["text"] = "Armory", ["job"] = { ['military'] = 0, ['fib'] = 0, ['iaa'] = 0, ['upd'] = 0, ['sasp'] = 0, ['police'] = 0, ['bcso'] = 0, ['doc'] = 0, },
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 4,           ["HAIR_Texture"] = 1,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 227,           ["mask_Texture"] = 11,
+        ["glasses"] = 5,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 77,          ["HA_Texture"] = 0,
+        ["undershirts"] = 220,    ["U_Texture"] = 0,
+        ["tops"] = 554,           ["T_Texture"] = 20,
+        ["kevlar"] = -1,         ["K_Texture"] = 0,
+        ["decal"] = 0,          ["D_Texture"] = 0,
+        ["accs"] = 180,           ["A_Texture"] = 0,
+        ["bags"] = 119,           ["B_Texture"] = 1,
+        ["pants"] = 194,          ["P_Texture"] = 0,
+        ["shoes"] = 10,          ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 0, -- leave opacity at 1.0
+    },
+    ["BCSOArmory2"] = {
+        ["coords"] = vector4(1819.26, 3666.89, 30.31, 113.03), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_COP_IDLES", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = true,
+        ["type"] = "client", ["event"] = "LENT-GovernmenJob:Client:OpenArmory", 
+        ["icon"] = "fa-solid fa-gun", ["text"] = "Armory", ["job"] = { ['military'] = 0, ['fib'] = 0, ['iaa'] = 0, ['upd'] = 0, ['sasp'] = 0, ['police'] = 0, ['bcso'] = 0, ['doc'] = 0, },
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 4,           ["HAIR_Texture"] = 1,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 227,           ["mask_Texture"] = 11,
+        ["glasses"] = 5,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 77,          ["HA_Texture"] = 0,
+        ["undershirts"] = 220,    ["U_Texture"] = 0,
+        ["tops"] = 554,           ["T_Texture"] = 20,
+        ["kevlar"] = -1,         ["K_Texture"] = 0,
+        ["decal"] = 0,          ["D_Texture"] = 0,
+        ["accs"] = 180,           ["A_Texture"] = 0,
+        ["bags"] = 119,           ["B_Texture"] = 1,
+        ["pants"] = 194,          ["P_Texture"] = 0,
+        ["shoes"] = 10,          ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 0, -- leave opacity at 1.0
+    },
+
+    ["BCSODeskPaleto"] = {
+        ["coords"] = vector4(-443.16, 6009.53, 31.49, 6.19), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_VALET", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = true,
+        ["type"] = "client", ["event"] = "LENT-GovernmentJob:Client:QuestionsMenu", 
+        ["icon"] = "fa-solid fa-clipboard", ["text"] = "Ask Question",
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 4,           ["HAIR_Texture"] = 1,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 227,           ["mask_Texture"] = 11,
+        ["glasses"] = 5,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 77,          ["HA_Texture"] = 0,
+        ["undershirts"] = 220,    ["U_Texture"] = 0,
+        ["tops"] = 554,           ["T_Texture"] = 20,
+        ["kevlar"] = -1,         ["K_Texture"] = 0,
+        ["decal"] = 0,          ["D_Texture"] = 0,
+        ["accs"] = 180,           ["A_Texture"] = 0,
+        ["bags"] = 119,           ["B_Texture"] = 1,
+        ["pants"] = 194,          ["P_Texture"] = 0,
+        ["shoes"] = 10,          ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 0, -- leave opacity at 1.0
+    },
+    ["BCSOArmoryPaleto"] = {
+        ["coords"] = vector4(-483.21, 6015.89, 34.33, 227.10), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_CLIPBOARD", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = true,
+        ["type"] = "client", ["event"] = "LENT-GovernmenJob:Client:OpenArmory", 
+        ["icon"] = "fa-solid fa-gun", ["text"] = "Armory", ["job"] = { ['military'] = 0, ['fib'] = 0, ['iaa'] = 0, ['upd'] = 0, ['sasp'] = 0, ['police'] = 0, ['bcso'] = 0, ['doc'] = 0, },
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 2,           ["HAIR_Texture"] = 10,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 227,           ["mask_Texture"] = 11,
+        ["glasses"] = 5,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 77,          ["HA_Texture"] = 0,
+        ["undershirts"] = 220,    ["U_Texture"] = 0,
+        ["tops"] = 554,           ["T_Texture"] = 20,
+        ["kevlar"] = -1,         ["K_Texture"] = 0,
+        ["decal"] = 0,          ["D_Texture"] = 0,
+        ["accs"] = 180,           ["A_Texture"] = 0,
+        ["bags"] = 119,           ["B_Texture"] = 1,
+        ["pants"] = 194,          ["P_Texture"] = 0,
+        ["shoes"] = 10,          ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 10, -- leave opacity at 1.0
+    },
+    ["BCSOArmoryDavis"] = {
+        ["coords"] = vector4(379.55, -1631.09, 29.76, 61.11), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_CLIPBOARD", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = true,
+        ["type"] = "client", ["event"] = "LENT-GovernmenJob:Client:OpenArmory", 
+        ["icon"] = "fa-solid fa-gun", ["text"] = "Armory", ["job"] = { ['military'] = 0, ['fib'] = 0, ['iaa'] = 0, ['upd'] = 0, ['sasp'] = 0, ['police'] = 0, ['bcso'] = 0, ['doc'] = 0, },
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 2,           ["HAIR_Texture"] = 10,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 227,           ["mask_Texture"] = 11,
+        ["glasses"] = 5,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 77,          ["HA_Texture"] = 0,
+        ["undershirts"] = 220,    ["U_Texture"] = 0,
+        ["tops"] = 554,           ["T_Texture"] = 20,
+        ["kevlar"] = -1,         ["K_Texture"] = 0,
+        ["decal"] = 0,          ["D_Texture"] = 0,
+        ["accs"] = 180,           ["A_Texture"] = 0,
+        ["bags"] = 119,           ["B_Texture"] = 1,
+        ["pants"] = 194,          ["P_Texture"] = 0,
+        ["shoes"] = 10,          ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 10, -- leave opacity at 1.0
+    },
+    ["BCSOArmoryDavis2"] = {
+        ["coords"] = vector4(384.35, -1600.4, 25.36, 325.86), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_CLIPBOARD", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = true,
+        ["type"] = "client", ["event"] = "LENT-GovernmenJob:Client:OpenArmory", 
+        ["icon"] = "fa-solid fa-gun", ["text"] = "Armory", ["job"] = { ['military'] = 0, ['fib'] = 0, ['iaa'] = 0, ['upd'] = 0, ['sasp'] = 0, ['police'] = 0, ['bcso'] = 0, ['doc'] = 0, },
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 2,           ["HAIR_Texture"] = 10,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 227,           ["mask_Texture"] = 11,
+        ["glasses"] = 5,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 77,          ["HA_Texture"] = 0,
+        ["undershirts"] = 220,    ["U_Texture"] = 0,
+        ["tops"] = 554,           ["T_Texture"] = 20,
+        ["kevlar"] = -1,         ["K_Texture"] = 0,
+        ["decal"] = 0,          ["D_Texture"] = 0,
+        ["accs"] = 180,           ["A_Texture"] = 0,
+        ["bags"] = 119,           ["B_Texture"] = 1,
+        ["pants"] = 194,          ["P_Texture"] = 0,
+        ["shoes"] = 10,          ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 10, -- leave opacity at 1.0
+    },
+    ["DESKDAVISSHERIFF"] = {
+        ["coords"] = vector4(387.88, -1606.51, 29.76, 320.37), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_VALET", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = false,
+        ["type"] = "client", ["event"] = "LENT-GovernmentJob:Client:QuestionsMenu", 
+        ["icon"] = "fa-solid fa-clipboard", ["text"] = "Ask Question",
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 2,           ["HAIR_Texture"] = 10,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 227,           ["mask_Texture"] = 11,
+        ["glasses"] = 5,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 77,          ["HA_Texture"] = 0,
+        ["undershirts"] = 220,    ["U_Texture"] = 0,
+        ["tops"] = 554,           ["T_Texture"] = 20,
+        ["kevlar"] = -1,         ["K_Texture"] = 0,
+        ["decal"] = 0,          ["D_Texture"] = 0,
+        ["accs"] = 180,           ["A_Texture"] = 0,
+        ["bags"] = 119,           ["B_Texture"] = 1,
+        ["pants"] = 194,          ["P_Texture"] = 0,
+        ["shoes"] = 10,          ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = 11,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = 0, -- leave opacity at 1.0
+    },
+
+    -- [[ San Andreas Fire Department ]] --
+
+    -- [[ Military ]] --
+    ["MilitaryArmory"] = {
+        ["coords"] = vector4(-2425.97, 3273.44, 32.98, 330.17), -- The start Coordinatos of the first mission
+
+        ["ped"] = "mp_m_freemode_01",
+        ["scenario"] = "WORLD_HUMAN_COP_IDLES", ["block_events"] = true, ["invincible"] = true, ["freeze"] = true,
+
+        ["target"] = true,
+        ["type"] = "client", ["event"] = "LENT-GovernmenJob:Client:OpenArmory",
+        ["icon"] = "fa-solid fa-gun", ["text"] = "Armory", ["job"] = { ['military'] = 0, ['fib'] = 0, ['iaa'] = 0, ['upd'] = 0, ['sasp'] = 0, ['police'] = 0, ['bcso'] = 0, ['doc'] = 0, },
+
+        -- [[ Do recommand that you use a clothing menu to get the right ID's ]] --
+        ["clothing"] = true, -- True if ped = "mp_m_freemode_01" || "mp_f_freemode_01" else leave false
+    
+        ["mother"] = 45,        ["father"] = 45,                ["mix"] = 1.0,
+    
+        ["hair"] = 4,           ["HAIR_Texture"] = 1,           ["HAIR_HIGHLIGHT"] = 0,
+        ["hat"] = -1,           ["hat_TEXTURE"] = 0,
+        ["mask"] = 218,           ["mask_Texture"] = 3,
+        ["glasses"] = 5,       ["glasses_TEXTURE"] = 0,
+        
+        ["hands"] = 1,          ["HA_Texture"] = 0,
+        ["undershirts"] = 218,    ["U_Texture"] = 0,
+        ["tops"] = 538,           ["T_Texture"] = 10,
+        ["kevlar"] = 101,         ["K_Texture"] = 0,
+        ["decal"] = 0,          ["D_Texture"] = 0,
+        ["accs"] = 175,           ["A_Texture"] = 0,
+        ["bags"] = 0,           ["B_Texture"] = 0,
+        ["pants"] = 172,          ["P_Texture"] = 2,
+        ["shoes"] = 10,          ["S_Texture"] = 0,
+
+        ["eye_COLOR"] = 1,
+        ["makeup"] = -1,        ["makeup_OPACITY"] = 0.0,       ["makeup_COLOR"] = -1, -- leave opacity at 1.0
+        ["lipstick"] = -1,      ["lipstick_OPACITY"] = 0.0,     ["lipstick_COLOR"] = -1, -- leave opacity at 1.0
+        ["eyebrows"] = -1,      ["eyebrows_OPACITY"] = 0.0,     ["eyebrows_COLOR"] = -1, -- leave opacity at 1.0
+        ["beard"] = -1,         ["beard_OPACITY"] = 1.0,        ["beard_COLOR"] = -1, -- leave opacity at 1.0
     },
 }
 
@@ -97,7 +511,7 @@ CreateThread(function()
                             job = v["job"],
                         },
                     },
-                    distance = 2.0
+                    distance = 5.0
                 })
             end
     

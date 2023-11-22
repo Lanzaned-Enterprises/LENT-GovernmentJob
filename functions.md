@@ -1,60 +1,6 @@
 # LENT-Functions for GovernmentJobs
 *These are examples on how to setup your function files. If these are missing then the script may not function as intended or you will see that you can't execute some of these events being called. These files should be added to a folder in the root of this resource that's called `functions`*
 
-## functions/cl_coords.lua
-*Keep in mind that the title of the subject is the path to the file. This is what it should be called. If this is incorrect or missing the script may not function as intended*
-```lua
-CoordsList = {}
- 
-CoordsList.Coords = {
-    ['doj'] = {
-
-    },
-    ['sasp'] = {
-
-    },
-    ['police'] = {
-
-    },
-    ['bcso'] = {
-        [1] = vector3(1, 1, 1), -- Hedwig Station
-    },
-    ['doc'] = {
-
-    },
-    ['safd'] = {
-
-    },
-}
-
-CoordsList.RandomSpawns = {
-    ['doj'] = {
-
-    },
-    ['sasp'] = {
-
-    },
-    ['police'] = {
-
-    },
-    ['bcso'] = {
-        [1] = { -- Should be near the coords [1] at CoordsList.Coords
-            vector4(1, 1, 1, 1),
-            vector4(2, 2, 2, 2)
-        },
-    },
-    ['doc'] = {
-
-    },
-    ['safd'] = {
-
-    },
-}
-```
-
-### How does this work?
-*Let's take the BCSO group for example. In `CoordsList.Coords` is 1 entry that will define `CoordsList.RandomSpawns` You can therefor create as many instances as you want with this resource. If you have 8 BCSO instances in `CoordsList.Coords` you will have to add 8 instances to `CoordsList.RandomSpawns` aswell. The amount of vector coordinates doesn't matter!*
-
 ## functions/cl_peds.lua
 ```lua
 AddEventHandler('onResourceStop', function(resource)

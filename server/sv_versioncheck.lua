@@ -1,5 +1,5 @@
 --[[ Version Checker ]] --
-local version = "300"
+local version = "400"
 
 local DISCORD_WEBHOOK = ""
 local DISCORD_NAME = "LENT - GovernmentJobs"
@@ -7,12 +7,11 @@ local DISCORD_IMAGE = "https://cdn.discordapp.com/attachments/102617598250950665
 
 AddEventHandler("onResourceStart", function(resource)
     if resource == GetCurrentResourceName() then
-        checkResourceVersion()
-        PostSettingEmbed()
+        CheckResourceVersion()
     end
 end)
 
-function checkUpdateEmbed(color, name, message, footer)
+function CheckUpdateEmbed(color, name, message, footer)
     local content = {
         {
             ["color"] = color,
@@ -31,26 +30,7 @@ function checkUpdateEmbed(color, name, message, footer)
     }), { ['Content-Type'] = 'application/json '})
 end
 
-function SettingsEmbed(color, name, message, footer)
-    local content = {
-        {
-            ["color"] = color,
-            ["title"] = " " .. name .. " ",
-            ["description"] = message,
-            ["footer"] = {
-                ["text"] = " " .. footer .. " ",
-            },
-        }
-    }
-    PerformHttpRequest(DISCORD_WEBHOOK, function(err, text, headers) end, 
-    'POST', json.encode({
-        username = DISCORD_NAME, 
-        embeds = content, 
-        avatar_url = DISCORD_IMAGE
-    }), { ['Content-Type'] = 'application/json '})
-end
-
-function checkResourceVersion()
+function CheckResourceVersion()
     PerformHttpRequest("https://raw.githubusercontent.com/Lanzaned-Enterprises/LENT-GovernmentJob/main/version.txt", function(err, text, headers)
         if (version > text) then -- Using Dev Branch
             print(" ")
@@ -60,7 +40,7 @@ function checkResourceVersion()
             print("https://github.com/Lanzaned-Enterprises/LENT-GovernmentJob")
             print("-----------------------------------------------")
             print(" ")
-            checkUpdateEmbed(5242880, "Police Update Checker", "Police is using a development branch! Please update to stable ASAP!\nYour Version: " .. version .. " Current Stable Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-GovernmentJob", "Script created by: https://discord.lanzaned.com")
+            CheckUpdateEmbed(5242880, "Police Update Checker", "Police is using a development branch! Please update to stable ASAP!\nYour Version: " .. version .. " Current Stable Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-GovernmentJob", "Script created by: https://discord.lanzaned.com")
         elseif (text < version) then -- Not updated
             print(" ")
             print("---------- LANZANED POLICE ENHANCED ----------")
@@ -69,7 +49,7 @@ function checkResourceVersion()
             print("https://github.com/Lanzaned-Enterprises/LENT-GovernmentJob")
             print("-----------------------------------------------")
             print(" ")
-            checkUpdateEmbed(5242880, "Police Update Checker", "Police is not up to date! Please update!\nCurent Version: " .. version .. " Latest Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-GovernmentJob", "Script created by: https://discord.lanzaned.com")
+            CheckUpdateEmbed(5242880, "Police Update Checker", "Police is not up to date! Please update!\nCurent Version: " .. version .. " Latest Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-GovernmentJob", "Script created by: https://discord.lanzaned.com")
         else -- resource is fine
             print(" ")
             print("---------- LANZANED POLICE ENHANCED ----------")
@@ -78,20 +58,7 @@ function checkResourceVersion()
             print("https://github.com/Lanzaned-Enterprises/LENT-GovernmentJob")
             print("-----------------------------------------------")
             print(" ")
-            checkUpdateEmbed(20480, "Police Update Checker", "Police is up to date and ready to go!\nRunning on Version: " .. version .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-GovernmentJob", "Script created by: https://discord.lanzaned.com")
-        end 
-    end, "GET", "", {})
-end
-
-function PostSettingEmbed()
-    PerformHttpRequest("https://raw.githubusercontent.com/Lanzaned-Enterprises/LENT-GovernmentJob/main/version.txt", function(err, text, headers)
-        if (version > text) then -- Using Dev Branch
-            print(" ")
-            print("---------- LANZANED POLICE ENHANCED ----------")
-            print("This is a settings message. | WIP!")
-            print("-----------------------------------------------")
-            print(" ")
-            SettingsEmbed(5242880, "LENT-GovernmentJob | Settings Messages", "This embed is currently work in progress!", "Script created by: https://discord.lanzaned.com")
+            CheckUpdateEmbed(20480, "Police Update Checker", "Police is up to date and ready to go!\nRunning on Version: " .. version .. "\nhttps://github.com/Lanzaned-Enterprises/LENT-GovernmentJob", "Script created by: https://discord.lanzaned.com")
         end 
     end, "GET", "", {})
 end
