@@ -23,7 +23,7 @@
 - Add the Panic Button & MDT Item to your `qb-core/shared/items.lua`
 ```lua
 	["mdt"] 						 = {["name"] = "mdt",							["label"] = "MDT",						["weight"] = 1000,		["type"] = "item",		["image"] = "mdt.png",					["unique"] = true,		["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,  ["description"] = "Special Device for Police Information."},
-	["panicbutton"] 				 = {["name"] = "panicbutton",					["label"] = "Panic Button"				["weight"] = 0,			["type"] = "item",		["image"] = "panic.png",				["unique"] = true,		["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,  ["description"] = "Special button to send distress signal."},
+	["panicbutton"]         = { ["name"] = "panicbutton", ["label"] = "Panic Button", ["weight"] = 1000, ["type"] = "item", ["image"] = "panic.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Special button to send distress signal." },
     ["badge"] 				 		 = {["name"] = "badge", 			  		["label"] = "Badge", 			["weight"] = 1000, 		["type"] = "item", 		["image"] = "govbadge.png", 	["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Government badge"},
 ```
 - Add images form the `images` folder to your `inventory/html/images`
