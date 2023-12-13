@@ -5,6 +5,9 @@ cuffType = 1
 isEscorted = false
 PlayerJob = {}
 local DutyBlips = {}
+local Blips = {}
+GPSActive = false
+
 
 AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
@@ -13,31 +16,57 @@ AddEventHandler('onResourceStart', function(resource)
 end)
 
 -- Functions
-local function CreateDutyBlips(playerId, playerLabel, playerJob, blipNum, blipSize, blipColorNum, playerLocation)
+local function CreateDutyBlips(playerId, playerLabel, playerJob, playerLocation, vehClass)
+    if not Blips[playerId] then Blips[playerId] = {} end
     local ped = GetPlayerPed(playerId)
     local blip = GetBlipFromEntity(ped)
-    local pedVehicle = GetVehiclePedIsIn( ped, false);
-    if not DoesBlipExist(blip) then
-        if NetworkIsPlayerActive(playerId) then
-            blip = AddBlipForEntity(ped)
-        else
-            blip = AddBlipForCoord(playerLocation.x, playerLocation.y, playerLocation.z)
-        end
-
-        SetBlipScale(blip, blipSize)
-        SetBlipSprite(blip, blipNum)
-        ShowHeadingIndicatorOnBlip(blip, true)
-        SetBlipRotation(blip, math.ceil(playerLocation.w))
-
-        SetBlipColour(blip, blipColorNum)
-
-        SetBlipAsShortRange(blip, true)
-        BeginTextCommandSetBlipName('STRING')
-        AddTextComponentString(playerLabel)
-        EndTextCommandSetBlipName(blip)
-
-        DutyBlips[#DutyBlips+1] = blip
+    if NetworkIsPlayerActive(playerId) then
+        blip = AddBlipForEntity(ped)
+    else
+        blip = AddBlipForCoord(playerLocation.x, playerLocation.y, playerLocation.z)
     end
+    for k,v in pairs(Config.UnitblipSettings) do
+        if k == playerJob then
+            blipcolor = v
+        end
+    end
+    -- Heli
+    if vehClass == 15 then
+        SetBlipSprite(blip, 43)
+        ShowHeadingIndicatorOnBlip(blip, true)
+    -- Boats
+    elseif vehClass == 14 then
+        SetBlipSprite(blip, 427)
+        ShowHeadingIndicatorOnBlip(blip, true)
+    -- Plane
+    elseif vehClass == 16 then
+        SetBlipSprite(blip, 307)
+        ShowHeadingIndicatorOnBlip(blip, true)
+    -- MotorBikes
+    elseif vehClass == 8 then
+        SetBlipSprite(blip, 226)
+        ShowHeadingIndicatorOnBlip(blip, true)
+    -- Police Vehicles
+    elseif vehClass == 18 then
+        SetBlipSprite(blip, 56)
+        ShowHeadingIndicatorOnBlip(blip, true)
+    -- Walking
+    elseif vehClass == 0 then
+        SetBlipSprite(blip, 126)
+        ShowHeadingIndicatorOnBlip(blip, true)
+    else -- All other vehicles
+        SetBlipSprite(blip, 225)
+        ShowHeadingIndicatorOnBlip(blip, true)
+    end
+    ShowHeadingIndicatorOnBlip(blip, true)
+    SetBlipRotation(blip, math.ceil(playerLocation.w))
+    SetBlipScale(blip, Config.UnitblipSettings["VehicleBlipSize"])
+    SetBlipColour(blip, blipcolor)
+    SetBlipAsShortRange(blip, true)
+    BeginTextCommandSetBlipName('STRING')
+    AddTextComponentString(playerLabel)
+    EndTextCommandSetBlipName(blip)
+    DutyBlips[#DutyBlips+1] = blip
 
     if GetBlipFromEntity(PlayerPedId()) == blip then
         RemoveBlip(blip)
@@ -109,7 +138,7 @@ RegisterNetEvent("QBCore:Client:SetDuty", function(newDuty)
 end)
 
 RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
-    if IsAllowedPoliceJob(JobInfo.name) then
+    if IsAllowedPoliceJob(JobInfo.name) or IsAllowedAmbulanceJob(JobInfo.name) then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
                 RemoveBlip(v)
@@ -117,8 +146,8 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
         end
         DutyBlips = {}
     end
+    if IsAllowedPoliceJob(JobInfo.name) or IsAllowedAmbulanceJob(JobInfo.name) and not JobInfo.onduty then GPSActive = false end
     PlayerJob = JobInfo
-    TriggerServerEvent("police:server:UpdateBlips")
 end)
 
 RegisterNetEvent('police:client:sendBillingMail', function(amount)
@@ -138,18 +167,17 @@ RegisterNetEvent('police:client:sendBillingMail', function(amount)
 end)
 
 RegisterNetEvent('police:client:UpdateBlips', function(players)
-    if IsAllowedPoliceJob(QBCore.Functions.GetPlayerData().job.name) and
-        PlayerJob.onduty then
-        if DutyBlips then
-            for _, v in pairs(DutyBlips) do
-                RemoveBlip(v)
-            end
+    if DutyBlips then
+        for _, v in pairs(DutyBlips) do
+            RemoveBlip(v)
         end
-        DutyBlips = {}
-        if players then
-            for _, data in pairs(players) do
+    end
+    DutyBlips = {}
+    if players and GPSActive then
+        for _, data in pairs(players) do
+            if data.gpsactive then
                 local id = GetPlayerFromServerId(data.source)
-                CreateDutyBlips(id, data.label, data.job, data.blipNum, data.blipSize, data.blipColorNum, data.location)
+                CreateDutyBlips(id, data.label, data.job, data.location, data.vehClass)
             end
         end
     end
@@ -168,7 +196,7 @@ RegisterNetEvent("LENT-GovernmentJob:Client:MDT", function()
     local plyPed = PlayerPedId()
     PlayerData = QBCore.Functions.GetPlayerData()
     if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
-        if IsAllowedPoliceJob(PlayerData.job.name) then
+        if IsAllowedPoliceJob(PlayerData.job.name) or IsAllowedAmbulanceJob(PlayerData.job.name) then
             TriggerServerEvent('mdt:server:openMDT')
             TriggerServerEvent('mdt:requestOfficerData')
         end
@@ -187,5 +215,49 @@ RegisterNetEvent('ps-radialmenu:client:openmdt', function()
         end
     else
         QBCore.Functions.Notify("Can't do that!", "error")
+    end
+end)
+
+RegisterNetEvent('police:client:UseGPS', function()
+    if (IsAllowedPoliceJob(PlayerJob.name) or IsAllowedAmbulanceJob(PlayerJob.name)) and PlayerJob.onduty then
+        local newinputs = {}
+        if not GPSActive then
+            HeaderText = "GPS - "..PlayerJob.name.."<br>🔴 GPS is offline"
+            Submittext = "Activate GPS"
+            newinputs[#newinputs+1] = { type = 'text', name = 'callsign', text = "Callsign", isRequired = true}
+        else
+            HeaderText = "GPS - "..PlayerJob.name.."<br>🟢 GPS is online"
+            Submittext = "Deactivate GPS"
+            newinputs[#newinputs+1] = { type = 'text', name = 'callsign', text = "Callsign", isRequired = false}
+        end
+        local dialog = exports['qb-input']:ShowInput({ header = HeaderText, submitText = Submittext, inputs = newinputs })
+        if dialog then
+            if GPSActive then
+                GPSActive = false
+            else
+                GPSActive = true
+                TriggerServerEvent('police:server:SetCallSign', dialog.callsign)
+            end
+        end
+    else
+        QBCore.Functions.Notify('You must be induty to see G.P.S.', 'error', 4500)
+    end
+end)
+
+CreateThread(function()
+    while true do
+        if (IsAllowedPoliceJob(PlayerJob.name) or IsAllowedAmbulanceJob(PlayerJob.name)) and PlayerJob.onduty and GPSActive then
+            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+            local vehicleClass = GetVehicleClass(vehicle)
+            local jobname = PlayerJob.name
+            local call = QBCore.Functions.GetPlayerData().metadata["callsign"]
+            if GPSActive and QBCore.Functions.HasItem('leogps') then GPSActive = true else GPSActive = false end
+            local data = { vehClass = vehicleClass, playerJob = jobname, call = call, gpsactive = GPSActive }
+            TriggerServerEvent('police:server:UpdateBlipInfo', data)
+        elseif (IsAllowedPoliceJob(PlayerJob.name) or IsAllowedAmbulanceJob(PlayerJob.name)) and not PlayerJob.onduty or not GPSActive then
+            local data = { gpsactive = GPSActive }
+            TriggerServerEvent('police:server:UpdateBlipInfo', data)
+        end
+        Wait(3000)
     end
 end)

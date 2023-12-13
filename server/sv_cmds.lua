@@ -1,39 +1,5 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
--- Commands
--- QBCore.Commands.Add("spike", Lang:t("commands.place_spike"), {}, false, function(source, args)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if IsAllowedPoliceJob(Player.PlayerData.job.name) and Player.PlayerData.job.onduty then
---         local length = tonumber(args[1])
-        
---         if length > Config.GlobalSettings['MaxSpikes'] then
---             TriggerClientEvent('police:client:SpawnSpikeStrip', src, Config.GlobalSettings['MaxSpikes'])
---         elseif length < Config.GlobalSettings['MaxSpikes'] then
---             TriggerClientEvent('police:client:SpawnSpikeStrip', src, length)
---         else
---             TriggerClientEvent('police:client:SpawnSpikeStrip', src, Config.GlobalSettings['MaxSpikes'])
---         end
---     end
--- end)
-
--- QBCore.Commands.Add("szone", 'Place Speed Zone with Radius', {}, false, function(source, args)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if IsAllowedPoliceJob(Player.PlayerData.job.name) and Player.PlayerData.job.onduty then
---         local ZoneSize = tonumber(args[1])
-
---         if ZoneSize > Config.GlobalSettings['MaxZoneSize'] then
---             TriggerClientEvent('LENT-GovernmentJob:Client:CreateSpeedZone', src, Config.GlobalSettings['MaxZoneSize'])
---         elseif ZoneSize < Config.GlobalSettings['MaxZoneSize'] then
---             TriggerClientEvent('LENT-GovernmentJob:Client:CreateSpeedZone', src, ZoneSize)
---         else
---             TriggerClientEvent('LENT-GovernmentJob:Client:CreateSpeedZone', src, Config.GlobalSettings['MaxZoneSize'])
---         end
---     end
--- end)
-
-
 QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -80,43 +46,6 @@ QBCore.Commands.Add("revokelicense", Lang:t("commands.license_revoke"), {{name =
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.rank_revoke"), "error")
     end
-end)
-
--- QBCore.Commands.Add("pobject", Lang:t("commands.place_object"), {{name = "type",help = Lang:t("info.poobject_object")}}, true, function(source, args)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     local type = args[1]:lower()
---     if IsAllowedPoliceJob(Player.PlayerData.job.name) and Player.PlayerData.job.onduty then
---         if type == "cone" then
---             TriggerClientEvent("police:client:spawnCone", src)
---         elseif type == "barrier" then
---             TriggerClientEvent("police:client:spawnBarrier", src)
---         elseif type == "roadsign" then
---             TriggerClientEvent("police:client:spawnRoadSign", src)
---         elseif type == "tent" then
---             TriggerClientEvent("police:client:spawnTent", src)
---         elseif type == "light" then
---             TriggerClientEvent("police:client:spawnLight", src)
---         elseif type == "delete" then
---             TriggerClientEvent("police:client:deleteObject", src)
---         end
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
---     end
--- end)
-
-QBCore.Commands.Add("cuff", Lang:t("commands.cuff_player"), {}, false, function(source)
-    local src = source
-    -- local Player = QBCore.Functions.GetPlayer(src)
-    -- if IsAllowedPoliceJob(Player.PlayerData.job.name) and Player.PlayerData.job.onduty then
-        -- if QBCore.Functions.HasItem('handcuffs') then
-            TriggerClientEvent("police:client:CuffPlayer", src)
-        -- else
-            -- TriggerClientEvent('QBCore:Notify', src, 'You don\'t have cuffs on you!', 'error')
-        -- end
-    -- else
-        -- TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
-    -- end
 end)
 
 QBCore.Commands.Add("escort", Lang:t("commands.escort"), {}, false, function(source)
@@ -170,26 +99,6 @@ end
 --     local Player = QBCore.Functions.GetPlayer(src)
 --     if IsAllowedPoliceJob(Player.PlayerData.job.name) and Player.PlayerData.job.onduty then
 --         TriggerClientEvent("police:client:SeizeCash", src)
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
---     end
--- end)
-
-QBCore.Commands.Add("sc", Lang:t("commands.softcuff"), {}, false, function(source)
-    local src = source
-    -- local Player = QBCore.Functions.GetPlayer(src)
-    -- if IsAllowedPoliceJob(Player.PlayerData.job.name) and Player.PlayerData.job.onduty then
-        TriggerClientEvent("police:client:CuffPlayerSoft", src)
-    -- else
-        -- TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
-    -- end
-end)
-
--- QBCore.Commands.Add("cam", Lang:t("commands.camera"), {{name = "camid", help = Lang:t('info.camera_id')}}, false, function(source, args)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if IsAllowedPoliceJob(Player.PlayerData.job.name) and Player.PlayerData.job.onduty then
---         TriggerClientEvent("police:client:ActiveCamera", src, tonumber(args[1]))
 --     else
 --         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
 --     end
@@ -352,16 +261,6 @@ QBCore.Commands.Add("ankletlocation", Lang:t("commands.ankletlocation"), {{name 
     end
 end)
 
--- QBCore.Commands.Add("takedrivinglicense", Lang:t("commands.drivinglicense"), {}, false, function(source)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if IsAllowedPoliceJob(Player.PlayerData.job.name) and Player.PlayerData.job.onduty then
---         TriggerClientEvent("police:client:SeizeDriverLicense", source)
---     else
---         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
---     end
--- end)
-
 if Config.GlobalSettings['Evidence'] == 'default' then
     QBCore.Commands.Add("takedna", Lang:t("commands.takedna"), {{name = "id", help = Lang:t('info.player_id')}}, true, function(source, args)
         local src = source
@@ -382,12 +281,3 @@ if Config.GlobalSettings['Evidence'] == 'default' then
     end)
 end
 
--- QBCore.Commands.Add("store", "Stores your cruiser if you're near a police garage", {}, false, function(source)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if IsAllowedPoliceJob(Player.PlayerData.job.name) and Player.PlayerData.job.onduty then 
---         TriggerClientEvent("LENT-GovernmentJob:Client:StoreVehicle", src)
---     else
---         TriggerClientEvent('QBCore:Notify', src, "You're not near a garage or you're not a onduty police officer!", "error")
---     end
--- end)

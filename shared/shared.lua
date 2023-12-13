@@ -12,12 +12,28 @@ Config.GlobalSettings = {
     ['EnableStationBlips'] = true,
     ['Fuel'] = "cdn-fuel",
     ['MaxSpikes'] = 5,
-    ['HandCuffs'] = "handcuffs",
     ['LicenseRank'] = 4,
     ['MaxZoneSize'] = 30.0,
     ['Phone'] = 'qb', -- WIP
     ['Evidence'] = 'r14', -- default, r14
     ['MenuExport'] = 'qb-menu', -- qb
+}
+
+Config.BreakOutCuffing = {active = true, duration = math.random(2500,5000), pos = math.random(10, 30), width = math.random(10, 20)}
+Config.BreakoutMinigame = 'ps-ui' -- Choose the cuff breakout minigame : qb-skillbar / ps-ui (circle)
+Config.PSUICOnfig = {numcircle = 2, ms = 20} -- If minigame is ps-ui then choose number of circles and ms 
+Config.TargetSystem = 'qb-target' -- Target system you want to use : qb-target / qtarget / ox_target
+Config.ContextSystem = 'qb-menu' -- Menu system you want to use : qb-menu / ox_lib
+Config.HandCuffItem = 'handcuffs'
+Config.CuffKeyItem = "cuffkeys"
+Config.TieItem = 'zipties'
+Config.CutTieItem = 'flush_cutter'
+Config.CutCuffItem = 'bolt_cutter'
+Config.BrokenCuffItem = 'broken_handcuffs'
+
+Config.CuffItems = { 
+    ['handcuffs'] = {itemname = "handcuffs", propname = "p_cs_cuffs_02_s", needkey = true, keyitem = "cuffkeys", cufftype = 19 },
+    ['zipties'] = {itemname = "zipties", propname = "hei_prop_zip_tie_positioned", needkey = false, keyitem = "flush_cutter", cufftype = 49}
 }
 
 Config.Job = {
@@ -30,34 +46,55 @@ Config.Job = {
     ['Sheriff'] = "bcso",
     ['Corrections'] = "doc",
     ['FireDepartment'] = "ambulance",
+    ['OceanViewHospital'] = "ovh"
 }
 
 Config.UnitblipSettings = {
     ["VehicleBlipSize"] = 1.2,
-    ["DOJColor"] = 7,
-    ["SASPColor"] = 40,
-    ["LSPDColor"] = 38,
-    ["BCSOColor"] = 47,
-    ["DOCColor"] = 52,
-    ["SAFDColor"] = 6,
-    
-    ["FIBColor"] = 67,
-    ["IAAColor"] = 67,
-    ["MilitaryColor"] = 81,
+    ["military"] = 81,
+    ["fib"] = 67,
+    ["iaa"] = 67,
+    ["upd"] = 7,
+    ["sasp"] = 40,
+    ["police"] = 38,
+    ["bcso"] = 47,
+    ["doc"] = 52,
+    ["ambulance"] = 6,
+    ["ovh"] = 78,
 
     ["FallBackBlip"] = 8,
 }
 
 Config.PoliceJobs = { 'military', 'fib', 'iaa', 'upd', 'sasp', 'police', 'bcso', 'doc' }
-Config.AmbulanceJobs = { 'ambulance' }
+Config.AmbulanceJobs = { 'ambulance', 'ovh' }
 
 -- [[ Objects ]] --
 Config.Objects = {
-    ["cone"] = {model = `prop_roadcone02a`, freeze = true},
-    ["barrier"] = {model = `prop_barrier_work06a`, freeze = true},
-    ["roadsign"] = {model = `prop_snow_sign_road_06g`, freeze = true},
-    ["tent"] = {model = `prop_gazebo_03`, freeze = true},
-    ["light"] = {model = `prop_worklight_03b`, freeze = true},
+    -- [""] = { model = ``, freeze = true },
+    ["collisioncam"] = { model = `collisioncam`, freeze = true },
+    ["csimarker1"] = { model = `csimarker1`, freeze = true },
+    ["csimarker2"] = { model = `csimarker2`, freeze = true },
+    ["csimarker3"] = { model = `csimarker3`, freeze = true },
+    ["csimarker4"] = { model = `csimarker4`, freeze = true },
+    ["csimarker5"] = { model = `csimarker5`, freeze = true },
+    ["forensictent"] = { model = `forensictent`, freeze = true },
+    ["lantern"] = { model = `lantern`, freeze = true },
+    ["pdcone"] = { model = `pdcone`, freeze = true },
+    ["policeaccident"] = { model = `policeaccident`, freeze = true },
+    ["policeddc"] = { model = `policeddc`, freeze = true },
+    ["policedrones"] = { model = `policedrones`, freeze = true },
+    ["policeleftarrow"] = { model = `policeleftarrow`, freeze = true },
+    ["policerightarrow"] = { model = `policerightarrow`, freeze = true },
+    ["policeroadclosed"] = { model = `policeroadclosed`, freeze = true },
+    ["policeslow"] = { model = `policeslow`, freeze = true },
+    -- [""] = { model = ``, freeze = true }, -- Not edited yet
+
+    -- Default QBCore
+    -- ["cone"] = {model = `pdcone`, freeze = true},
+    -- ["barrier"] = {model = `prop_barrier_work05`, freeze = true},
+    -- ["roadsign"] = {model = `policeslow`, freeze = true},
+    -- ["tent"] = {model = `prop_gazebo_03`, freeze = true},
+    -- ["light"] = {model = `prop_worklight_03b`, freeze = true},
 }
 
 -- [[ Helicopter ]]
@@ -66,26 +103,6 @@ Config.Helicopters = {
     `as365`,
     `as350`,
     `polmav`,
-}
-
--- [[ Parking Locations ]] --
-Config.ParkingLocations = {
-    [700] = { ["Coords"] = vector3(1879.26, 3689.9, 33.54) }, -- Sandy Shores
-    [701] = { ["Coords"] = vector3(1882.09, 3691.66, 33.54) }, -- Sandy Shores
-    [702] = { ["Coords"] = vector3(1874.55, 3705.64, 33.55) }, -- Sandy Shores
-    [703] = { ["Coords"] = vector3(1871.44, 3703.76, 33.54) }, -- Sandy Shores
-    [704] = { ["Coords"] = vector3(1877.75, 3707.19, 33.55) }, -- Sandy Shores
-    -- LSPD
-    [600] = { ["Coords"] = vector3(426.11, -976.57, 25.73) }, -- MRPD
-    [601] = { ["Coords"] = vector3(426.24, -979.28, 25.73) }, -- MRPD
-    [602] = { ["Coords"] = vector3(426.32, -982.14, 25.73) }, -- MRPD
-    [603] = { ["Coords"] = vector3(426.41, -984.99, 25.73) }, -- MRPD
-    [604] = { ["Coords"] = vector3(426.41, -987.78, 25.73) }, -- MRPD
-    [605] = { ["Coords"] = vector3(425.98, -990.73, 25.73) }, -- MRPD
-    -- Davis
-    [706] = { ["Coords"] = vector3(356.17, -1584.98, 29.29) }, -- Davis Sheriff
-    [707] = { ["Coords"] = vector3(357.83, -1582.9, 29.29) }, -- Davis Sheriff
-    [705] = { ["Coords"] = vector3(359.97, -1580.72, 29.29) }, -- Davis Sheriff
 }
 
 -- [[ Locations ]] --
@@ -320,7 +337,16 @@ Config.Armory = {
                 info = {},
                 type = "item",
                 slot = 21,
-                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
+            },
+            [22] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 22,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
             },
         }
     },
@@ -565,6 +591,15 @@ Config.Armory = {
                 slot = 25,
                 authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
             },
+            [26] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 26,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
+            },
         }
     },
     ['iaa'] = {
@@ -807,6 +842,15 @@ Config.Armory = {
                 type = "item",
                 slot = 25,
                 authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+            },
+            [26] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 26,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
             },
         }
     },
@@ -1089,6 +1133,15 @@ Config.Armory = {
                 type = "item",
                 slot = 30,
                 authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+            },
+            [31] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 31,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
             },
         },
     },
@@ -1373,6 +1426,15 @@ Config.Armory = {
                 slot = 30,
                 authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
             },
+            [31] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 31,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
+            },
         }
     },
     ['police'] = {
@@ -1654,6 +1716,15 @@ Config.Armory = {
                 type = "item",
                 slot = 30,
                 authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+            },
+            [31] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 31,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
             },
         }
     },
@@ -1937,6 +2008,15 @@ Config.Armory = {
                 slot = 30,
                 authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
             },
+            [31] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 31,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
+            },
         }
     },
     ['doc'] = {
@@ -2219,6 +2299,15 @@ Config.Armory = {
                 slot = 30,
                 authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
             },
+            [31] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 31,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
+            },
         }
     },
     ['ambulance'] = {
@@ -2378,8 +2467,176 @@ Config.Armory = {
                 slot = 17,
                 authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }
             },
+            [18] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 18,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
+            },
         }
     },
+    ['ovh'] = {
+        label = "Fire Department Lockers",
+        slots = 30,
+        items = {
+            [1] = {
+                name = "mdt",
+                price = 0,
+                amount = 1,
+                info = {},
+                type = "item",
+                slot = 1,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [2] = {
+                name = "panicbutton",
+                price = 0,
+                amount = 1,
+                info = {},
+                type = "item",
+                slot = 2,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [3] = {
+                name = "radio",
+                price = 0,
+                amount = 1,
+                info = {},
+                type = "item",
+                slot = 3,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [4] = {
+                name = "bandage",
+                price = 0,
+                amount = 50,
+                info = {},
+                type = "item",
+                slot = 4,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [5] = {
+                name = "painkillers",
+                price = 0,
+                amount = 50,
+                info = {},
+                type = "item",
+                slot = 5,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [6] = {
+                name = "firstaid",
+                price = 0,
+                amount = 50,
+                info = {},
+                type = "item",
+                slot = 6,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [7] = {
+                name = "weapon_flashlight",
+                price = 0,
+                amount = 1,
+                info = {},
+                type = "item",
+                slot = 7,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [8] = {
+                name = "badge",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 8,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [9] = {
+                name = "nikon",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 9,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [10] = {
+                name = "gsrtestkit",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 10,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [11] = {
+                name = "dnatestkit",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 11,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [12] = {
+                name = "drugtestkit",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 12,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [13] = {
+                name = "breathalyzer",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 13,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [14] = {
+                name = "accesstool",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 14,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [15] = {
+                name = "sdcard",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 15,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [16] = {
+                name = "bodycam",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 16,
+                authorizedJobGrades = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }
+            },
+            [17] = {
+                name = "leogps",
+                amount = 1,
+                price = 0,
+                info = {},
+                type = "item",
+                slot = 17,
+                authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
+            },
+        }
+    }
 }
 
 
